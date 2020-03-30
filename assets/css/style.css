@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Spicy+Rice&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+
+/* General Formating Styling */
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	opacity: 0.9;
+	overflow-x: hidden;
+}
+
+.content {
+	flex: 1 0 auto;
+}
+
+footer {
+	flex-shrink: 0;
+	padding-top: 10px;
+	text-align: center;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+/* Font Styling */
+
+h1, h2, h3, h4 {
+    font-family: 'Spicy Rice', cursive;
+    color: #f5f5f5;
+}
+
+p, li, i {
+    font-family: 'Indie Flower', cursive;
+    color: #f5f5f5;
+    font-size: 28px;
+}
+
+.menu-text {
+    font-family: 'Spicy Rice', cursive;
+    color: #f5f5f5; 
+    font-size: 1.2rem;
+}
+
+/* Color */
+
+.main-color {
+    background-color: #422020;
+}
+
+.menu-item-color {
+    background-color: #674134;
+}
+
+/* Image Sizing */
+
+.nav-logo {
+    width: auto;
+    height: 60px;
+}
+
+/* Landing Page */
+
+.background-image {
+    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/forest_wq8sdg.png");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+}
