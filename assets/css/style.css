@@ -66,6 +66,11 @@ p, li, i {
     height: 60px;
 }
 
+.game-menu-icon{
+    max-height: 60px;
+    width: auto;
+}
+
 /* Landing Page */
 
 .background-image {
@@ -73,6 +78,33 @@ p, li, i {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 89vh;
     width: 100vw;
+}
+.landing-title {
+    padding: 50px;
+    text-align: center;
+}
+
+.game-menu-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-menu-item {
+    border-radius: 5px;
+    border: 2px sold #fafafa;
+    background-color: #422020;
+    width: 250px;
+    padding: 5px;
+    margin: 10px;
+}
+
+.game-menu-item img {
+    float: left;
+}
+
+.game-menu-item h3 {
+    padding: 10px 0px;
 }
