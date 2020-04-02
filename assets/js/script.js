@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    
    var modal = document.getElementById("tutorial");
    var btns = document.querySelectorAll(".tutorial-btn");
    var close = document.getElementsByClassName("modal-close")[0];
@@ -19,8 +20,6 @@ $(document).ready(function() {
            modal.style.display = "none";
        }
    }
-
-
 
 
 });
