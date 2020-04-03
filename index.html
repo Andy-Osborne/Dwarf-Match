@@ -25,21 +25,46 @@
         <div class="container-fluid no-padding">
             <div class="game-menu-area">
                 <div class="background-image">
-                    <div class="landing-title">
+                    <div class="landing-title text-centre">
                         <h1>Dwarf Match</h1>
                     </div>
                     <div class="game-menu-container">
-                        <button class="game-menu-item">
+                        <button class="game-menu-item play-btn">
                             <img class="game-menu-icon" src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_start_yqgvqz.png" alt="Play Button">
                             <h3>Play</h3>
                         </button>
+                        <div id="levelSelect" class="modal display-none">
+                            <div class="levelSelect-content">
+                                <div class="inner-header text-centre">
+                                    <h2>Choose your difficulty level</h2>
+                                </div>
+                              
+                                <div class="inner-content text-centre">
+                                   <button class="easy level-btn">
+                                       <img src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_easy_x2daxp.png">
+                                   </button>
+                                   <p>Holding text</p>
+                                   <button class="easy level-btn">
+                                    <img src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_easy_x2daxp.png">
+                                </button>
+                                <p>Holding text</p>    
+                                <button class="easy level-btn">
+                                    <img src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_easy_x2daxp.png">
+                                </button>
+                                <p>Holding text</p>                                         
+                                </div>
+                                <div class="inner-bottom text-centre">
+                                    <button class="modal-close"><img src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_close_vjjrl6.png" alt="Close Button"></button>
+                                </div>
+                            </div>
+                        </div>
                         <button class="game-menu-item tutorial-btn">
                             <img class="game-menu-icon" src="https://res.cloudinary.com/andy-osborne/image/upload/v1585563114/Dwarf%20Match/Buttons/Info_tqkbuv.png" alt="Tutorial Button">
                             <h3>How to Play</h3>
                         </button>
-                        <div id="tutorial" class="modal">
+                        <div id="tutorial" class="modal display-none">
                             <div class="tutorial-content">
-                                <div class="inner-header">
+                                <div class="inner-header text-centre">
                                     <h2>How to Play</h2>
                                 </div>
                               
@@ -78,7 +103,7 @@
                                     </ul>
                                     
                                 </div>
-                                <div class="inner-bottom">
+                                <div class="inner-bottom text-centre">
                                     <button class="modal-close"><img src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_close_vjjrl6.png" alt="Close Button"></button>
                                 </div>
                             </div>
@@ -94,7 +119,7 @@
 
             <div class="game-play-area">
                 <div class="game-area">
-                    
+
                 </div>
 
             </div>

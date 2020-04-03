@@ -1,25 +1,18 @@
 $(document).ready(function() {
     
-   var modal = document.getElementById("tutorial");
-   var btns = document.querySelectorAll(".tutorial-btn");
-   var close = document.getElementsByClassName("modal-close")[0];
-
-
-   [].forEach.call(btns, function(el) {
-    el.onclick = function() {
-        modal.style.display="block";
-    }
+    $(".tutorial-btn").click(function() {
+        $("#tutorial").addClass("display-block");
+    $(".modal-close").click(function() {
+        $(".modal").removeClass("display-block").addClass("display-none");
+    })
 })
 
-   close.onclick = function() {
-       modal.style.display = "none";
-   }
-
-   window.onclick = function(event) {
-       if (event.target == modal) {
-           modal.style.display = "none";
-       }
-   }
+$(".play-btn").click(function() {
+    $("#levelSelect").addClass("display-block");
+    $(".modal-close").click(function() {
+        $(".modal").removeClass("display-block").addClass("display-none");
+    })
+})
 
 
 });

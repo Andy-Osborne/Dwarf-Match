@@ -53,6 +53,10 @@ p, li {
     font-size: 1.2rem;
 }
 
+.text-centre {
+  text-align: center;
+}
+
 /* Color */
 
 .main-color {
@@ -87,7 +91,6 @@ p, li {
 }
 .landing-title {
     padding: 50px;
-    text-align: center;
 }
 
 .game-menu-container {
@@ -116,7 +119,6 @@ p, li {
 /* Modal */
 
 .modal {
-    display: none;
     position: absolute;
     z-index: 2;
     left: 50%;
@@ -128,6 +130,14 @@ p, li {
     background-color: #674134;
     border-radius: 5px;
     border: 2px solid #f5f5f5;
+}
+
+.display-none {
+  display: none;
+}
+
+.display-block {
+  display: block;
 }
 
 /* The Close Button */
@@ -142,25 +152,38 @@ p, li {
   }
 
   .inner-header {
-      text-align: center;
       border-bottom: 2px solid #f5f5f5;
       padding: 10px 5px 0px 5px;
   }
 
   .inner-content {
         padding: 10px 5px 0px 5px;
+        display: flex;
+        justify-content: center;
+        flex-flow: column;
   }
 
   .inner-bottom {
-      text-align: center;
       padding: 10px;
   }
+
+/* Play Menu */
+
+.level-btn {
+  background-color: #674134;
+  border: none;
+}
+
+.level-btn img {
+  max-width: 150px;
+}
 
 /* Game Area */
 
 .game-area {
     height: 89vh;
     width: 100vw;
+    display: none;
 }
 
 .tile {
