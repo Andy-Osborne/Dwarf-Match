@@ -5,52 +5,56 @@
 
 html,
 body {
-	height: 100%;
-	width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 body {
-	display: flex;
-	flex-direction: column;
-	opacity: 0.9;
-	overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  opacity: 0.9;
+  overflow-x: hidden;
 }
 
 .content {
-	flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 footer {
-	flex-shrink: 0;
-	padding-top: 10px;
-	text-align: center;
+  flex-shrink: 0;
+  padding-top: 10px;
+  text-align: center;
 }
 
 .no-padding {
-    padding: 0;
+  padding: 0;
 }
 
 /* Font Styling */
 
-h1, h2, h3, h4 {
-    font-family: 'Spicy Rice', cursive;
-    color: #f5f5f5;
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Spicy Rice', cursive;
+  color: #f5f5f5;
 }
 
 p {
 
-    font-size: 28px;
+  font-size: 28px;
 }
 
-p, li {
-    font-family: 'Indie Flower', cursive;
-    color: #f5f5f5;
+p,
+li {
+  font-family: 'Indie Flower', cursive;
+  color: #f5f5f5;
 }
 
 .menu-text {
-    font-family: 'Spicy Rice', cursive;
-    color: #f5f5f5; 
-    font-size: 1.2rem;
+  font-family: 'Spicy Rice', cursive;
+  color: #f5f5f5;
+  font-size: 1.2rem;
 }
 
 .text-centre {
@@ -60,118 +64,110 @@ p, li {
 /* Color */
 
 .main-color {
-    background-color: #422020;
+  background-color: #422020;
 }
 
 .menu-item-color {
-    background-color: #674134;
+  background-color: #674134;
 }
 
 /* Image Sizing */
 
 .nav-logo {
-    width: auto;
-    height: 60px;
+  width: auto;
+  height: 60px;
 }
 
-.game-menu-icon{
-    max-height: 60px;
-    width: auto;
+.game-menu-icon {
+  max-height: 60px;
+  width: auto;
 }
 
 /* Landing Page */
 
 .background-image {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/forest_wq8sdg.png");
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 89vh;
-    width: 100vw;
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/forest_wq8sdg.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 89vh;
+  width: 100vw;
 }
+
 .landing-title {
-    padding: 50px;
+  padding: 50px;
 }
 
 .game-menu-container {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .game-menu-item {
-    border-radius: 5px;
-    border: 2px sold #fafafa;
-    background-color: #422020;
-    width: 250px;
-    padding: 5px;
-    margin: 10px;
+  border-radius: 5px;
+  border: 2px sold #fafafa;
+  background-color: #422020;
+  width: 250px;
+  padding: 5px;
+  margin: 10px;
 }
 
 .game-menu-item img {
-    float: left;
+  float: left;
 }
 
 .game-menu-item h3 {
-    padding: 10px 0px;
+  padding: 10px 0px;
 }
 
 /* Modal */
 
 .modal {
-    position: absolute;
-    z-index: 2;
-    left: 50%;
-    top: 50%;
-    max-width: 80%;
-    max-height: 75%;
-    transform: translate(-50%, -50%);
-    overflow: auto;
-    background-color: #674134;
-    border-radius: 5px;
-    border: 2px solid #f5f5f5;
-}
-
-.display-none {
-  display: none;
-}
-
-.display-block {
-  display: block;
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  background-color: #674134;
+  border-radius: 5px;
+  border: 2px solid #f5f5f5;
 }
 
 /* The Close Button */
 
 .modal-close {
-    background-color: #674134;
-    border: none;
-  }
+  background-color: #674134;
+  border: none;
+}
 
-  .modal-close img {
-      width: 50px;
-  }
+.modal-close img {
+  width: 50px;
+}
 
-  .inner-header {
-      border-bottom: 2px solid #f5f5f5;
-      padding: 10px 5px 0px 5px;
-  }
+.inner-header {
+  border-bottom: 2px solid #f5f5f5;
+  padding: 10px 5px 0px 5px;
+}
 
-  .inner-content {
-        padding: 10px 5px 0px 5px;
-        display: flex;
-        justify-content: center;
-        flex-flow: column;
-  }
+.inner-content {
+  padding: 10px 5px 0px 5px;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+}
 
-  .inner-bottom {
-      padding: 10px;
-  }
+.inner-bottom {
+  padding: 10px;
+}
 
 /* Play Menu */
 
 .level-btn {
   background-color: #674134;
   border: none;
+  padding-top: 10px;
 }
 
 .level-btn img {
@@ -181,177 +177,190 @@ p, li {
 /* Game Area */
 
 .game-area {
-    height: 89vh;
-    width: 100vw;
-    display: none;
+  height: 89vh;
+  width: 100vw;
+  display: none;
 }
 
 .tile {
-    height: 15vh;
-    width: 15vw;
-    display: inline-block;
-    margin: 5px;
+  height: 15vh;
+  width: 15vw;
+  display: inline-block;
+  margin: 5px;
 
 }
 
 .game-easy-background {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/Easy.png");
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/Easy.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .game-normal-background {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/Normal.png");
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/Normal.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .game-hard-background {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/Hard.png");
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/Hard.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 
 /* Tilesets */
 
-  .EasyPair1 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585824422/Dwarf%20Match/Cards/Back/G1.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+.EasyPair1 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585824422/Dwarf%20Match/Cards/Back/G1.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.EasyPair2 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585824301/Dwarf%20Match/Cards/Back/S1.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.EasyPair3 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585824119/Dwarf%20Match/Cards/Back/B1.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.EasyPair4 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585824119/Dwarf%20Match/Cards/Back/K1.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.EasyPair5 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585822155/Dwarf%20Match/Cards/Back/N1.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.EasyPair6 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585822155/Dwarf%20Match/Cards/Back/A1.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.NormalPair1 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/A2.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.NormalPair2 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/B2.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.NormalPair3 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/G2.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.NormalPair4 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/K2.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.NormalPair5 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/N2.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.NormalPair6 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/S2.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.HardPair1 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/A3.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.HardPair2 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/B3.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+.HardPair3 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/N3.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+.HardPair4 {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/S3.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+
+/* Media Queries */
+
+@media only screen and (min-width: 320px) {
+  .modal {
+    margin-top: 10%;
+    max-width: 80%;
+    max-height: 75%;
   }
 
-  .EasyPair2 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585824301/Dwarf%20Match/Cards/Back/S1.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+  li, p {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 1023px) {
+  #tutorial.modal, #levelSelect.modal {
+    margin-top: 0;
+    height: auto;
   }
 
-  .EasyPair3 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585824119/Dwarf%20Match/Cards/Back/B1.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+  #levelSelect.modal {
+   width: auto;
+   padding: 10px;
   }
 
-  .EasyPair4 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585824119/Dwarf%20Match/Cards/Back/K1.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+  #tutorial.modal {
+    margin-top: 0;
+    width: 1050px;
   }
 
-  .EasyPair5 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585822155/Dwarf%20Match/Cards/Back/N1.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+  .inner-content li, .inner-content p {
+    font-size: 24px;
   }
-
-  .EasyPair6 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585822155/Dwarf%20Match/Cards/Back/A1.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  .NormalPair1 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/A2.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  .NormalPair2 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/B2.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  .NormalPair3 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/G2.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  .NormalPair4 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/K2.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  .NormalPair5 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/N2.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  .NormalPair6 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/S2.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  .HardPair1 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/A3.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  .HardPair2 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/B3.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-
-  .HardPair3 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/N3.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-
-  .HardPair4 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821451/Dwarf%20Match/Cards/Back/S3.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-
-
-  /* Media Queries */
-
-  @media only screen and (min-width: 320px) {
-      .modal {
-          margin-top: 10%;
-      }
-
-      li {
-        font-size: 20px;
-      }
-  }
-
-  @media only screen and (min-width: 1023px) {
-      #tutorial.modal {
-          margin-top: 0;
-      }
-
-      .inner-content li {
-          font-size: 24px;
-      }
-  }
+}
