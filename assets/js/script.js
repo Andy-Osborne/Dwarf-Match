@@ -49,3 +49,21 @@ function levelChoice(obj) {
         gameTiles = 36;
     }
 };
+
+const game = document.getElementById("gameArea");
+
+
+let boardTiles = [];
+
+function createCardLayout(gameTiles) {
+ 
+    for (let i = 0; i < gameTiles; i++) {
+        var d = document.createElement("div");
+        d.className = "tile";
+        document.getElementById("gameArea").appendChild(d);
+        boardTiles.push(d);
+    }
+}
+
+let cardAssign = [boardTiles];
+
