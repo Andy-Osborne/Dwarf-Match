@@ -30,7 +30,7 @@
     </header>
     <main class="content">
         <div class="container-fluid no-padding">
-            <div class="game-menu-area">
+            <div class="game-menu-area landing-page">
                 <div class="background-image">
                     <div class="landing-title text-centre">
                         <h1>Dwarf Match</h1>
@@ -49,17 +49,17 @@
                                 </div>
 
                                 <div class="inner-content text-centre">
-                                    <button class="easy level-btn" id="easy">
+                                    <button class="easy level-btn" onclick="levelChoice(this)" id="easy">
                                         <img
                                             src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_easy_x2daxp.png">
                                     </button>
                                     <p>There are 12 cards within this level and you need to match 6 pairs.</p>
-                                    <button class="normal level-btn" id="normal">
+                                    <button class="normal level-btn" onclick="levelChoice(this)" id="normal">
                                         <img
                                             src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_normal_ebguxa.png">
                                     </button>
                                     <p>There are 24 cards within this level and you need to match 12 pairs.</p>
-                                    <button class="hard level-btn" id="hard">
+                                    <button class="hard level-btn" onclick="levelChoice(this)" id="hard">
                                         <img
                                             src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_hard_ylprfw.png">
                                     </button>
@@ -142,9 +142,15 @@
                 </div>
             </div>
 
-            <div class="game-play-area">
-                <div class="game-area">
-
+            <div class="game-play-area d-none">
+                <div id="game-area">
+                    <div id="restart">
+                        <button id="restart-button"><img class="restart-image"
+                                src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_restart_nbcbrc.png"
+                                alt="Restart Button"></button>
+                    </div>
+                </div>
+                <div id="gameArea" onclick="gameBoard.generateBoard()">
                 </div>
 
             </div>
