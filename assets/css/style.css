@@ -13,17 +13,23 @@ body {
   display: flex;
   flex-direction: column;
   opacity: 0.9;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 .content {
   flex: 1 0 auto;
+  height: 83vh;
 }
 
 footer {
   flex-shrink: 0;
   padding-top: 10px;
   text-align: center;
+  height: 5vh;
+}
+
+.navbar {
+  height: 12vh;
 }
 
 .no-padding {
@@ -90,7 +96,7 @@ li {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 89vh;
+  height: 87vh;
   width: 100vw;
 }
 
@@ -176,29 +182,46 @@ li {
 
 /* Game Area */
 
-.game-area {
-  height: 89vh;
+.game-play-area {
+  background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/Easy.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 1;
+  height: 87vh;
   width: 100vw;
 }
 
+#game-area {
+  position: relative;
+}
+
+#gameArea {
+  width: 80vw;
+}
+
 #restart {
-  display: flex;
-  justify-content: flex-end;
+  position: absolute;
+  right: 1%;
+  top: 1%;
 }
 
 #restart-button {
   padding-top: 10px;
+  background-color: transparent;
+  border: none;
 }
 
 .restart-image {
-  width: 60px;
+  width: 80px;
 }
 
 .tile {
   height: 15vh;
-  width: 15vw;
+  width: 10vw;
   display: inline-block;
   margin: 5px;
+  background-color: #674134;
 
 }
 
@@ -225,6 +248,8 @@ li {
 
 
 /* Tilesets */
+
+/* Easy Tileset */
 
 .easyPair1 {
   background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585824422/Dwarf%20Match/Cards/Back/G1.png");
@@ -470,7 +495,12 @@ li {
   background-repeat: no-repeat;
 }
 
+/* Special tile classes */
 
+.faceDown {
+  background: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821476/Dwarf%20Match/Cards/Front/6_tj1ur9.png") no-repeat;
+  background-size: contain;
+}
 
 /* Media Queries */
 
@@ -481,20 +511,23 @@ li {
     max-height: 75%;
   }
 
-  li, p {
+  li,
+  p {
     font-size: 20px;
   }
 }
 
 @media only screen and (min-width: 1023px) {
-  #tutorial.modal, #levelSelect.modal {
+
+  #tutorial.modal,
+  #levelSelect.modal {
     margin-top: 0;
     height: auto;
   }
 
   #levelSelect.modal {
-   width: auto;
-   padding: 10px;
+    width: auto;
+    padding: 10px;
   }
 
   #tutorial.modal {
@@ -502,7 +535,8 @@ li {
     width: 1050px;
   }
 
-  .inner-content li, .inner-content p {
+  .inner-content li,
+  .inner-content p {
     font-size: 24px;
   }
 }
