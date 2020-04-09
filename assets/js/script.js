@@ -21,9 +21,17 @@ $(document).ready(function () {
     })
 
     $("button.level-btn").click(function (event) {
-        $(".landing-page").addClass("d-none");
+        $(".landing-page").removeClass("d-block").addClass("d-none");
         $(".game-play-area").addClass("d-block");
+        $(".modal").removeClass("d-block").addClass("d-none");
+        $(".exit-button").removeClass("d-none");
     });
+
+    $(".exit-button").click(function () {
+        $(".game-play-area").removeClass("d-block").addClass("d-none");
+        $(".landing-page").addClass("d-block");
+        $(".exit-button").addClass("d-none");
+    })
 
 });
 
@@ -42,11 +50,11 @@ function levelChoice(obj) {
     difficultyLevel = obj.id;
 
     if (difficultyLevel == "easy") {
-        gameTiles = 12;
+        gameTiles = 8;
     } else if (difficultyLevel == "normal") {
-        gameTiles = 18;
+        gameTiles = 12;
     } else if (difficultyLevel == "hard") {
-        gameTiles = 36;
+        gameTiles = 16;
     }
 };
 
@@ -55,15 +63,55 @@ const game = document.getElementById("gameArea");
 
 let boardTiles = [];
 
+/**
+ * The below function takes the output based on the user difficulty selection. 
+ * Based on this output, it will create X amount of divs and assign it a pair class
+ * which is then assigned to an array.
+ */
+
 function createCardLayout(gameTiles) {
- 
-    for (let i = 0; i < gameTiles; i++) {
+
+    for (let i = 1; i < gameTiles + 1; i++) {
         var d = document.createElement("div");
-        d.className = "tile";
-        document.getElementById("gameArea").appendChild(d);
+        d.className = `tile image-center faceDown ${difficultyLevel}Pair${[i]}`;
+        boardTiles.push(d);
+    }
+    for (let j = 1; j < gameTiles + 1; j++) {
+        d = document.createElement("div");
+        d.className = `tile image-center faceDown ${difficultyLevel}Pair${[j]}`;
         boardTiles.push(d);
     }
 }
 
-let cardAssign = [boardTiles];
 
+/* The below function is based on the  Durstenfeld shuffle, an optimized version of Fisher-Yates method
+and has been obtained from Stackoverflow */
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+
+    return array;
+}
+
+function gamePlay() {
+
+    createCardLayout(gameTiles);
+
+    /* The below takes uses the shuffleArray function and assigns this to a new variable */
+
+    let cardShuffle = shuffleArray(boardTiles);
+
+    /*The below uses the cardShuffle vairable and then cycles through each element in the array
+    and appends it to the gameArea within the DOM */
+
+    cardShuffle.forEach(element => {
+        document.getElementById("gameArea").appendChild(element)
+    });
+
+
+
+
+}
