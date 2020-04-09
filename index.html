@@ -38,160 +38,137 @@
     <main class="content">
         <div class="container-fluid no-padding">
             <div class="landing-page background-image back-image">
-                    <div class="landing-title text-centre">
-                        <h1>Dwarf Match</h1>
-                    </div>
-                    <div class="menu-container">
-                        <button class="menu-item play-btn">
-                            <img class="menu-icon"
-                                src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_start_yqgvqz.png"
-                                alt="Play Button">
-                            <h3>Play</h3>
-                        </button>
+                <div class="landing-title text-centre">
+                    <h1>Dwarf Match</h1>
+                </div>
+                <div class="menu-container">
+                    <button class="menu-item play-btn">
+                        <img class="menu-icon"
+                            src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_start_yqgvqz.png"
+                            alt="Play Button">
+                        <h3>Play</h3>
+                    </button>
 
-                        <button class="menu-item tutorial-btn">
-                            <img class="menu-icon"
-                                src="https://res.cloudinary.com/andy-osborne/image/upload/v1585563114/Dwarf%20Match/Buttons/Info_tqkbuv.png"
-                                alt="Tutorial Button">
-                            <h3>How to Play</h3>
-                        </button>
+                    <button class="menu-item tutorial-btn">
+                        <img class="menu-icon"
+                            src="https://res.cloudinary.com/andy-osborne/image/upload/v1585563114/Dwarf%20Match/Buttons/Info_tqkbuv.png"
+                            alt="Tutorial Button">
+                        <h3>How to Play</h3>
+                    </button>
 
-                        <button class="menu-item">
-                            <img class="menu-icon"
-                                src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_sound_j6pkdi.png"
-                                alt="Sound Settings">
-                            <h3>Sound</h3>
+                    <button class="menu-item">
+                        <img class="menu-icon"
+                            src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_sound_j6pkdi.png"
+                            alt="Sound Settings">
+                        <h3>Sound</h3>
+                    </button>
+                </div>
+            </div>
+
+            <div class="game-play-area d-none back-image">
+                <div id="game-area">
+                    <div id="restart">
+                        <button id="restart-button" class="transparent no-border">
+                            <img class="restart-image"
+                                src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_restart_nbcbrc.png"
+                                alt="Restart Button">
                         </button>
                     </div>
                 </div>
+                <div class="container-fluid no-padding">
+                    <div class="game-container">
+                        <div class="row mx-auto no-gutters" id="gameArea">
 
-                <div class="game-play-area d-none back-image">
-                    <div id="game-area">
-                        <div id="restart">
-                            <button id="restart-button" class="transparent no-border">
-                                <img class="restart-image"
-                                    src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_restart_nbcbrc.png"
-                                    alt="Restart Button">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="container-fluid no-padding">
-                        <div class="game-container">
-                            <div class="row mx-auto no-gutters" id="gameArea">
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                                <div class="tile"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modals -->
-
-                <div id="tutorial" class="modal d-none">
-                    <div class="tutorial-content">
-                        <div class="inner-header text-centre">
-                            <h2>How to Play</h2>
-                        </div>
-                        <div class="inner-content">
-                            <ul>
-                                <li>
-                                    Click "Play" to start the game.
-                                </li>
-                                <li>
-                                    Select the difficulty of the level you want to play.
-                                </li>
-                                <ol>
-                                    <li>
-                                        <strong>Easy</strong>
-                                        <br> There are 12 tiles on the board. Try to find the 6 different pairs as fast
-                                        as possible.
-                                    </li>
-                                    <li>
-                                        <strong>Intermediate</strong>
-                                        <br> There are 18 cards on the board. Try to find the 9 different pairs as fast
-                                        as possible.
-                                    </li>
-                                    <li>
-                                        <strong>Hard</strong>
-                                        <br> There are 24 cards on the board. Try to find the 12 different pairs as fast
-                                        as possible.
-                                    </li>
-                                </ol>
-                                <li>
-                                    Once your game starts, you will then select two tiles on the board.
-                                    <br> - If they match, they will stay face up on the board.
-                                    <br> - If they don't match, they will flip back over - try and remember where all
-                                    the cards are if you don't get a matching pair.
-                                </li>
-                                <li>
-                                    If at any point you want to restart your game, you can click on the restart arrow in
-                                    the top right corner of the game board.
-                                </li>
-                                <li>
-                                    Have fun and try to beat your previous time and flip count!
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="inner-bottom text-centre">
-                            <button class="modal-close"><img
-                                    src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_close_vjjrl6.png"
-                                    alt="Close Button"></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="levelSelect" class="modal d-none">
-                    <div class="levelSelect-content">
-                        <div class="inner-header text-centre">
-                            <h2>Choose your difficulty level</h2>
-                        </div>
-                        <div class="inner-content text-centre">
-                            <button class="easy level-btn" onclick="levelChoice(this); gamePlay()" id="easy">
-                                <img
-                                    src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_easy_x2daxp.png">
-                            </button>
-                            <p>There are 12 cards within this level and you need to match 6 pairs.</p>
-                            <button class="normal level-btn" onclick="levelChoice(this); gamePlay()" id="normal">
-                                <img
-                                    src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_normal_ebguxa.png">
-                            </button>
-                            <p>There are 18 cards within this level and you need to match 9 pairs.</p>
-                            <button class="hard level-btn" onclick="levelChoice(this); gamePlay()" id="hard">
-                                <img
-                                    src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_hard_ylprfw.png">
-                            </button>
-                            <p>There are 24 cards within this level and you need to match 12 pairs.</p>
-                        </div>
-                        <div class="inner-bottom text-centre">
-                            <button class="modal-close"><img
-                                    src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_close_vjjrl6.png"
-                                    alt="Close Button"></button>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Modals -->
+
+            <div id="tutorial" class="modal d-none">
+                <div class="tutorial-content">
+                    <div class="inner-header text-centre">
+                        <h2>How to Play</h2>
+                    </div>
+                    <div class="inner-content">
+                        <ul>
+                            <li>
+                                Click "Play" to start the game.
+                            </li>
+                            <li>
+                                Select the difficulty of the level you want to play.
+                            </li>
+                            <ol>
+                                <li>
+                                    <strong>Easy</strong>
+                                    <br> There are 16 tiles on the board. Try to find the 8 different pairs as fast
+                                    as possible.
+                                </li>
+                                <li>
+                                    <strong>Intermediate</strong>
+                                    <br> There are 24 cards on the board. Try to find the 12 different pairs as fast
+                                    as possible.
+                                </li>
+                                <li>
+                                    <strong>Hard</strong>
+                                    <br> There are 32 cards on the board. Try to find the 16 different pairs as fast
+                                    as possible.
+                                </li>
+                            </ol>
+                            <li>
+                                Once your game starts, you will then select two tiles on the board.
+                                <br> - If they match, they will stay face up on the board.
+                                <br> - If they don't match, they will flip back over - try and remember where all
+                                the cards are if you don't get a matching pair.
+                            </li>
+                            <li>
+                                If at any point you want to restart your game, you can click on the restart arrow in
+                                the top right corner of the game board.
+                            </li>
+                            <li>
+                                Have fun and try to beat your previous time and flip count!
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="inner-bottom text-centre">
+                        <button class="modal-close"><img
+                                src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_close_vjjrl6.png"
+                                alt="Close Button"></button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="levelSelect" class="modal d-none">
+                <div class="levelSelect-content">
+                    <div class="inner-header text-centre">
+                        <h2>Choose your difficulty level</h2>
+                    </div>
+                    <div class="inner-content text-centre">
+                        <button class="easy level-btn" onclick="levelChoice(this); gamePlay()" id="easy">
+                            <img
+                                src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_easy_x2daxp.png">
+                        </button>
+                        <p>There are 16 cards within this level and you need to match 8 pairs.</p>
+                        <button class="normal level-btn" onclick="levelChoice(this); gamePlay()" id="normal">
+                            <img
+                                src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_normal_ebguxa.png">
+                        </button>
+                        <p>There are 24 cards within this level and you need to match 12 pairs.</p>
+                        <button class="hard level-btn" onclick="levelChoice(this); gamePlay()" id="hard">
+                            <img
+                                src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_hard_ylprfw.png">
+                        </button>
+                        <p>There are 32 cards within this level and you need to match 16 pairs.</p>
+                    </div>
+                    <div class="inner-bottom text-centre">
+                        <button class="modal-close"><img
+                                src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_close_vjjrl6.png"
+                                alt="Close Button"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <footer class="main-color">
         <span class="footer-text">Copyright 2020 - <a href="https://github.com/Andy-Osborne">Andy Osborne</a></span>
