@@ -96,6 +96,16 @@ function shuffleArray(array) {
     return array;
 }
 
+/*The below function clears the game board by removing the divs assigned to gameArea
+and then empties the gameTiles array */
+
+let clearGameArea = () => {
+    const clearArea = document.getElementById("gameArea");
+    clearArea.querySelectorAll("*").forEach(child => child.remove());
+    gameTiles = 0;
+    boardTiles = [];
+}
+
 function gamePlay() {
 
     createCardLayout(gameTiles);
