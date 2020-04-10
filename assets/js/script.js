@@ -1,41 +1,3 @@
-$(document).ready(function () {
-
-    /** 
-     * Modal Button controls works by adding display: block class when the corresponding
-     * button is clicked and then removes it when the user clicks on the close button within
-     * the modal window.
-     **/
-
-    $(".tutorial-btn").click(function () {
-        $("#tutorial").addClass("d-block");
-        $(".modal-close").click(function () {
-            $(".modal").removeClass("d-block").addClass("d-none");
-        })
-    })
-
-    $(".play-btn").click(function () {
-        $("#levelSelect").addClass("d-block");
-        $(".modal-close").click(function () {
-            $(".modal").removeClass("d-block").addClass("d-none");
-        });
-    })
-
-    $("button.level-btn").click(function (event) {
-        $(".landing-page").removeClass("d-block").addClass("d-none");
-        $(".game-play-area").addClass("d-block");
-        $(".modal").removeClass("d-block").addClass("d-none");
-        $(".exit-button").removeClass("d-none");
-    });
-
-    $(".exit-button").click(function () {
-        $(".game-play-area").removeClass("d-block").addClass("d-none");
-        $(".landing-page").addClass("d-block");
-        $(".exit-button").addClass("d-none");
-    })
-
-});
-
-
 let gameTiles = 0;
 let difficultyLevel = "";
 
@@ -120,8 +82,57 @@ function gamePlay() {
     cardShuffle.forEach(element => {
         document.getElementById("gameArea").appendChild(element)
     });
-
-
-
-
 }
+
+// The below is an event listener for the tutorial modal. 
+
+document.querySelectorAll(".tutorial-btn").forEach(item => {
+    item.addEventListener("click", event => {
+        document.getElementById("tutorial").classList.add("d-block");
+    })
+    document.querySelectorAll(".modal-close").forEach(item => {
+        item.addEventListener("click", event => {
+            document.getElementById("tutorial").classList.remove("d-block");
+        })
+    })
+})
+
+// The below is an event listener for the Play Menu modal. 
+
+document.querySelector(".play-btn").addEventListener("click", event => {
+    document.getElementById("levelSelect").classList.remove("d-none");
+    document.getElementById("levelSelect").classList.add("d-block");
+
+    document.querySelectorAll(".modal-close").forEach(item => {
+        item.addEventListener("click", event => {
+            document.getElementById("levelSelect").classList.remove("d-block");
+        })
+    })
+})
+
+/** The below is an event listener for when the user clicks on a level button within the
+ * Play Menu Modal
+ **/
+
+document.querySelectorAll(".level-btn").forEach(item => {
+    item.addEventListener("click", event => {
+        document.getElementById("landing-page").classList.remove("d-block");
+        document.getElementById("landing-page").classList.add("d-none");
+        document.getElementById("game-page").classList.remove("d-none");
+        document.getElementById("game-page").classList.add("d-block");
+        document.getElementById("levelSelect").classList.remove("d-block");
+        document.getElementById("levelSelect").classList.add("d-none");
+        document.getElementById("exit-btn").classList.remove("d-none");
+    })
+})
+
+/** The below is an event listener for when the user clicks on the exit button within the
+ * game area.
+ **/
+
+document.querySelector("#exit-btn").addEventListener("click", event => {
+    document.getElementById("game-page").classList.add("d-none");
+    document.getElementById("game-page").classList.remove("d-block");
+    document.getElementById("landing-page").classList.add("d-block");
+    document.getElementById("exit-btn").classList.add("d-none");
+})
