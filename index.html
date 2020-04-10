@@ -26,7 +26,7 @@
                             src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_sound_j6pkdi.png"
                             alt="Sound Controls">
                     </button>
-                    <button class="exit-button transparent no-border d-none" onclick="clearGameArea()";>
+                    <button id="exit-btn" class="transparent no-border d-none" onclick="clearGameArea()";>
                         <img class="nav-logo"
                             src="https://res.cloudinary.com/andy-osborne/image/upload/v1585563114/Dwarf%20Match/Buttons/Exit_d5t6yi.png"
                             alt="Exit game button">
@@ -37,7 +37,7 @@
     </header>
     <main class="content">
         <div class="container-fluid no-padding">
-            <div class="landing-page background-image back-image">
+            <div id="landing-page" class="background-image back-image">
                 <div class="landing-title text-centre">
                     <h1>Dwarf Match</h1>
                 </div>
@@ -65,10 +65,10 @@
                 </div>
             </div>
 
-            <div class="game-play-area d-none back-image">
+            <div id="game-page" class="d-none back-image">
                 <div id="game-area">
                     <div id="restart">
-                        <button id="restart-button" class="transparent no-border">
+                        <button id="restart-btn" class="transparent no-border">
                             <img class="restart-image"
                                 src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_restart_nbcbrc.png"
                                 alt="Restart Button">
