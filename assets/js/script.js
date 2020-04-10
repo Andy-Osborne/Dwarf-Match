@@ -1,5 +1,7 @@
 let gameTiles = 0;
 let difficultyLevel = "";
+let boardTiles = [];
+let game = document.getElementById("gameArea");
 
 /**
  * The below records the users choice of difficulty level and 
@@ -20,11 +22,6 @@ function levelChoice(obj) {
     }
 };
 
-const game = document.getElementById("gameArea");
-
-
-let boardTiles = [];
-
 /**
  * The below function takes the output based on the user difficulty selection. 
  * Based on this output, it will create X amount of divs and assign it a pair class
@@ -34,17 +31,16 @@ let boardTiles = [];
 function createCardLayout(gameTiles) {
 
     for (let i = 1; i < gameTiles + 1; i++) {
-        var d = document.createElement("div");
-        d.className = `tile image-center faceDown ${difficultyLevel}Pair${[i]}`;
-        boardTiles.push(d);
+        var cardDiv = document.createElement("div");
+        cardDiv.className = `tile image-center faceDown ${difficultyLevel}Pair${[i]}`;
+        boardTiles.push(cardDiv);
     }
     for (let j = 1; j < gameTiles + 1; j++) {
-        d = document.createElement("div");
-        d.className = `tile image-center faceDown ${difficultyLevel}Pair${[j]}`;
-        boardTiles.push(d);
+        cardDiv = document.createElement("div");
+        cardDiv.className = `tile image-center faceDown ${difficultyLevel}Pair${[j]}`;
+        boardTiles.push(cardDiv);
     }
 }
-
 
 /* The below function is based on the  Durstenfeld shuffle, an optimized version of Fisher-Yates method
 and has been obtained from Stackoverflow */
@@ -68,6 +64,8 @@ let clearGameArea = () => {
     boardTiles = [];
 }
 
+/*This function creates the game board area*/
+
 function gamePlay() {
 
     createCardLayout(gameTiles);
@@ -80,7 +78,8 @@ function gamePlay() {
     and appends it to the gameArea within the DOM */
 
     cardShuffle.forEach(element => {
-        document.getElementById("gameArea").appendChild(element)
+        game.appendChild(element)
+
     });
 }
 

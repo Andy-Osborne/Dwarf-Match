@@ -210,7 +210,7 @@ li {
 
 /* Game Area */
 
-.game-play-area {
+#game-page {
   background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/Easy.png");
 }
 
@@ -239,7 +239,7 @@ li {
   top: 1%;
 }
 
-#restart-button {
+#restart-btn {
   padding-top: 10px;
 }
 
