@@ -1,7 +1,19 @@
-let gameTiles = 0;
-let difficultyLevel = "";
-let boardTiles = [];
-let game = document.getElementById("gameArea");
+'use strict';
+
+//Global variables are stored in the below object to reduce the amount in the global space.
+
+const app = {
+    gameTiles: 0,
+    difficultyLevel: "",
+    boardTiles: [],
+    game: document.getElementById("gameArea"),
+    count: 0,
+    timesFlipped: 0,
+    matchChecker: [],
+    firstGuess: "",
+    secondGuess: "",
+    gameComplete: []
+}
 
 /**
  * The below records the users choice of difficulty level and 
@@ -11,14 +23,14 @@ let game = document.getElementById("gameArea");
  **/
 
 function levelChoice(obj) {
-    difficultyLevel = obj.id;
+    app.difficultyLevel = obj.id;
 
-    if (difficultyLevel == "easy") {
-        gameTiles = 8;
-    } else if (difficultyLevel == "normal") {
-        gameTiles = 12;
-    } else if (difficultyLevel == "hard") {
-        gameTiles = 16;
+    if (app.difficultyLevel === "easy") {
+        app.gameTiles = 8;
+    } else if (app.difficultyLevel === "normal") {
+        app.gameTiles = 12;
+    } else if (app.difficultyLevel === "hard") {
+        app.gameTiles = 16;
     }
 };
 
@@ -30,15 +42,15 @@ function levelChoice(obj) {
 
 function createCardLayout(gameTiles) {
 
-    for (let i = 1; i < gameTiles + 1; i++) {
+    for (let i = 1; i < app.gameTiles + 1; i++) {
         var cardDiv = document.createElement("div");
-        cardDiv.className = `tile image-center faceDown ${difficultyLevel}Pair${[i]}`;
-        boardTiles.push(cardDiv);
+        cardDiv.className = `tile image-center faceDown ${app.difficultyLevel}Pair${[i]}`;
+        app.boardTiles.push(cardDiv);
     }
-    for (let j = 1; j < gameTiles + 1; j++) {
+    for (let j = 1; j < app.gameTiles + 1; j++) {
         cardDiv = document.createElement("div");
-        cardDiv.className = `tile image-center faceDown ${difficultyLevel}Pair${[j]}`;
-        boardTiles.push(cardDiv);
+        cardDiv.className = `tile image-center faceDown ${app.difficultyLevel}Pair${[j]}`;
+        app.boardTiles.push(cardDiv);
     }
 }
 
@@ -50,7 +62,6 @@ function shuffleArray(array) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
-
     return array;
 }
 
@@ -58,80 +69,92 @@ function shuffleArray(array) {
 and then empties the gameTiles array */
 
 let clearGameArea = () => {
-    const clearArea = document.getElementById("gameArea");
-    clearArea.querySelectorAll("*").forEach(child => child.remove());
-    gameTiles = 0;
-    boardTiles = [];
+    app.game.querySelectorAll("*").forEach(child => child.remove());
+    app.gameTiles = 0;
+    app.boardTiles = [];
+    app.count = 0;
+    app.timesFlipped = 0;
+    app.matchChecker = [];
+    app.firstGuess = "";
+    app.secondGuess = "";
+    app.gameComplete = [];
 }
+
+
+app.game.addEventListener("click", function (event) {
+
+    if (!event.target.classList.contains("faceDown") || app.timesFlipped >= 2) {
+        return;
+    } else if (event.target.classList.contains("faceDown") && app.timesFlipped <= 2) {
+        cardFlip();
+        app.count++;
+        app.timesFlipped++;
+        console.log(app.count);
+        app.matchChecker.push(event.target.classList);
+
+        if (app.matchChecker.length === 1) {
+            app.firstGuess = event.target;
+        } else if (app.matchChecker.length === 2) {
+            app.secondGuess = event.target;
+            matchCheck();
+        }
+    }
+})
+
+function cardFlip() {
+    event.target.classList.remove("faceDown");
+}
+
+function matchCheck() {
+    let firstGuessPair = app.firstGuess.classList[2];
+    let secondGuessPair = app.secondGuess.classList[2];
+
+    if (firstGuessPair === secondGuessPair) {
+        app.gameComplete.push(firstGuessPair);
+        checkReset()
+        gameComplete()
+
+    } else {
+        setTimeout(() => {
+            app.firstGuess.classList.add("faceDown");
+            app.secondGuess.classList.add("faceDown");
+            checkReset()
+        }, 800);
+    }
+}
+
+function checkReset() {
+    app.firstGuess = "";
+    app.secondGuess = "";
+    app.timesFlipped = 0;
+    app.matchChecker = [];
+}
+
+function gameComplete() {
+
+    if (app.gameComplete.length === app.gameTiles) {
+        console.log("Wooo, game complete");
+    } else {
+        return;
+    }
+}
+
 
 /*This function creates the game board area*/
 
 function gamePlay() {
 
-    createCardLayout(gameTiles);
+    createCardLayout(app.gameTiles);
 
     /* The below takes uses the shuffleArray function and assigns this to a new variable */
 
-    let cardShuffle = shuffleArray(boardTiles);
+    let cardShuffle = shuffleArray(app.boardTiles);
 
     /*The below uses the cardShuffle vairable and then cycles through each element in the array
     and appends it to the gameArea within the DOM */
 
     cardShuffle.forEach(element => {
-        game.appendChild(element)
+        app.game.appendChild(element)
 
     });
 }
-
-// The below is an event listener for the tutorial modal. 
-
-document.querySelectorAll(".tutorial-btn").forEach(item => {
-    item.addEventListener("click", event => {
-        document.getElementById("tutorial").classList.add("d-block");
-    })
-    document.querySelectorAll(".modal-close").forEach(item => {
-        item.addEventListener("click", event => {
-            document.getElementById("tutorial").classList.remove("d-block");
-        })
-    })
-})
-
-// The below is an event listener for the Play Menu modal. 
-
-document.querySelector(".play-btn").addEventListener("click", event => {
-    document.getElementById("levelSelect").classList.remove("d-none");
-    document.getElementById("levelSelect").classList.add("d-block");
-
-    document.querySelectorAll(".modal-close").forEach(item => {
-        item.addEventListener("click", event => {
-            document.getElementById("levelSelect").classList.remove("d-block");
-        })
-    })
-})
-
-/** The below is an event listener for when the user clicks on a level button within the
- * Play Menu Modal
- **/
-
-document.querySelectorAll(".level-btn").forEach(item => {
-    item.addEventListener("click", event => {
-        document.getElementById("landing-page").classList.remove("d-block");
-        document.getElementById("landing-page").classList.add("d-none");
-        document.getElementById("game-page").classList.remove("d-none");
-        document.getElementById("game-page").classList.add("d-block");
-        document.getElementById("levelSelect").classList.remove("d-block");
-        document.getElementById("levelSelect").classList.add("d-none");
-        document.getElementById("exit-btn").classList.remove("d-none");
-    })
-})
-
-/** The below is an event listener for when the user clicks on the exit button within the
- * game area.
- **/
-
-document.querySelector("#exit-btn").addEventListener("click", event => {
-    document.getElementById("game-page").classList.add("d-none");
-    document.getElementById("game-page").classList.remove("d-block");
-    document.getElementById("landing-page").classList.add("d-block");
-    document.getElementById("exit-btn").classList.add("d-none");
-})
