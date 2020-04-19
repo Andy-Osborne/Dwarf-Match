@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Spicy+Rice&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Spicy+Rice&display=swap');
 
 /* General Formating Styling */
 
@@ -10,8 +9,6 @@ body {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
   opacity: 0.9;
 }
 
@@ -23,7 +20,6 @@ body {
 footer {
   flex-shrink: 0;
   padding-top: 10px;
-  text-align: center;
   height: 5vh;
   position: fixed;
   bottom: 0%;
@@ -65,17 +61,13 @@ li {
   font-size: 1.2rem;
 }
 
-.text-centre {
-  text-align: center;
-}
-
 /* Color */
 
 .main-color {
   background-color: #422020;
 }
 
-.menu-item-color {
+.l-brown-background {
   background-color: #674134;
 }
 
@@ -109,10 +101,6 @@ li {
 
 /* General Styling */
 
-.no-border {
-  border: none;
-}
-
 .back-image {
   background-position: center center;
   background-size: cover;
@@ -129,12 +117,6 @@ li {
 
 .landing-title {
   padding: 50px;
-}
-
-.menu-container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
 }
 
 .menu-item {
@@ -163,7 +145,6 @@ li {
   top: 50%;
   transform: translate(-50%, -50%);
   overflow: auto;
-  background-color: #674134;
   border-radius: 5px;
   border: 2px solid #f5f5f5;
 }
@@ -175,9 +156,6 @@ li {
 
 .inner-content {
   padding: 10px 5px 0px 5px;
-  display: flex;
-  justify-content: center;
-  flex-flow: column;
 }
 
 .inner-bottom {
@@ -187,11 +165,6 @@ li {
 
 /* The Close Button */
 
-.modal-close {
-  background-color: #674134;
-  border: none;
-}
-
 .modal-close img {
   width: 50px;
 }
@@ -199,8 +172,6 @@ li {
 /* Play Menu */
 
 .level-btn {
-  background-color: #674134;
-  border: none;
   padding-top: 10px;
 }
 
@@ -223,13 +194,10 @@ li {
   width: 90%;
   height: 100%;
   margin: auto;
-  display: flex;
   flex-wrap: wrap;
-  perspective: 1000px;
 }
 
 #gameArea {
-  justify-content: center;
   padding-top: 10px;
 }
 

@@ -7,26 +7,25 @@
     <title>Dwarf Match | An Epic Card Matching Game</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="assets/css/style.css" type="text/css" rel="stylesheet">
-
 </head>
 
-<body>
+<body class="d-flex flex-column">
     <header>
-        <nav class="navbar main-color center">
+        <nav class="navbar main-color">
             <div class="container-fluid">
                 <div class="navbar-links">
                     <a href="index.html"><img class="nav-logo" src=""></a>
-                    <button class="transparent tutorial-btn no-border">
+                    <button class="transparent tutorial-btn border-0">
                         <img class="nav-logo"
                             src="https://res.cloudinary.com/andy-osborne/image/upload/v1585563114/Dwarf%20Match/Buttons/Info_tqkbuv.png"
                             alt="Tutorial Info">
                     </button>
-                    <button class="transparent no-border">
+                    <button class="transparent border-0">
                         <img class="nav-logo"
                             src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_sound_j6pkdi.png"
                             alt="Sound Controls">
                     </button>
-                    <button id="exit-btn" class="transparent no-border d-none" onclick="clearGameArea()";>
+                    <button id="exit-btn" class="transparent border-0 d-none" onclick="clearGameArea()";>
                         <img class="nav-logo"
                             src="https://res.cloudinary.com/andy-osborne/image/upload/v1585563114/Dwarf%20Match/Buttons/Exit_d5t6yi.png"
                             alt="Exit game button">
@@ -38,10 +37,10 @@
     <main class="content">
         <div class="container-fluid no-padding">
             <div id="landing-page" class="background-image back-image">
-                <div class="landing-title text-centre">
+                <div class="landing-title text-center">
                     <h1>Dwarf Match</h1>
                 </div>
-                <div class="menu-container">
+                <div class="flex-column d-flex align-items-center">
                     <button class="menu-item play-btn">
                         <img class="menu-icon"
                             src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_start_yqgvqz.png"
@@ -67,8 +66,16 @@
 
             <div id="game-page" class="d-none back-image">
                 <div id="game-area">
+                    <div id="count-container" class="l-brown-background d-flex justify-content-center">
+                    <div class="d-inline-block">
+                        <h3>Time: <span id="time">0</span></h3>
+                    </div>
+                    <div class="d-inline-block">
+                        <h3>Flips: <span id="flips">0</span></h3>
+                    </div>
+                </div>
                     <div id="restart">
-                        <button id="restart-btn" class="transparent no-border">
+                        <button id="restart-btn" class="transparent border-0">
                             <img class="restart-image"
                                 src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_restart_nbcbrc.png"
                                 alt="Restart Button">
@@ -76,8 +83,8 @@
                     </div>
                 </div>
                 <div class="container-fluid no-padding">
-                    <div class="game-container">
-                        <div class="row mx-auto no-gutters" id="gameArea">
+                    <div class="game-container d-flex">
+                        <div class="row mx-auto no-gutters justify-content-center" id="gameArea">
 
                         </div>
                     </div>
@@ -86,12 +93,12 @@
 
             <!-- Modals -->
 
-            <div id="tutorial" class="modal d-none">
+            <div id="tutorial" class="modal d-none l-brown-background">
                 <div class="tutorial-content">
-                    <div class="inner-header text-centre">
+                    <div class="inner-header text-center">
                         <h2>How to Play</h2>
                     </div>
-                    <div class="inner-content">
+                    <div class="inner-content d-flex flex-column">
                         <ul>
                             <li>
                                 Click "Play" to start the game.
@@ -131,38 +138,38 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="inner-bottom text-centre">
-                        <button class="modal-close"><img
+                    <div class="inner-bottom text-center">
+                        <button class="modal-close border-0 l-brown-background"><img
                                 src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_close_vjjrl6.png"
                                 alt="Close Button"></button>
                     </div>
                 </div>
             </div>
 
-            <div id="levelSelect" class="modal d-none">
+            <div id="levelSelect" class="modal d-none l-brown-background">
                 <div class="levelSelect-content">
-                    <div class="inner-header text-centre">
+                    <div class="inner-header text-center">
                         <h2>Choose your difficulty level</h2>
                     </div>
-                    <div class="inner-content text-centre">
-                        <button class="easy level-btn" onclick="levelChoice(this); gamePlay()" id="easy">
+                    <div class="inner-content text-center justify-content-center flex-column">
+                        <button class="easy level-btn border-0 l-brown-background" onclick="levelChoice(this); gamePlay()" id="easy">
                             <img
                                 src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_easy_x2daxp.png">
                         </button>
                         <p>There are 16 cards within this level and you need to match 8 pairs.</p>
-                        <button class="normal level-btn" onclick="levelChoice(this); gamePlay()" id="normal">
+                        <button class="normal level-btn border-0 l-brown-background" onclick="levelChoice(this); gamePlay()" id="normal">
                             <img
                                 src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_normal_ebguxa.png">
                         </button>
                         <p>There are 24 cards within this level and you need to match 12 pairs.</p>
-                        <button class="hard level-btn" onclick="levelChoice(this); gamePlay()" id="hard">
+                        <button class="hard level-btn border-0 l-brown-background" onclick="levelChoice(this); gamePlay()" id="hard">
                             <img
                                 src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_hard_ylprfw.png">
                         </button>
                         <p>There are 32 cards within this level and you need to match 16 pairs.</p>
                     </div>
-                    <div class="inner-bottom text-centre">
-                        <button class="modal-close"><img
+                    <div class="inner-bottom text-center">
+                        <button class="modal-close border-0 l-brown-background"><img
                                 src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_close_vjjrl6.png"
                                 alt="Close Button"></button>
                     </div>
@@ -170,7 +177,7 @@
             </div>
         </div>
     </main>
-    <footer class="main-color">
+    <footer class="main-color text-center">
         <span class="footer-text">Copyright 2020 - <a href="https://github.com/Andy-Osborne">Andy Osborne</a></span>
     </footer>
 
