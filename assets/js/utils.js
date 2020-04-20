@@ -56,6 +56,11 @@ document.querySelector("#exit-btn").addEventListener("click", event => {
     document.getElementById("exit-btn").classList.add("d-none");
 });
 
+document.getElementById("restart-btn").addEventListener("click", event => {
+    clickSound();
+    restartLevel();
+})
+
 document.getElementById("home").addEventListener("click", event => {
     clickSound();
     clearGameArea();
