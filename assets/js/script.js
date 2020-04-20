@@ -187,10 +187,10 @@ let clearGameArea = () => {
     app.game.querySelectorAll("*").forEach(child => child.remove());
     app.gameTiles = 0;
     app.boardTiles = [];
-    app.flip.count = 0;
+    app.flip.flipCount = 0;
     cardFlipCheckerReset()
     app.gameComplete = [];
-    app.flip.flipCounter.innerText = 0;
+    app.flip.flipCounter.innerText = app.flip.flipCount;
     clearInterval(app.timer.gameTimer);
     gameTimerStop();
 }
