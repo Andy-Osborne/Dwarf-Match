@@ -5,8 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dwarf Match | An Epic Card Matching Game</title>
+    <meta name="description" content="An epic card matching memory game that offers you
+    variable difficulty levels to keep you entertained and your mind sharp.">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="assets/css/style.css" type="text/css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="36x36"  href="assets/images/android-icon-36x36.png">
+    <link rel="icon" type="image/png" sizes="60x60"  href="assets/images/android-icon-60x60.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
 </head>
 
 <body class="d-flex flex-column">
@@ -25,7 +33,7 @@
                             src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_sound_j6pkdi.png"
                             alt="Sound Controls">
                     </button>
-                    <button id="exit-btn" class="transparent border-0 d-none" onclick="clearGameArea()";>
+                    <button id="exit-btn" class="transparent border-0 d-none" onclick="clearGameArea()" ;>
                         <img class="nav-logo"
                             src="https://res.cloudinary.com/andy-osborne/image/upload/v1585563114/Dwarf%20Match/Buttons/Exit_d5t6yi.png"
                             alt="Exit game button">
@@ -66,14 +74,16 @@
 
             <div id="game-page" class="d-none back-image">
                 <div id="game-area">
-                    <div id="count-container" class="l-brown-background d-flex justify-content-center">
-                    <div class="d-inline-block">
-                        <h3>Time: <span id="time">0</span></h3>
+                    <div id="count-container"
+                        class="align-items-center l-brown-background d-flex justify-content-center">
+                        <div class="d-inline-block">
+                            <h4>Minutes: <span id="minutes">0</span> Seconds: <span id="seconds">0</span></h4>
+                        </div>
+
+                        <div class="d-inline-block">
+                            <h4>Flips: <span id="flips">0</span></h4>
+                        </div>
                     </div>
-                    <div class="d-inline-block">
-                        <h3>Flips: <span id="flips">0</span></h3>
-                    </div>
-                </div>
                     <div id="restart">
                         <button id="restart-btn" class="transparent border-0">
                             <img class="restart-image"
@@ -152,17 +162,20 @@
                         <h2>Choose your difficulty level</h2>
                     </div>
                     <div class="inner-content text-center justify-content-center flex-column">
-                        <button class="easy level-btn border-0 l-brown-background" onclick="levelChoice(this); gamePlay()" id="easy">
+                        <button class="easy level-btn border-0 l-brown-background"
+                            onclick="levelChoice(this); gamePlay()" id="easy">
                             <img
                                 src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_easy_x2daxp.png">
                         </button>
                         <p>There are 16 cards within this level and you need to match 8 pairs.</p>
-                        <button class="normal level-btn border-0 l-brown-background" onclick="levelChoice(this); gamePlay()" id="normal">
+                        <button class="normal level-btn border-0 l-brown-background"
+                            onclick="levelChoice(this); gamePlay()" id="normal">
                             <img
                                 src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_normal_ebguxa.png">
                         </button>
                         <p>There are 24 cards within this level and you need to match 12 pairs.</p>
-                        <button class="hard level-btn border-0 l-brown-background" onclick="levelChoice(this); gamePlay()" id="hard">
+                        <button class="hard level-btn border-0 l-brown-background"
+                            onclick="levelChoice(this); gamePlay()" id="hard">
                             <img
                                 src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_hard_ylprfw.png">
                         </button>
@@ -185,7 +198,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="assets/js/utils.js"></script>
-    <script src="./assets/js/script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
