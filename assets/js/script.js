@@ -7,12 +7,24 @@ const app = {
     difficultyLevel: "",
     boardTiles: [],
     game: document.getElementById("gameArea"),
-    count: 0,
-    timesFlipped: 0,
     matchChecker: [],
     firstGuess: "",
     secondGuess: "",
-    gameComplete: []
+    gameComplete: [],
+    flip: {
+        flipCounter: document.getElementById("flips"),
+        flipCount: 0,
+        timesFlipped: 0,
+        cardFlipSound: new Audio('assets/audio/cardflip.mp3'),
+    },
+    timer: {
+        seconds: document.getElementById("seconds"),
+        minutes: document.getElementById("minutes"),
+        secondsTimer: 0,
+        minutesTimer: 0,
+        gameTimer: null,
+    },
+
 }
 
 /**
@@ -65,31 +77,15 @@ function shuffleArray(array) {
     return array;
 }
 
-/*The below function clears the game board by removing the divs assigned to gameArea
-and then empties the gameTiles array */
-
-let clearGameArea = () => {
-    app.game.querySelectorAll("*").forEach(child => child.remove());
-    app.gameTiles = 0;
-    app.boardTiles = [];
-    app.count = 0;
-    app.timesFlipped = 0;
-    app.matchChecker = [];
-    app.firstGuess = "";
-    app.secondGuess = "";
-    app.gameComplete = [];
-}
-
-
 app.game.addEventListener("click", function (event) {
 
-    if (!event.target.classList.contains("faceDown") || app.timesFlipped >= 2) {
+    if (!event.target.classList.contains("faceDown") || app.flip.timesFlipped >= 2) {
         return;
-    } else if (event.target.classList.contains("faceDown") && app.timesFlipped <= 2) {
+    } else if (event.target.classList.contains("faceDown") && app.flip.timesFlipped <= 2) {
         cardFlip();
-        app.count++;
-        app.timesFlipped++;
-        console.log(app.count);
+        app.flip.flipCount++;
+        app.flip.flipCounter.innerText = app.flip.flipCount;
+        app.flip.timesFlipped++;
         app.matchChecker.push(event.target.classList);
 
         if (app.matchChecker.length === 1) {
@@ -103,6 +99,7 @@ app.game.addEventListener("click", function (event) {
 
 function cardFlip() {
     event.target.classList.remove("faceDown");
+    app.flip.cardFlipSound.play();
 }
 
 function matchCheck() {
@@ -111,22 +108,22 @@ function matchCheck() {
 
     if (firstGuessPair === secondGuessPair) {
         app.gameComplete.push(firstGuessPair);
-        checkReset()
+        cardFlipCheckerReset()
         gameComplete()
 
     } else {
         setTimeout(() => {
             app.firstGuess.classList.add("faceDown");
             app.secondGuess.classList.add("faceDown");
-            checkReset()
+            cardFlipCheckerReset()
         }, 800);
     }
 }
 
-function checkReset() {
+function cardFlipCheckerReset() {
     app.firstGuess = "";
     app.secondGuess = "";
-    app.timesFlipped = 0;
+    app.flip.timesFlipped = 0;
     app.matchChecker = [];
 }
 
@@ -134,11 +131,11 @@ function gameComplete() {
 
     if (app.gameComplete.length === app.gameTiles) {
         console.log("Wooo, game complete");
+        // Need to add a message to user or a new modal to pop up. 
     } else {
         return;
     }
 }
-
 
 /*This function creates the game board area*/
 
@@ -155,6 +152,45 @@ function gamePlay() {
 
     cardShuffle.forEach(element => {
         app.game.appendChild(element)
-
     });
+
+    // The below function starts the game timer when the user starts a game
+
+    app.timer.gameTimer = setInterval(gameTimerStart, 1000);
+
+    function gameTimerStart() {
+        app.timer.seconds.innerText = ++app.timer.secondsTimer;
+
+        if (app.timer.secondsTimer === 60) {
+            app.timer.minutes.innerText = ++app.timer.minutesTimer;
+            app.timer.seconds.innerText = 0;
+            app.timer.secondsTimer = 0;
+        }
+        console.log(app.timer.secondsTimer);
+    }
+}
+
+// This function stops the game timer and is invoked when the user exits the game.
+
+function gameTimerStop() {
+    app.timer.minutesTimer = 0;
+    app.timer.secondsTimer = 0;
+    app.timer.minutes.innerText = 0;
+    app.timer.seconds.innerText = 0;
+}
+
+
+/*The below function clears the game board by removing the divs assigned to gameArea
+and resets values for the associated game components */
+
+let clearGameArea = () => {
+    app.game.querySelectorAll("*").forEach(child => child.remove());
+    app.gameTiles = 0;
+    app.boardTiles = [];
+    app.flip.count = 0;
+    cardFlipCheckerReset()
+    app.gameComplete = [];
+    app.flip.flipCounter.innerText = 0;
+    clearInterval(app.timer.gameTimer);
+    gameTimerStop();
 }
