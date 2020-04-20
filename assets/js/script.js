@@ -15,7 +15,6 @@ const app = {
         flipCounter: document.getElementById("flips"),
         flipCount: 0,
         timesFlipped: 0,
-        cardFlipSound: new Audio('assets/audio/cardflip.mp3'),
     },
     timer: {
         seconds: document.getElementById("seconds"),
@@ -24,7 +23,10 @@ const app = {
         minutesTimer: 0,
         gameTimer: null,
     },
-
+    audio: {
+        cardFlipSound: new Audio("assets/audio/cardflip.mp3"),
+        gameComplete: new Audio("assets/audio/VictorySound.mp3"),
+    }
 }
 
 /**
@@ -99,7 +101,7 @@ app.game.addEventListener("click", function (event) {
 
 function cardFlip() {
     event.target.classList.remove("faceDown");
-    app.flip.cardFlipSound.play();
+    app.audio.cardFlipSound.play();
 }
 
 function matchCheck() {
@@ -130,6 +132,7 @@ function cardFlipCheckerReset() {
 function gameComplete() {
 
     if (app.gameComplete.length === app.gameTiles) {
+        app.audio.gameComplete.play();
         console.log("Wooo, game complete");
         // Need to add a message to user or a new modal to pop up. 
     } else {
