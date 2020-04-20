@@ -26,7 +26,19 @@ const app = {
     audio: {
         cardFlipSound: new Audio("assets/audio/cardflip.mp3"),
         gameComplete: new Audio("assets/audio/VictorySound.mp3"),
+        clickSound: new Audio("assets/audio/ClickingSound.mp3")
+    },
+    victory: {
+        victoryModal: document.getElementById("victory"),
+        flipModal: document.getElementById("flips-taken"),
+        timeModal: document.getElementById("time-taken"),
+        nextLevel: document.getElementById("next-level"),
+        nextDifficulty: document.getElementById("difficult-start"),
     }
+}
+
+function clickSound() {
+    app.audio.clickSound.play();
 }
 
 /**
@@ -38,7 +50,10 @@ const app = {
 
 function levelChoice(obj) {
     app.difficultyLevel = obj.id;
+};
 
+
+function createGameTiles() {
     if (app.difficultyLevel === "easy") {
         app.gameTiles = 8;
     } else if (app.difficultyLevel === "normal") {
@@ -79,7 +94,7 @@ function shuffleArray(array) {
     return array;
 }
 
-app.game.addEventListener("click", function (event) {
+app.game.addEventListener("click", function(event) {
 
     if (!event.target.classList.contains("faceDown") || app.flip.timesFlipped >= 2) {
         return;
@@ -112,7 +127,6 @@ function matchCheck() {
         app.gameComplete.push(firstGuessPair);
         cardFlipCheckerReset()
         gameComplete()
-
     } else {
         setTimeout(() => {
             app.firstGuess.classList.add("faceDown");
@@ -133,16 +147,61 @@ function gameComplete() {
 
     if (app.gameComplete.length === app.gameTiles) {
         app.audio.gameComplete.play();
-        console.log("Wooo, game complete");
-        // Need to add a message to user or a new modal to pop up. 
+        clearInterval(app.timer.gameTimer);
+        app.victory.victoryModal.classList.remove("d-none");
+        app.victory.victoryModal.classList.add("d-block");
+        app.victory.flipModal.innerText = app.flip.flipCount;
+
+        if (app.timer.minutesTimer === 0) {
+            app.victory.timeModal.innerText = `${app.timer.secondsTimer} seconds to do it!`
+        } else {
+            app.victory.timeModal.innerText = `${app.timer.minutesTimer} minutes and ${app.timer.secondsTimer} seconds to do it!`
+        };
+
+        if (app.difficultyLevel !== "hard") {
+            app.victory.nextLevel.classList.remove("d-none");
+            app.victory.nextLevel.addEventListener("click", event => {
+                clickSound();
+                difficultyIncrease();
+                app.victory.victoryModal.classList.add("d-none");
+                app.victory.victoryModal.classList.remove("d-block");
+                app.victory.nextLevel.classList.add("d-none");
+            });
+        };
     } else {
         return;
     }
 }
 
+function restartLevel() {
+    app.game.querySelectorAll("*").forEach(child => child.remove());
+    app.gameTiles = 0;
+    app.boardTiles = [];
+    app.flip.flipCount = 0;
+    cardFlipCheckerReset()
+    app.gameComplete = [];
+    app.flip.flipCounter.innerText = app.flip.flipCount;
+    clearInterval(app.timer.gameTimer);
+    gameTimerStop();
+    gamePlay();
+}
+
+function difficultyIncrease() {
+
+    if (app.difficultyLevel === "easy") {
+        app.difficultyLevel = "normal";
+    } else {
+        app.difficultyLevel = "hard";
+    }
+
+    restartLevel();
+}
+
 /*This function creates the game board area*/
 
 function gamePlay() {
+
+    createGameTiles();
 
     createCardLayout(app.gameTiles);
 
@@ -169,7 +228,6 @@ function gamePlay() {
             app.timer.seconds.innerText = 0;
             app.timer.secondsTimer = 0;
         }
-        console.log(app.timer.secondsTimer);
     }
 }
 
@@ -195,5 +253,6 @@ let clearGameArea = () => {
     app.gameComplete = [];
     app.flip.flipCounter.innerText = app.flip.flipCount;
     clearInterval(app.timer.gameTimer);
+    app.difficultyLevel = "";
     gameTimerStop();
 }
