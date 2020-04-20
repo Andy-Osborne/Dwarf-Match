@@ -187,7 +187,7 @@ li {
 
 #game-area {
   position: relative;
-  height: 10vh;
+  height: 7vh;
 }
 
 .game-container {
@@ -213,6 +213,19 @@ li {
 
 .restart-image {
   width: 60px;
+}
+
+.tile {
+  margin-top: 20px;
+  height: 8vh;
+  width: 11vw;
+}
+
+.game-info {
+  border-radius: 8px;
+  border: 2px sold #fafafa;
+  background-color: #422020;
+  width: fit-content;
 }
 
 
@@ -432,6 +445,10 @@ li {
 /* Media Queries */
 
 @media only screen and (min-width: 320px) {
+  .navbar {
+    height: 15vh;
+  }
+
   .modal {
     margin-top: 10%;
     max-width: 80%;
@@ -443,46 +460,130 @@ li {
     font-size: 20px;
   }
 
-  .tile {
-    margin-top: 20px;
-    height: 10vh;
-    width: 10vw;
-  }
+
 
   #gameArea {
     width: 100vw;
+  }
+
+  #count-container {
+    position: relative;
+  }
+
+  .timer {
+    left: 1%;
+    top: 1%;
+    position: absolute;
+    padding: 8px;
+    margin: 10px 5px;
+  }
+
+  .flip {
+    left: 40%;
+    top: 1%;
+    position: absolute;
+    padding: 8px;
+    margin: 10px 5px;
+  }
+
+  .timer h4,
+  .flip h4 {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (min-width: 375px) {
+
+  .navbar {
+    height: 10vh;
+  }
+
+  .tile {
+    height: 10vh;
+    width: 10vw;
+  }
+}
+
+@media only screen and (min-width: 375px) and (min-height: 812px) {
+  .tile {
+    height: 8vh;
+    width: 12vw;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+
+  .tile {
+    height: 11vh;
+    width: 11vw;
+  }
+
+  .modal {
+    margin-top: 2%;
+    max-width: 80%;
+    max-height: 55%;
+  }
+
+  #count-container>.timer {
+    top: auto;
+    left: auto;
+    position: relative;
+    padding: 1%;
+  }
+
+  #count-container>.flip {
+    top: auto;
+    left: auto;
+    position: relative;
+    padding: 1%;
   }
 }
 
 @media only screen and (min-width: 1023px) {
 
-  #tutorial.modal,
-  #levelSelect.modal {
-    margin-top: 0;
-    height: auto;
+  .nav-logo {
+    height: 80px;
   }
 
   #levelSelect.modal {
-    width: auto;
+    max-height: 63%;
+    max-width: fit-content;
     padding: 10px;
+    margin-top: -2%
   }
 
   #tutorial.modal {
     margin-top: 0;
-    width: 1050px;
+    max-height: 73%;
+    max-width: 60%;
   }
 
-  .inner-content li,
-  .inner-content p {
-    font-size: 24px;
-  }
-
-  #gameArea>.tile {
-    height: 15vh;
-    width: 7vw;
-  }
-
-  .game-container>#gameArea {
-    width: 80vw;
-  }
+.inner-content li,
+.inner-content p {
+  font-size: 24px;
 }
+
+.tile {
+  height: 15vh;
+  width: 9vw;
+}
+
+.game-container#gameArea {
+  width: 80vw;
+}
+
+#count-container.timer {
+  top: auto;
+  left: auto;
+  position: relative;
+  padding: 1%;
+}
+
+#count-container.flip {
+  top: auto;
+  left: auto;
+  position: relative;
+  padding: 1%;
+}
+}
+
