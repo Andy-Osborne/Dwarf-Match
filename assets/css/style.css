@@ -20,7 +20,7 @@ body {
 footer {
     flex-shrink: 0;
     padding-top: 10px;
-    height: 5vh;
+    height: 7vh;
     position: fixed;
     bottom: 0%;
     width: 100%;
@@ -106,7 +106,7 @@ li {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 87vh;
+    height: 78vh;
     width: 100vw;
 }
 
@@ -607,6 +607,10 @@ li {
 }
 
 @media only screen and (min-width: 375px) and (orientation: portrait) {
+    .back-image {
+        height: 81vh;
+    }
+
     .navbar {
         height: 12vh;
     }
@@ -619,6 +623,11 @@ li {
 
 
 @media only screen and (min-width: 411px) and (orientation: portrait) {
+
+    .back-image {
+        height: 83vh;
+    }
+
     .navbar {
         height: 10vh;
     }
@@ -759,6 +768,16 @@ li {
 }
 
 @media only screen and (min-width: 1366px) and (orientation: landscape) {
+
+    .menu-item {
+        width: 20%;
+        margin: 0.5%;
+    }
+
+    .menu-icon {
+        height: 100px;
+        margin: 0;
+    }
 
     #levelSelect.modal {
         height: fit-content;
