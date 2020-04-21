@@ -26,7 +26,8 @@ const app = {
     audio: {
         cardFlipSound: new Audio("assets/audio/cardflip.mp3"),
         gameComplete: new Audio("assets/audio/VictorySound.mp3"),
-        clickSound: new Audio("assets/audio/ClickingSound.mp3")
+        clickSound: new Audio("assets/audio/ClickingSound.mp3"),
+        gameMusic: new Audio("assets/audio/alexander-nakarada-adventure.mp3")
     },
     victory: {
         victoryModal: document.getElementById("victory"),
@@ -40,6 +41,18 @@ const app = {
 function clickSound() {
     app.audio.clickSound.play();
 }
+
+function playMusic() {
+    app.audio.gameMusic.play();
+    app.audio.gameMusic.loop = true;
+    app.audio.gameMusic.volume = 0.2;
+}
+
+function stopMusic() {
+    app.audio.gameMusic.pause();
+    app.audio.gameMusic.currentTime = 0;
+}
+
 
 /**
  * The below records the users choice of difficulty level and 
@@ -154,6 +167,8 @@ function gameComplete() {
 
         if (app.timer.minutesTimer === 0) {
             app.victory.timeModal.innerText = `${app.timer.secondsTimer} seconds to do it!`
+        } else if (app.timer.minutesTimer === 1) {
+            app.victory.timeModal.innerText = `${app.timer.minutesTimer} minute and ${app.timer.secondsTimer} seconds to do it!`
         } else {
             app.victory.timeModal.innerText = `${app.timer.minutesTimer} minutes and ${app.timer.secondsTimer} seconds to do it!`
         };
@@ -200,6 +215,8 @@ function difficultyIncrease() {
 /*This function creates the game board area*/
 
 function gamePlay() {
+
+    playMusic();
 
     createGameTiles();
 
@@ -255,4 +272,5 @@ let clearGameArea = () => {
     clearInterval(app.timer.gameTimer);
     app.difficultyLevel = "";
     gameTimerStop();
+    stopMusic();
 }
