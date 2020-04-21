@@ -44,20 +44,21 @@
                 <div class="flex-column d-flex align-items-center">
                     <button class="menu-item play-btn">
                         <img class="menu-icon" src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_start_yqgvqz.png" alt="Play Button">
-                        <h3>Play</h3>
+                        <span>Play</span>
                     </button>
 
                     <button class="menu-item tutorial-btn">
                         <img class="menu-icon" src="https://res.cloudinary.com/andy-osborne/image/upload/v1585563114/Dwarf%20Match/Buttons/Info_tqkbuv.png" alt="Tutorial Button">
-                        <h3>How to Play</h3>
+                        <span>How to Play</span>
                     </button>
 
                     <button class="menu-item">
                         <img class="menu-icon" src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_sound_j6pkdi.png" alt="Sound Settings">
-                        <h3>Sound</h3>
+                        <span>Sound</span>
                     </button>
                 </div>
             </div>
+        </div>
 
             <div id="game-page" class="d-none back-image">
                 <div id="game-area">
@@ -99,24 +100,24 @@
                             </li>
                             <li>
                                 Select the difficulty of the level you want to play.
-                            </li>
-                            <ol>
-                                <li>
-                                    <strong>Easy</strong>
-                                    <br> There are 16 tiles on the board. Try to find the 8 different pairs as fast
-                                    as possible.
+                                    <ol>
+                                        <li>
+                                            <strong>Easy</strong>
+                                            <br> There are 16 tiles on the board. Try to find the 8 different pairs as fast
+                                            as possible.
+                                        </li>
+                                        <li>
+                                            <strong>Intermediate</strong>
+                                            <br> There are 24 cards on the board. Try to find the 12 different pairs as fast
+                                            as possible.
+                                        </li>
+                                        <li>
+                                            <strong>Hard</strong>
+                                            <br> There are 32 cards on the board. Try to find the 16 different pairs as fast
+                                            as possible.
+                                        </li>
+                                    </ol>
                                 </li>
-                                <li>
-                                    <strong>Intermediate</strong>
-                                    <br> There are 24 cards on the board. Try to find the 12 different pairs as fast
-                                    as possible.
-                                </li>
-                                <li>
-                                    <strong>Hard</strong>
-                                    <br> There are 32 cards on the board. Try to find the 16 different pairs as fast
-                                    as possible.
-                                </li>
-                            </ol>
                             <li>
                                 Once your game starts, you will then select two tiles on the board.
                                 <br> - If they match, they will stay face up on the board.
@@ -145,15 +146,15 @@
                     </div>
                     <div class="inner-content text-center justify-content-center flex-column">
                         <button class="easy level-btn border-0 l-brown-background" onclick="levelChoice(this); gamePlay()" id="easy">
-                            <img src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_easy_x2daxp.png">
+                            <img src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_easy_x2daxp.png" alt="easy level button">
                         </button>
                         <p>There are 16 cards within this level and you need to match 8 pairs.</p>
                         <button class="normal level-btn border-0 l-brown-background" onclick="levelChoice(this); gamePlay()" id="normal">
-                            <img src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_normal_ebguxa.png">
+                            <img src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_normal_ebguxa.png" alt="normal level button">
                         </button>
                         <p>There are 24 cards within this level and you need to match 12 pairs.</p>
                         <button class="hard level-btn border-0 l-brown-background" onclick="levelChoice(this); gamePlay()" id="hard">
-                            <img src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_hard_ylprfw.png">
+                            <img src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391627/Dwarf%20Match/Buttons/button_hard_ylprfw.png" alt="hard level button">
                         </button>
                         <p>There are 32 cards within this level and you need to match 16 pairs.</p>
                     </div>
@@ -180,7 +181,7 @@
                             <p>Perhaps try the next difficulty level?</p>
                             <button id="difficult-start" class="victory-btn">Next Level</button>
                         </div>
-                        <p>Or shall your retire for the moment?</p>
+                        <p>Or shall you retire for the moment?</p>
                         <button id="home" class="victory-btn">Take me home</button>
                     </div>
                 </div>
@@ -188,7 +189,7 @@
             </div>
     </main>
     <footer class="main-color text-center">
-        <span class="footer-text">&copy Copyright 2020 - <a href="https://github.com/Andy-Osborne">Andy Osborne</a></span>
+        <span class="footer-text">&copy; Copyright 2020 - <a href="https://github.com/Andy-Osborne">Andy Osborne</a></span>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
