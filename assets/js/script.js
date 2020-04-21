@@ -25,8 +25,8 @@ const app = {
     },
     audio: {
         cardFlipSound: new Audio("assets/audio/cardflip.mp3"),
-        gameComplete: new Audio("assets/audio/VictorySound.mp3"),
-        clickSound: new Audio("assets/audio/ClickingSound.mp3"),
+        gameCompleteAudio: new Audio("assets/audio/VictorySound.mp3"),
+        clickSoundAudio: new Audio("assets/audio/ClickingSound.mp3"),
         gameMusic: new Audio("assets/audio/alexander-nakarada-adventure.mp3")
     },
     victory: {
@@ -39,13 +39,14 @@ const app = {
 }
 
 function clickSound() {
-    app.audio.clickSound.play();
+    app.audio.clickSoundAudio.volume = 0.3;
+    app.audio.clickSoundAudio.play();
 }
 
 function playMusic() {
     app.audio.gameMusic.play();
     app.audio.gameMusic.loop = true;
-    app.audio.gameMusic.volume = 0.2;
+    app.audio.gameMusic.volume = 0.4;
 }
 
 function stopMusic() {
@@ -53,6 +54,11 @@ function stopMusic() {
     app.audio.gameMusic.currentTime = 0;
 }
 
+function victorySound () {
+    stopMusic();
+    app.audio.gameCompleteAudio.volume = 0.15;
+    app.audio.gameCompleteAudio.play();
+}
 
 /**
  * The below records the users choice of difficulty level and 
@@ -129,6 +135,7 @@ app.game.addEventListener("click", function(event) {
 
 function cardFlip() {
     event.target.classList.remove("faceDown");
+    app.audio.cardFlipSound.volume = 0.5;
     app.audio.cardFlipSound.play();
 }
 
@@ -159,7 +166,7 @@ function cardFlipCheckerReset() {
 function gameComplete() {
 
     if (app.gameComplete.length === app.gameTiles) {
-        app.audio.gameComplete.play();
+        victorySound();
         clearInterval(app.timer.gameTimer);
         app.victory.victoryModal.classList.remove("d-none");
         app.victory.victoryModal.classList.add("d-block");
