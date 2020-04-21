@@ -27,7 +27,8 @@ const app = {
         cardFlipSound: new Audio("assets/audio/cardflip.mp3"),
         gameCompleteAudio: new Audio("assets/audio/VictorySound.mp3"),
         clickSoundAudio: new Audio("assets/audio/ClickingSound.mp3"),
-        gameMusic: new Audio("assets/audio/alexander-nakarada-adventure.mp3")
+        gameMusic: new Audio("assets/audio/alexander-nakarada-adventure.mp3"),
+        cardMatchAudio: new Audio("assets/audio/cardMatchSound.mp3")
     },
     victory: {
         victoryModal: document.getElementById("victory"),
@@ -36,6 +37,16 @@ const app = {
         nextLevel: document.getElementById("next-level"),
         nextDifficulty: document.getElementById("difficult-start"),
     }
+}
+
+function soundEffectController() {
+    let soundActive = true;
+   //Placeholder - use an if statement and combine with event listener
+}
+
+function musicController() {
+    let musicActive = true;
+    //Placeholder - use an if statement and combine with event listener
 }
 
 function clickSound() {
@@ -54,10 +65,20 @@ function stopMusic() {
     app.audio.gameMusic.currentTime = 0;
 }
 
-function victorySound () {
+function victorySound() {
     stopMusic();
     app.audio.gameCompleteAudio.volume = 0.15;
     app.audio.gameCompleteAudio.play();
+}
+
+function cardMatchEffect() {
+    app.audio.cardMatchAudio.volume = 0.3;
+    app.audio.cardMatchAudio.play();
+}
+
+function cardFlipSound() {
+    app.audio.cardFlipSound.volume = 0.5;
+    app.audio.cardFlipSound.play();
 }
 
 /**
@@ -67,8 +88,8 @@ function victorySound () {
  * to determine the amount of tiles required in the game. 
  **/
 
-function levelChoice(obj) {
-    app.difficultyLevel = obj.id;
+function levelChoice(event) {
+    app.difficultyLevel = event.id;
 };
 
 
@@ -135,8 +156,7 @@ app.game.addEventListener("click", function(event) {
 
 function cardFlip() {
     event.target.classList.remove("faceDown");
-    app.audio.cardFlipSound.volume = 0.5;
-    app.audio.cardFlipSound.play();
+    cardFlipSound();
 }
 
 function matchCheck() {
@@ -144,6 +164,7 @@ function matchCheck() {
     let secondGuessPair = app.secondGuess.classList[2];
 
     if (firstGuessPair === secondGuessPair) {
+        cardMatchEffect();
         app.gameComplete.push(firstGuessPair);
         cardFlipCheckerReset()
         gameComplete()
@@ -215,7 +236,6 @@ function difficultyIncrease() {
     } else {
         app.difficultyLevel = "hard";
     }
-
     restartLevel();
 }
 
@@ -245,7 +265,14 @@ function gamePlay() {
     app.timer.gameTimer = setInterval(gameTimerStart, 1000);
 
     function gameTimerStart() {
-        app.timer.seconds.innerText = ++app.timer.secondsTimer;
+
+        if(app.timer.secondsTimer < 9) {
+            ++app.timer.secondsTimer
+            app.timer.seconds.innerText = `0${app.timer.secondsTimer}`;
+        } else {
+            app.timer.seconds.innerText = ++app.timer.secondsTimer;
+        }
+
 
         if (app.timer.secondsTimer === 60) {
             app.timer.minutes.innerText = ++app.timer.minutesTimer;
