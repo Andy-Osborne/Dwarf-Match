@@ -73,8 +73,8 @@
         </div>
 
         <div id="game-page" class="d-none back-image">
-            <div id="game-area">
-                <div id="count-container" class="align-items-center d-flex justify-content-center">
+            <div class="game-control">
+                <div class="count-container align-items-center d-flex justify-content-center">
                     <div class="d-inline-block game-info timer">
                         <h4>Time: <span id="minutes">0</span> : <span id="seconds">00</span></h4>
                     </div>
@@ -83,8 +83,8 @@
                         <h4>Flips: <span id="flips">0</span></h4>
                     </div>
                 </div>
-                <div id="restart">
-                    <button id="restart-btn" class="transparent border-0">
+                <div class="restart">
+                    <button id="restart-btn" class="transparent border-0 game-padding">
                         <img class="restart-image"
                             src="https://res.cloudinary.com/andy-osborne/image/upload/v1585391628/Dwarf%20Match/Buttons/button_restart_nbcbrc.png"
                             alt="Restart Button">
@@ -93,7 +93,7 @@
             </div>
             <div class="container-fluid game-padding">
                 <div class="game-container d-flex">
-                    <div class="row mx-auto no-gutters justify-content-center" id="gameArea">
+                    <div class="row mx-auto no-gutters justify-content-center game-padding" id="gameArea">
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
 
         <!-- Modals -->
 
-        <div id="tutorial" class="modal d-none l-brown-background">
+        <div id="tutorial" class="modal d-none l-brown-background tutorial-style">
             <div class="tutorial-content">
                 <div class="inner-header text-center">
                     <h2>How to Play</h2>
@@ -154,7 +154,7 @@
             </div>
         </div>
 
-        <div id="levelSelect" class="modal d-none l-brown-background">
+        <div id="levelSelect" class="modal d-none l-brown-background level-style">
             <div class="levelSelect-content">
                 <div class="inner-header text-center">
                     <h2>Choose your difficulty level</h2>
@@ -211,7 +211,7 @@
             </div>
         </div>
 
-        <div id="soundModal" class="modal d-none l-brown-background">
+        <div id="soundModal" class="modal d-none l-brown-background sound-style">
             <div class="sound-content">
                 <div class="inner-header text-center">
                     <h2>Sound Manager</h2>
@@ -219,19 +219,19 @@
                 <div class="inner-content text-center justify-content-center flex-column">
                     <h3>Sound Effects</h3>
                     <p>Adjust the volume level or turn the sound effects on/off.</p>
-                    <label for="sVolume-slider">Volume:</label>
+                    <label for="sVolume-slider"><strong>Volume:</strong></label>
                     <input type="range" value=40 min=0 max=100 step=10 id="sVolume-slider" name="sound-volume">
                     <br>
-                    <p>Click to toggle the sound ON or OFF.</p>
-                    <button id="sound-btn">On</button>
+                    <p>Click to toggle the sound ON or OFF:</p>
+                    <button id="sound-btn" class="victory-btn">On</button>
                     <hr>
                     <h3>Music Control</h3>
                     <p>Adjust the volume level or turn the music on/off.</p>
-                    <label for="mVolume-slider">Volume:</label>
+                    <label for="mVolume-slider"><strong>Volume:</strong></label>
                     <input type="range" value=40 min=0 max=100 step=10 id="mVolume-slider" name="music-volume">
                     <br>
                     <p>Toggle the music ON or OFF:</p>
-                    <button id="music-btn">Music is <span id="music-status">ON</span></button>
+                    <button id="music-btn" class="victory-btn"><span id="music-status">ON</span></button>
 
                     <audio id="game-music">
                         <source
@@ -249,7 +249,7 @@
             </div>
         </div>
     </main>
-    
+
     <footer class="main-color text-center">
         <span class="footer-text">&copy; Copyright 2020 - <a href="https://github.com/Andy-Osborne">Andy
                 Osborne</a></span>
