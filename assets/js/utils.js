@@ -1,18 +1,19 @@
-// The below is an event listener for the tutorial modal. 
-
+// Tutorial Modal
 document.querySelectorAll(".tutorial-btn").forEach(item => {
     item.addEventListener("click", event => {
         clickSound();
         document.getElementById("tutorial").classList.add("d-block");
-    })
+        document.getElementById("tutorial").classList.remove("d-none");
+    });
     document.querySelectorAll(".modal-close").forEach(item => {
         item.addEventListener("click", event => {
             document.getElementById("tutorial").classList.remove("d-block");
+            document.getElementById("tutorial").classList.add("d-none");
         })
-    })
+    });
 });
 
-// The below is an event listener for the Play Menu modal. 
+// Play Menu Modal
 
 document.querySelector(".play-btn").addEventListener("click", event => {
     clickSound();
@@ -22,9 +23,38 @@ document.querySelector(".play-btn").addEventListener("click", event => {
     document.querySelectorAll(".modal-close").forEach(item => {
         item.addEventListener("click", event => {
             document.getElementById("levelSelect").classList.remove("d-block");
-        })
-    })
+            document.getElementById("levelSelect").classList.add("d-none");
+        });
+    });
 });
+
+// Audio Modal
+
+document.getElementById("audio-btn").addEventListener("click", event => {
+    clickSound();
+    document.getElementById("soundModal").classList.remove("d-none");
+    document.getElementById("soundModal").classList.add("d-block");
+
+    document.querySelectorAll(".modal-close").forEach(item => {
+        item.addEventListener("click", event => {
+            document.getElementById("soundModal").classList.remove("d-block");
+            document.getElementById("soundModal").classList.add("d-none");
+        });
+    });
+
+});
+
+
+// Audio Options Listener
+
+document.getElementById("sound-btn").addEventListener("click", event => {
+    soundEffectController();
+});
+
+document.getElementById("music-btn").addEventListener("click", event => {
+    musicController();
+});
+
 
 /** The below is an event listener for when the user clicks on a level button within the
  * Play Menu Modal
@@ -43,6 +73,7 @@ document.querySelectorAll(".level-btn").forEach(item => {
     })
 });
 
+
 /** The below is an event listener for when the user clicks on the exit button within the
  * game area.
  **/
@@ -50,16 +81,20 @@ document.querySelectorAll(".level-btn").forEach(item => {
 document.querySelector("#exit-btn").addEventListener("click", event => {
     clickSound();
     clearGameArea();
+    document.getElementById("victory").classList.add("d-none");
+    document.getElementById("victory").classList.remove("d-block");
     document.getElementById("game-page").classList.add("d-none");
     document.getElementById("game-page").classList.remove("d-block");
     document.getElementById("landing-page").classList.add("d-block");
     document.getElementById("exit-btn").classList.add("d-none");
 });
 
+// The below runs the restart game function
+
 document.getElementById("restart-btn").addEventListener("click", event => {
     clickSound();
     restartLevel();
-})
+});
 
 document.getElementById("home").addEventListener("click", event => {
     clickSound();
