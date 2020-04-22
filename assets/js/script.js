@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 //Global variables are stored in the below object to reduce the amount in the global space.
 
@@ -11,6 +11,7 @@ const app = {
     firstGuess: "",
     secondGuess: "",
     gameComplete: [],
+    gameActive: false,
     flip: {
         flipCounter: document.getElementById("flips"),
         flipCount: 0,
@@ -27,8 +28,14 @@ const app = {
         cardFlipSound: new Audio("assets/audio/cardflip.mp3"),
         gameCompleteAudio: new Audio("assets/audio/VictorySound.mp3"),
         clickSoundAudio: new Audio("assets/audio/ClickingSound.mp3"),
-        gameMusic: new Audio("assets/audio/alexander-nakarada-adventure.mp3"),
-        cardMatchAudio: new Audio("assets/audio/cardMatchSound.mp3")
+        gameMusic: document.getElementById("game-music"),
+        cardMatchAudio: new Audio("assets/audio/cardMatchSound.mp3"),
+        soundEffectActive: true,
+        musicSoundActive: true,
+        soundEffectBtn: document.getElementById("sound-btn"),
+        musicBtn: document.getElementById("music-btn"),
+        musicVolumeElement: document.getElementById("mVolume-slider"),
+        soundVolumeElement: document.getElementById("sVolume-slider"),
     },
     victory: {
         victoryModal: document.getElementById("victory"),
@@ -37,61 +44,139 @@ const app = {
         nextLevel: document.getElementById("next-level"),
         nextDifficulty: document.getElementById("difficult-start"),
     }
+};
+
+// Function sets default volume for all audio/music on page load
+
+function defaultVolume() {
+    app.audio.gameMusic.volume = app.audio.musicVolumeElement.defaultValue / 100;
+    app.audio.clickSoundAudio.volume = app.audio.soundVolumeElement.defaultValue / 100;
+    app.audio.cardMatchAudio.volume = app.audio.soundVolumeElement.defaultValue / 100;
+    app.audio.cardFlipSound.volume = app.audio.soundVolumeElement.defaultValue / 100;
+    app.audio.gameCompleteAudio.volume = 0.20;
 }
 
-function soundEffectController() {
-    let soundActive = true;
-   //Placeholder - use an if statement and combine with event listener
-}
+
+
+// Below listener records the users choice for music value. If volume is set to 0. Music is paused.
+
+app.audio.musicVolumeElement.addEventListener("change", event => {
+    app.audio.gameMusic.volume = app.audio.musicVolumeElement.value / 100;
+    if (app.audio.gameMusic.volume === 0) {
+        stopMusic();
+    } else {
+        playGameMusic();
+    }
+});
 
 function musicController() {
-    let musicActive = true;
-    //Placeholder - use an if statement and combine with event listener
+    if (app.audio.musicSoundActive === true) {
+        app.audio.musicSoundActive = false;
+        app.audio.musicBtn.innerHTML = "Off";
+        stopMusic();
+    } else {
+        app.audio.musicSoundActive = true;
+        app.audio.musicBtn.innerHTML = "On";
+        playGameMusic();
+    }
 }
 
-function clickSound() {
-    app.audio.clickSoundAudio.volume = 0.3;
-    app.audio.clickSoundAudio.play();
+//The below determines if the game is active, if the game is not active, no music will play
+
+function isGameActive() {
+    if (app.difficultyLevel !== "") {
+        app.gameActive = true;
+    } else {
+        app.gameActive = false;
+    }
 }
 
-function playMusic() {
-    app.audio.gameMusic.play();
-    app.audio.gameMusic.loop = true;
-    app.audio.gameMusic.volume = 0.4;
+//Function to play the game music if game is active and music has not been muted
+
+function playGameMusic() {
+    isGameActive();
+    if (app.gameActive !== false && app.audio.musicSoundActive !== false) {
+        app.audio.gameMusic.play();
+        app.audio.gameMusic.loop = true;
+    }
 }
+
+//Function to "stop" music and reset to 0
 
 function stopMusic() {
     app.audio.gameMusic.pause();
     app.audio.gameMusic.currentTime = 0;
 }
 
+/** 
+ * Below listener records the users choice for sound effects volume. The sound value
+ * for gameCompleteAudio audio is limited at 0.20 as the audio is too loud at higher levels.
+ */
+
+app.audio.soundVolumeElement.addEventListener("change", event => {
+    app.audio.clickSoundAudio.volume = app.audio.soundVolumeElement.value / 100;
+    app.audio.cardMatchAudio.volume = app.audio.soundVolumeElement.value / 100;
+    app.audio.cardFlipSound.volume = app.audio.soundVolumeElement.value / 100;
+
+    if (app.audio.soundVolumeElement.value == 0) {
+        app.audio.gameCompleteAudio.volume = 0;
+    } else if (app.audio.soundVolumeElement.value > 0 && app.audio.soundVolumeElement.value <= 20) {
+        app.audio.gameCompleteAudio.volume = app.audio.soundVolumeElement.value / 100;
+    } else {
+        app.audio.gameCompleteAudio.volume = 0.2;
+    }
+});
+
+
+function soundEffectController() {
+    if (app.audio.soundEffectActive === true) {
+        app.audio.soundEffectActive = false;
+        app.audio.soundEffectBtn.innerHTML = "Off";
+    } else {
+        app.audio.soundEffectActive = true;
+        app.audio.soundEffectBtn.innerHTML = "On";
+    }
+}
+
+
+function clickSound() {
+    if (app.audio.soundEffectActive !== false) {
+        app.audio.clickSoundAudio.play();
+    }
+    return;
+}
+
+
 function victorySound() {
     stopMusic();
-    app.audio.gameCompleteAudio.volume = 0.15;
-    app.audio.gameCompleteAudio.play();
+    if (app.audio.soundEffectActive !== false) {
+        app.audio.gameCompleteAudio.play();
+    }
+    return;
 }
 
 function cardMatchEffect() {
-    app.audio.cardMatchAudio.volume = 0.3;
-    app.audio.cardMatchAudio.play();
+    if (app.audio.soundEffectActive !== false) {
+        app.audio.cardMatchAudio.play();
+    }
+    return;
 }
 
 function cardFlipSound() {
-    app.audio.cardFlipSound.volume = 0.5;
-    app.audio.cardFlipSound.play();
+    if (app.audio.soundEffectActive !== false) {
+        app.audio.cardFlipSound.play();
+    }
+    return;
 }
 
-/**
- * The below records the users choice of difficulty level and 
- * assigns it as the value which will be used to determine 
- * what difficulty the game will play at. Difficuly level is used
- * to determine the amount of tiles required in the game. 
- **/
+// Function records users difficulty choice for level
 
 function levelChoice(event) {
     app.difficultyLevel = event.id;
-};
+}
 
+
+// Function determines the amount of pairs required for game based on difficulty.
 
 function createGameTiles() {
     if (app.difficultyLevel === "easy") {
@@ -101,7 +186,7 @@ function createGameTiles() {
     } else if (app.difficultyLevel === "hard") {
         app.gameTiles = 16;
     }
-};
+}
 
 /**
  * The below function takes the output based on the user difficulty selection. 
@@ -123,7 +208,7 @@ function createCardLayout(gameTiles) {
     }
 }
 
-/* The below function is based on the  Durstenfeld shuffle, an optimized version of Fisher-Yates method
+/* Function shuffles card deck based on the  Durstenfeld shuffle, an optimized version of Fisher-Yates method
 and has been obtained from Stackoverflow */
 
 function shuffleArray(array) {
@@ -133,6 +218,8 @@ function shuffleArray(array) {
     }
     return array;
 }
+
+// Function runs the game logic
 
 app.game.addEventListener("click", function(event) {
 
@@ -152,7 +239,7 @@ app.game.addEventListener("click", function(event) {
             matchCheck();
         }
     }
-})
+});
 
 function cardFlip() {
     event.target.classList.remove("faceDown");
@@ -166,16 +253,19 @@ function matchCheck() {
     if (firstGuessPair === secondGuessPair) {
         cardMatchEffect();
         app.gameComplete.push(firstGuessPair);
-        cardFlipCheckerReset()
-        gameComplete()
+        cardFlipCheckerReset();
+        gameComplete();
     } else {
         setTimeout(() => {
             app.firstGuess.classList.add("faceDown");
             app.secondGuess.classList.add("faceDown");
-            cardFlipCheckerReset()
+            cardFlipCheckerReset();
         }, 800);
     }
 }
+
+
+// Function resets the variables used within the game matchCheck function
 
 function cardFlipCheckerReset() {
     app.firstGuess = "";
@@ -183,6 +273,8 @@ function cardFlipCheckerReset() {
     app.flip.timesFlipped = 0;
     app.matchChecker = [];
 }
+
+// function controls the Victory modal and options within it.
 
 function gameComplete() {
 
@@ -194,12 +286,12 @@ function gameComplete() {
         app.victory.flipModal.innerText = app.flip.flipCount;
 
         if (app.timer.minutesTimer === 0) {
-            app.victory.timeModal.innerText = `${app.timer.secondsTimer} seconds to do it!`
+            app.victory.timeModal.innerText = `${app.timer.secondsTimer} seconds to do it!`;
         } else if (app.timer.minutesTimer === 1) {
-            app.victory.timeModal.innerText = `${app.timer.minutesTimer} minute and ${app.timer.secondsTimer} seconds to do it!`
+            app.victory.timeModal.innerText = `${app.timer.minutesTimer} minute and ${app.timer.secondsTimer} seconds to do it!`;
         } else {
-            app.victory.timeModal.innerText = `${app.timer.minutesTimer} minutes and ${app.timer.secondsTimer} seconds to do it!`
-        };
+            app.victory.timeModal.innerText = `${app.timer.minutesTimer} minutes and ${app.timer.secondsTimer} seconds to do it!`;
+        }
 
         if (app.difficultyLevel !== "hard") {
             app.victory.nextLevel.classList.remove("d-none");
@@ -210,24 +302,32 @@ function gameComplete() {
                 app.victory.victoryModal.classList.remove("d-block");
                 app.victory.nextLevel.classList.add("d-none");
             });
-        };
+        }
     } else {
         return;
     }
 }
+
+/** Function restarts the game board & clears all variables, excluding
+ * difficulty variable as this value is used to restart the game at same difficulty.
+ */
+
+
 
 function restartLevel() {
     app.game.querySelectorAll("*").forEach(child => child.remove());
     app.gameTiles = 0;
     app.boardTiles = [];
     app.flip.flipCount = 0;
-    cardFlipCheckerReset()
+    cardFlipCheckerReset();
     app.gameComplete = [];
     app.flip.flipCounter.innerText = app.flip.flipCount;
     clearInterval(app.timer.gameTimer);
     gameTimerStop();
     gamePlay();
 }
+
+//Function increases difficulty level of game if user has not selected hard previously.
 
 function difficultyIncrease() {
 
@@ -243,7 +343,7 @@ function difficultyIncrease() {
 
 function gamePlay() {
 
-    playMusic();
+    playGameMusic();
 
     createGameTiles();
 
@@ -257,7 +357,7 @@ function gamePlay() {
     and appends it to the gameArea within the DOM */
 
     cardShuffle.forEach(element => {
-        app.game.appendChild(element)
+        app.game.appendChild(element);
     });
 
     // The below function starts the game timer when the user starts a game
@@ -266,8 +366,8 @@ function gamePlay() {
 
     function gameTimerStart() {
 
-        if(app.timer.secondsTimer < 9) {
-            ++app.timer.secondsTimer
+        if (app.timer.secondsTimer < 9) {
+            ++app.timer.secondsTimer;
             app.timer.seconds.innerText = `0${app.timer.secondsTimer}`;
         } else {
             app.timer.seconds.innerText = ++app.timer.secondsTimer;
@@ -295,12 +395,12 @@ function gameTimerStop() {
 /*The below function clears the game board by removing the divs assigned to gameArea
 and resets values for the associated game components */
 
-let clearGameArea = () => {
+function clearGameArea() {
     app.game.querySelectorAll("*").forEach(child => child.remove());
     app.gameTiles = 0;
     app.boardTiles = [];
     app.flip.flipCount = 0;
-    cardFlipCheckerReset()
+    cardFlipCheckerReset();
     app.gameComplete = [];
     app.flip.flipCounter.innerText = app.flip.flipCount;
     clearInterval(app.timer.gameTimer);
