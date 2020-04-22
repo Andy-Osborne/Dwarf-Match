@@ -120,7 +120,7 @@ li {
 /* Landing Page */
 
 .background-image {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/forest_wq8sdg.png");
+    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587579344/Dwarf%20Match/Backgrounds/forest_yznx0b.png");
 }
 
 .landing-title {
@@ -191,10 +191,6 @@ li {
 
 /* Game Area */
 
-#game-page {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/Easy.png");
-}
-
 #game-area {
     position: relative;
     height: 7vh;
@@ -261,15 +257,15 @@ li {
 /* Level Background */
 
 .game-easy-background {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/Easy.png");
+    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587579344/Dwarf%20Match/Backgrounds/Easy.jpg");
 }
 
 .game-normal-background {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/Normal.png");
+    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587579344/Dwarf%20Match/Backgrounds/Normal.jpg");
 }
 
 .game-hard-background {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/Hard.png");
+    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587579344/Dwarf%20Match/Backgrounds/Hard.jpg");
 }
 
 /* Tileset */
