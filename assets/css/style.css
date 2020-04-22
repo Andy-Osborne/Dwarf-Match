@@ -22,7 +22,7 @@ footer {
     padding-top: 10px;
     height: 7vh;
     position: fixed;
-    bottom: 0%;
+    bottom: 0;
     width: 100%;
 }
 
@@ -42,9 +42,9 @@ h4 {
 }
 
 .menu-item span {
-  font-family: 'Spicy Rice', cursive;
-  font-size: 1.75rem;
-  color: #f5f5f5;
+    font-family: 'Spicy Rice', cursive;
+    font-size: 1.75rem;
+    color: #f5f5f5;
 }
 
 p {
@@ -140,7 +140,7 @@ li {
 }
 
 .menu-item p {
-    padding: 10px 0px;
+    padding: 10px 0;
 }
 
 
@@ -159,11 +159,11 @@ li {
 
 .inner-header {
     border-bottom: 2px solid #f5f5f5;
-    padding: 10px 5px 0px 5px;
+    padding: 10px 5px 0 5px;
 }
 
 .inner-content {
-    padding: 10px 5px 0px 5px;
+    padding: 10px 5px 0 5px;
 }
 
 .inner-bottom {
@@ -272,169 +272,83 @@ li {
     background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585555815/Dwarf%20Match/Backgrounds/Hard.png");
 }
 
-/* Easy Tileset */
+/* Tileset */
 
-.easyPair1 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458708/Dwarf%20Match/Cards/Back/G1.jpg");
-    background-size: cover;
-}
-
-.easyPair2 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458709/Dwarf%20Match/Cards/Back/S1.jpg");
-    background-size: cover;
-}
-
-.easyPair3 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587483095/Dwarf%20Match/Cards/Back/GM1.jpg");
-    background-size: cover;
-}
-
-.easyPair4 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458708/Dwarf%20Match/Cards/Back/K1.jpg");
-    background-size: cover;
-}
-
-.easyPair5 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458709/Dwarf%20Match/Cards/Back/W1.jpg");
-    background-size: cover;
-}
-
-.easyPair6 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458709/Dwarf%20Match/Cards/Back/A1.jpg");
-    background-size: cover;
-}
-
-.easyPair7 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458709/Dwarf%20Match/Cards/Back/P1.jpg");
-    background-size: cover;
-}
-
-.easyPair8 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458708/Dwarf%20Match/Cards/Back/M1.jpg");
-    background-size: cover;
-}
-
-
-/* Normal Tileset */
-
-.normalPair1 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458708/Dwarf%20Match/Cards/Back/G1.jpg");
-    background-size: cover;
-}
-
-.normalPair2 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458709/Dwarf%20Match/Cards/Back/S1.jpg");
-    background-size: cover;
-}
-
-.normalPair3 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587483095/Dwarf%20Match/Cards/Back/GM1.jpg");
-    background-size: cover;
-}
-
-.normalPair4 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458708/Dwarf%20Match/Cards/Back/K1.jpg");
-    background-size: cover;
-}
-
-.normalPair5 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458709/Dwarf%20Match/Cards/Back/W1.jpg");
-    background-size: cover;
-}
-
-.normalPair6 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458709/Dwarf%20Match/Cards/Back/A1.jpg");
-    background-size: cover;
-}
-
-.normalPair7 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458709/Dwarf%20Match/Cards/Back/P1.jpg");
-    background-size: cover;
-}
-
-.normalPair8 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458708/Dwarf%20Match/Cards/Back/M1.jpg");
-    background-size: cover;
-}
-
-.normalPair9 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458708/Dwarf%20Match/Cards/Back/M2.jpg");
-    background-size: cover;
-}
-
-.normalPair10 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458708/Dwarf%20Match/Cards/Back/A2.jpg");
-    background-size: cover;
-}
-
-.normalPair11 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458708/Dwarf%20Match/Cards/Back/B2.jpg");
-    background-size: cover;
-}
-
-.normalPair12 {
-    background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458709/Dwarf%20Match/Cards/Back/W2.jpg");
-    background-size: cover;
-}
-
-
-/* Hard Tileset */
-
+.easyPair1,
+.normalPair1,
 .hardPair1 {
     background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458708/Dwarf%20Match/Cards/Back/G1.jpg");
     background-size: cover;
 }
 
+.easyPair2,
+.normalPair2,
 .hardPair2 {
     background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458709/Dwarf%20Match/Cards/Back/S1.jpg");
     background-size: cover;
 }
 
+.easyPair3,
+.normalPair3,
 .hardPair3 {
     background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587483095/Dwarf%20Match/Cards/Back/GM1.jpg");
     background-size: cover;
 }
 
+.easyPair4,
+.normalPair4,
 .hardPair4 {
     background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458708/Dwarf%20Match/Cards/Back/K1.jpg");
     background-size: cover;
 }
 
+.easyPair5,
+.normalPair5,
 .hardPair5 {
     background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458709/Dwarf%20Match/Cards/Back/W1.jpg");
     background-size: cover;
 }
 
+.easyPair6,
+.normalPair6,
 .hardPair6 {
     background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458709/Dwarf%20Match/Cards/Back/A1.jpg");
     background-size: cover;
 }
 
+.easyPair7,
+.normalPair7,
 .hardPair7 {
     background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458709/Dwarf%20Match/Cards/Back/P1.jpg");
     background-size: cover;
 }
 
+.easyPair8,
+.normalPair8,
 .hardPair8 {
     background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458708/Dwarf%20Match/Cards/Back/M1.jpg");
     background-size: cover;
 }
 
+.normalPair9,
 .hardPair9 {
     background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458708/Dwarf%20Match/Cards/Back/M2.jpg");
     background-size: cover;
 }
 
+.normalPair10,
 .hardPair10 {
     background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458708/Dwarf%20Match/Cards/Back/A2.jpg");
     background-size: cover;
 }
 
+.normalPair11,
 .hardPair11 {
     background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458708/Dwarf%20Match/Cards/Back/B2.jpg");
     background-size: cover;
 }
 
+.normalPair12,
 .hardPair12 {
     background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587458709/Dwarf%20Match/Cards/Back/W2.jpg");
     background-size: cover;
@@ -522,6 +436,13 @@ li {
     .flip h4 {
         font-size: 1.2rem;
     }
+
+    #soundModal.modal {
+        height: fit-content;
+        max-width: 84%;
+        padding: 10px;
+        margin-top: 8%;
+    }
 }
 
 @media only screen and (orientation: landscape) {
@@ -546,6 +467,13 @@ li {
 
     .menu-item p {
         margin-bottom: 0;
+    }
+
+    #soundModal.modal {
+        max-height: 75%;
+        max-width: 70%;
+        padding: 10px;
+        margin-top: 3%;
     }
 
     #levelSelect.modal {
@@ -680,13 +608,18 @@ li {
     }
 
     .game-padding {
-        padding: 0% 0;
+        padding: 0;
     }
 
     .modal {
         margin-top: 2%;
         max-width: 80%;
         max-height: 55%;
+    }
+
+    #soundModal.modal {
+        max-width: 60%;
+        margin-top: -4%;
     }
 }
 
@@ -708,6 +641,11 @@ li {
 
     .restart-image {
         width: 80px;
+    }
+
+    #soundModal.modal {
+        max-width: 60%;
+        margin-top: -10%;
     }
 
     #levelSelect.modal {
@@ -785,11 +723,12 @@ li {
         margin: 0;
     }
 
+    #soundModal.modal,
     #levelSelect.modal {
         height: fit-content;
         max-width: fit-content;
         padding: 10px;
-        margin-top: 0%;
+        margin-top: 0;
     }
 
     #tutorial.modal {
