@@ -12,6 +12,7 @@ const app = {
     secondGuess: "",
     gameComplete: [],
     gameActive: false,
+    levelBackground: document.getElementById("game-page"),
     flip: {
         flipCounter: document.getElementById("flips"),
         flipCount: 0,
@@ -197,12 +198,12 @@ function createGameTiles() {
 function createCardLayout(gameTiles) {
 
     for (let i = 1; i < app.gameTiles + 1; i++) {
-        var cardDiv = document.createElement("div");
+        const cardDiv = document.createElement("div");
         cardDiv.className = `tile image-center faceDown ${app.difficultyLevel}Pair${[i]}`;
         app.boardTiles.push(cardDiv);
     }
     for (let j = 1; j < app.gameTiles + 1; j++) {
-        cardDiv = document.createElement("div");
+        const cardDiv = document.createElement("div");
         cardDiv.className = `tile image-center faceDown ${app.difficultyLevel}Pair${[j]}`;
         app.boardTiles.push(cardDiv);
     }
@@ -308,11 +309,27 @@ function gameComplete() {
     }
 }
 
+//Function to change game background image based on difficulty
+
+function gameBackground() {
+    app.levelBackground.classList.remove("game-easy-background");
+    app.levelBackground.classList.remove("game-normal-background");
+    app.levelBackground.classList.remove("game-hard-background");
+
+    if (app.difficultyLevel === "easy") {
+        app.levelBackground.classList.add("game-easy-background");
+
+    } else if (app.difficultyLevel === "normal") {
+        app.levelBackground.classList.add("game-normal-background");
+
+    } else if (app.difficultyLevel === "hard") {
+        app.levelBackground.classList.add("game-hard-background");
+    }
+}
+
 /** Function restarts the game board & clears all variables, excluding
  * difficulty variable as this value is used to restart the game at same difficulty.
  */
-
-
 
 function restartLevel() {
     app.game.querySelectorAll("*").forEach(child => child.remove());
@@ -343,10 +360,10 @@ function difficultyIncrease() {
 
 function gamePlay() {
 
+    gameBackground();
+    
     playGameMusic();
-
     createGameTiles();
-
     createCardLayout(app.gameTiles);
 
     /* The below takes uses the shuffleArray function and assigns this to a new variable */
@@ -372,8 +389,6 @@ function gamePlay() {
         } else {
             app.timer.seconds.innerText = ++app.timer.secondsTimer;
         }
-
-
         if (app.timer.secondsTimer === 60) {
             app.timer.minutes.innerText = ++app.timer.minutesTimer;
             app.timer.seconds.innerText = 0;
