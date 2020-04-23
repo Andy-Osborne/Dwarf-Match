@@ -69,7 +69,9 @@ document.querySelectorAll(".level-btn").forEach(item => {
         document.getElementById("game-page").classList.add("d-block");
         document.getElementById("levelSelect").classList.remove("d-block");
         document.getElementById("levelSelect").classList.add("d-none");
-        document.getElementById("exit-btn").classList.remove("d-none");
+        document.getElementById("nav-btns").classList.remove("d-none");
+        document.getElementById("title").classList.add("d-none");
+        document.getElementById("title").classList.remove("d-block");
     })
 });
 
@@ -85,7 +87,9 @@ document.querySelector("#exit-btn").addEventListener("click", event => {
     document.getElementById("game-page").classList.add("d-none");
     document.getElementById("game-page").classList.remove("d-block");
     document.getElementById("landing-page").classList.add("d-block");
-    document.getElementById("exit-btn").classList.add("d-none");
+    document.getElementById("nav-btns").classList.add("d-none");
+    document.getElementById("title").classList.remove("d-none");
+    document.getElementById("title").classList.add("d-block");
 });
 
 // The below runs the restart game function
@@ -95,6 +99,8 @@ document.getElementById("restart-btn").addEventListener("click", event => {
     restartLevel();
 });
 
+// Victory modal listeners.
+
 document.getElementById("home").addEventListener("click", event => {
     clickSound();
     clearGameArea();
@@ -103,7 +109,9 @@ document.getElementById("home").addEventListener("click", event => {
     document.getElementById("game-page").classList.add("d-none");
     document.getElementById("game-page").classList.remove("d-block");
     document.getElementById("landing-page").classList.add("d-block");
-    document.getElementById("exit-btn").classList.add("d-none");
+    document.getElementById("nav-btns").classList.add("d-none");
+    document.getElementById("title").classList.remove("d-none");
+    document.getElementById("title").classList.add("d-block");
 });
 
 document.getElementById("restart-level").addEventListener("click", event => {
