@@ -9,14 +9,11 @@ body {
 }
 
 .content {
-  -webkit-box-flex: 1;
-  -ms-flex: 1 0 auto;
   flex: 1 0 auto;
   height: 83vh;
 }
 
 footer {
-  -ms-flex-negative: 0;
   flex-shrink: 0;
   padding-top: 10px;
   height: 7vh;
@@ -88,13 +85,8 @@ label,
   width: 11vw;
 }
 
-a,
 .footer-text {
   color: #f5f5f5;
-}
-
-a {
-  text-decoration: none;
 }
 
 /* Image Sizing & positioning */
@@ -129,23 +121,14 @@ a {
   background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587579344/Dwarf%20Match/Backgrounds/forest_yznx0b.png");
   background-size: auto 100%;
   background-repeat: repeat-x;
-  -webkit-animation: landingscroll 120s linear infinite;
   animation: landingscroll 120s linear infinite;
-}
-
-@-webkit-keyframes landingscroll {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 100% 0;
-  }
 }
 
 @keyframes landingscroll {
   from {
     background-position: 0 0;
   }
+  
   to {
     background-position: 100% 0;
   }
@@ -167,6 +150,10 @@ a {
   float: left;
 }
 
+.menu-item p {
+  padding: 10px 0;
+}
+
 /* Modal */
 
 .modal {
@@ -174,8 +161,6 @@ a {
   z-index: 2;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   overflow: auto;
   border-radius: 5px;
@@ -222,7 +207,6 @@ a {
   width: 90%;
   height: 100%;
   margin: auto;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 
@@ -244,8 +228,6 @@ a {
   border-radius: 8px;
   border: 2px solid #fafafa;
   background-color: #422020;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -259,8 +241,6 @@ a {
   border-radius: 5px;
   border: 2px solid #fafafa;
   background-color: #422020;
-  max-width: -webkit-fit-content;
-  max-width: -moz-fit-content;
   max-width: fit-content;
   padding: 5px;
   color: #ffff;
@@ -393,29 +373,6 @@ a {
   border-radius: 8px;
 }
 
-/* Hover Effects */
-
-a:hover {
-  text-decoration: none;
-  color: #75b9f3;
-}
-
-.menu-item:hover {
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
-}
-
-.nav-logo:hover,
-.level-btn:hover,
-.restart-image:hover,
-.modal-close:hover,
-.victory-btn:hover {
-  -webkit-transform: scale(1.05);
-  -ms-transform: scale(1.05);
-  transform: scale(1.05);
-}
-
 /* Media Queries */
 
 @media only screen and (min-width: 320px) and (orientation: portrait) {
@@ -424,8 +381,6 @@ a:hover {
   }
 
   .navbar .container-fluid {
-    -webkit-box-pack: space-evenly;
-    -ms-flex-pack: space-evenly;
     justify-content: space-evenly;
   }
 
@@ -466,8 +421,6 @@ a:hover {
   }
 
   div.sound-style.modal {
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
     height: fit-content;
     max-width: 84%;
     padding: 10px;
@@ -698,8 +651,6 @@ a:hover {
 
   div.level-style.modal {
     max-height: 45%;
-    max-width: -webkit-fit-content;
-    max-width: -moz-fit-content;
     max-width: fit-content;
     padding: 10px;
     margin-top: -2%;
@@ -760,8 +711,6 @@ a:hover {
   }
 
   #victory {
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
     height: auto;
     max-height: 80%;
@@ -781,11 +730,7 @@ a:hover {
 
   div.sound-style.modal,
   div.level-style.modal {
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
     height: fit-content;
-    max-width: -webkit-fit-content;
-    max-width: -moz-fit-content;
     max-width: fit-content;
     padding: 10px;
     margin-top: 0;
@@ -793,8 +738,6 @@ a:hover {
 
   div.tutorial-style.modal {
     margin-top: 0;
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
     height: fit-content;
     max-width: 70%;
   }
@@ -803,8 +746,6 @@ a:hover {
 @media only screen and (min-width: 1400px) {
   div.tutorial-style.modal {
     margin-top: 2%;
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
     height: fit-content;
     max-width: 50%;
   }
