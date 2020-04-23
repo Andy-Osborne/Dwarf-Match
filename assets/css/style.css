@@ -146,7 +146,7 @@ label,
   }
 }
 
-.landing-title {
+.landing-spacing {
   padding: 10%;
 }
 
@@ -469,8 +469,8 @@ a:hover {
 }
 
 @media only screen and (orientation: landscape) {
-  .landing-title {
-    padding: 0.5%;
+  .landing-spacing {
+    padding: 4.5%;
   }
 
   .back-image {
@@ -712,7 +712,7 @@ a:hover {
 }
 
 @media only screen and (min-width: 1024px) and (orientation: landscape) {
-  .landing-title {
+  .landing-spacing {
     padding: 2.5%;
   }
 
