@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Spicy+Rice&display=swap');
 
-/* General Formating Styling */
+/* General Formatting Styling */
 
 html,
 body {
@@ -78,7 +78,7 @@ label,
   background-color: transparent;
 }
 
-.tile {
+.card {
   display: inline-block;
   margin: 5px;
   background-color: #d0cbcb;
@@ -274,7 +274,7 @@ label,
   background-image: url("https://res.cloudinary.com/andy-osborne/image/upload/v1587579344/Dwarf%20Match/Backgrounds/Hard.jpg");
 }
 
-/* Tileset */
+/* Card Set */
 
 .easyPair1,
 .normalPair1,
@@ -376,7 +376,7 @@ label,
   background-size: cover;
 }
 
-/* Special tile classes */
+/* Special card classes */
 
 .faceDown {
   background: url("https://res.cloudinary.com/andy-osborne/image/upload/v1585821476/Dwarf%20Match/Cards/Front/6_tj1ur9.png") no-repeat;
@@ -554,7 +554,7 @@ a:hover {
     margin: 0.5%;
   }
 
-  .tile {
+  .card {
     margin-top: 1%;
     height: 13vh;
     width: 7vw;
@@ -575,7 +575,7 @@ a:hover {
     height: 12vh;
   }
 
-  .tile {
+  .card {
     height: 8vh;
     width: 15vw;
   }
@@ -590,7 +590,7 @@ a:hover {
     height: 10vh;
   }
 
-  .tile {
+  .card {
     height: 9vh;
     width: 12vw;
   }
@@ -645,7 +645,7 @@ a:hover {
     font-size: 1.5rem;
   }
 
-  .tile {
+  .card {
     height: 12vh;
     width: 11vw;
   }
@@ -747,7 +747,7 @@ a:hover {
     font-size: 1.5rem;
   }
 
-  .tile {
+  .card {
     height: 12vh;
     width: 10vw;
   }

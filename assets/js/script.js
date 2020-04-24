@@ -2,10 +2,10 @@
 
 //Global variables are stored in the below object to reduce the amount in the global space.
 
-const app = {
-    gameTiles: 0,
+let app = {
+    gameCards: 0,
     difficultyLevel: "",
-    boardTiles: [],
+    cardHolder: [],
     game: document.getElementById("gameArea"),
     matchChecker: [],
     firstGuess: "",
@@ -41,13 +41,13 @@ function levelChoice(event) {
 
 // Function determines the amount of pairs required for game based on difficulty.
 
-function determineGameTiles() {
+function determineGameCards() {
     if (app.difficultyLevel === "easy") {
-        app.gameTiles = 8;
+        app.gameCards = 8;
     } else if (app.difficultyLevel === "normal") {
-        app.gameTiles = 12;
+        app.gameCards = 12;
     } else if (app.difficultyLevel === "hard") {
-        app.gameTiles = 16;
+        app.gameCards = 16;
     }
 }
 
@@ -57,21 +57,20 @@ function determineGameTiles() {
  * which is then assigned to an array.
  */
 
-function createCardLayout(gameTiles) {
-
-    for (let i = 1; i < app.gameTiles + 1; i++) {
+function createCardLayout(gameCards) {
+    for (let i = 1; i < app.gameCards + 1; i++) {
         const cardDiv = document.createElement("div");
-        cardDiv.className = `tile image-center faceDown ${app.difficultyLevel}Pair${[i]}`;
-        app.boardTiles.push(cardDiv);
+        cardDiv.className = `card image-center faceDown ${app.difficultyLevel}Pair${[i]}`;
+        app.cardHolder.push(cardDiv);
     }
-    for (let j = 1; j < app.gameTiles + 1; j++) {
+    for (let j = 1; j < app.gameCards + 1; j++) {
         const cardDiv = document.createElement("div");
-        cardDiv.className = `tile image-center faceDown ${app.difficultyLevel}Pair${[j]}`;
-        app.boardTiles.push(cardDiv);
+        cardDiv.className = `card image-center faceDown ${app.difficultyLevel}Pair${[j]}`;
+        app.cardHolder.push(cardDiv);
     }
 }
 
-/* Function shuffles card deck based on the  Durstenfeld shuffle, an optimized version of Fisher-Yates method
+/* Function shuffles card deck based on the Durstenfeld shuffle, an optimized version of Fisher-Yates method
 and has been obtained from Stackoverflow */
 
 function shuffleArray(array) {
@@ -90,7 +89,6 @@ function shuffleArray(array) {
  */
 
 app.game.addEventListener("click", function (event) {
-
     if (!event.target.classList.contains("faceDown") || app.flip.timesFlipped >= 2) {
         return;
     } else if (event.target.classList.contains("faceDown") && app.flip.timesFlipped <= 2) {
@@ -153,16 +151,15 @@ function matchCheckerReset() {
 
 /**
  * Function determines whether game is complete by checking the array length
- * of gameComplete against the gameTiles array. 
+ * of gameComplete against the gameCards array. 
  * 
  * If game is complete, it displays the victory modal and tells the user
  * how long it took them to win and the amount of flips done in the game
- * and provides them 2 to 3 options based on current diffcultyLevel value.
+ * and provides them 2 to 3 options based on current difficultyLevel value.
  */
 
 function gameComplete() {
-
-    if (app.gameComplete.length === app.gameTiles) {
+    if (app.gameComplete.length === app.gameCards) {
         victorySound();
         clearInterval(app.timer.gameTimer);
         app.victory.victoryModal.classList.remove("d-none");
@@ -216,8 +213,8 @@ function gameBackground() {
 
 function restartLevel() {
     app.game.querySelectorAll("*").forEach(child => child.remove());
-    app.gameTiles = 0;
-    app.boardTiles = [];
+    app.gameCards = 0;
+    app.cardHolder = [];
     app.flip.flipCount = 0;
     matchCheckerReset();
     app.gameComplete = [];
@@ -230,7 +227,6 @@ function restartLevel() {
 // Function increases difficulty level of game if user has not selected hard previously.
 
 function difficultyIncrease() {
-
     if (app.difficultyLevel === "easy") {
         app.difficultyLevel = "normal";
     } else {
@@ -244,12 +240,12 @@ function difficultyIncrease() {
 function gamePlay() {
     gameBackground();
     playMusic();
-    determineGameTiles();
-    createCardLayout(app.gameTiles);
+    determineGameCards();
+    createCardLayout(app.gameCards);
 
     // The below uses the shuffleArray function and assigns this to a new variable. 
 
-    let cardShuffle = shuffleArray(app.boardTiles);
+    let cardShuffle = shuffleArray(app.cardHolder);
 
     // The below appends each cardShuffle element it to the gameArea within the DOM,
 
@@ -257,12 +253,11 @@ function gamePlay() {
         app.game.appendChild(element);
     });
 
-    // The below function starts the game timer and updats the corresponding HMTL field.
+    // The below function starts the game timer and updates the corresponding HTML field.
 
     app.timer.gameTimer = setInterval(gameTimerStart, 1000);
 
     function gameTimerStart() {
-
         if (app.timer.secondsTimer < 9) {
             ++app.timer.secondsTimer;
             app.timer.seconds.innerText = `0${app.timer.secondsTimer}`;
@@ -290,8 +285,8 @@ function gameTimerStop() {
 
 function clearGameArea() {
     app.game.querySelectorAll("*").forEach(child => child.remove());
-    app.gameTiles = 0;
-    app.boardTiles = [];
+    app.gameCards = 0;
+    app.cardHolder = [];
     app.flip.flipCount = 0;
     matchCheckerReset();
     app.gameComplete = [];
