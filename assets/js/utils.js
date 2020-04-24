@@ -10,7 +10,7 @@ document.querySelectorAll(".tutorial-btn").forEach(item => {
         item.addEventListener("click", event => {
             document.getElementById("tutorial").classList.remove("d-block");
             document.getElementById("tutorial").classList.add("d-none");
-        })
+        });
     });
 });
 
@@ -43,7 +43,7 @@ document.querySelectorAll(".audio-btn").forEach(item => {
                 document.getElementById("soundModal").classList.add("d-none");
             });
         });
-    })
+    });
 });
 
 // Audio Options Listener
@@ -72,7 +72,7 @@ document.querySelectorAll(".level-btn").forEach(item => {
         document.getElementById("nav-btns").classList.remove("d-none");
         document.getElementById("title").classList.add("d-none");
         document.getElementById("title").classList.remove("d-block");
-    })
+    });
 });
 
 /** The below is an event listener for when the user clicks on the exit button within the
