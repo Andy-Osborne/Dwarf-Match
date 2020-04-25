@@ -10,7 +10,7 @@ All code written has been thoroughly validated and passed through the following 
 
 - CSS - All styling was run through the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) to ensure it was valid and no errors were made.
 
-- JavaScript - All my script was run through the [JSHint](https://jshint.com/) validator and no erros were found.
+- JavaScript - All my script was run through the [JSHint](https://jshint.com/) validator and no errors were found.
 
 ## Testing Against User Stories
 
@@ -48,12 +48,146 @@ The below goes through of of the user stores listed in the UX section of the [RE
     - During the course of the game the amount of flips the user has done and the time in game is recorded and displayed to the user above the game board so it is easily viewable.
     - Upon level completion, the victory modal displays the amount of flips done and time taken to the user.
 
-7. I want the tile layout to be randomised so the front faces of the cards are not in the same position as previous games.
+7. I want the card layout to be randomised so the front faces of the cards are not in the same position as previous games.
 
-    - This has been achieved by using the Durstenfeld shuffle which shuffles the game tiles before they are appended to the gameboard.
-
-
-## Automated Testing
+    - This has been achieved by using the Durstenfeld shuffle which shuffles the game cards before they are appended to the game board.
 
 ## Manual Testing
 
+I have detailed the manual testing undertaken during the development stage to ensure that all aspects of the game work as intended.
+
+### Responsive Design Testing
+
+During the development and testing phase of the site, I used Google Chrome and Google Canary Dev Tools to test the layout as I built my code and used the various screen sizes to ensure that it displayed correctly and that elements of the size displayed correctly and easily viewable by the user.
+
+1. Overview:
+
+    This game was intended to be responsive to all user media devices such as mobile phones, tablets, desktops.
+
+2. How was this implemented?
+
+    To ensure the site remains responsive, I tested the layout at every stage of development on the various screen sizes within the Chrome Dev tools and corrected the styling of the elements and added Media Queries so that the design will adjust to device being viewed. As this is a game, users may decide play it with a landscape orientation rather than portrait so I tailored additional Media Queries with this in mind.
+
+    The overall site was designed using the Bootstrap Framework to make use of their flex layout. In addition to this I used relative measurements in my styling where possible, rather than absolute measurements to allow the elements to adapt to screen size changes before a new media query would need to be introduced.
+
+### Responsive Bugs Identified
+
+- Where were the bugs?
+    1. Google Canary acted differently to Google Chrome - max-width: fit-content
+    2. Edge - When modals are launched a white space appears between background image and footer at bot of page
+    3. Image sizing - images were different sizes which caused issues on displaying
+
+### Functionality Testing
+
+1. Modal Overview
+
+    - I performed manual tests on all the modals to ensure they could open and close correctly. All modals opened and closed as expected, no bugs discovered with this functionality.
+
+- Bug Discovered - **Multiple Modals Open At Once**:
+
+     During the testing of the modals, I discovered that I could launch multiple modals at the same time. For example, when the Audio Modal was open, I could also open the Tutorial Modal and this would open up behind the Audio Modal. This was not an intended function.
+
+- Fix Applied:
+
+    In order to fix this unintended bug, I created the below function which is executed when either the Tutorial or Audio Modal is opened and it closes the other one:
+
+```Javascript
+function closeActiveModal() {
+    document.getElementById("tutorial").classList.remove("d-block");
+    document.getElementById("tutorial").classList.add("d-none");
+    document.getElementById("soundModal").classList.remove("d-block");
+    document.getElementById("soundModal").classList.add("d-none");
+}
+```
+
+- Bug Discovered - **Tutorial & Sound Modal During Victory Modal**:
+
+    When completing a level within the game, the Victory Modal launched as expected however; I was also able to launch the Tutorial and Audio Modals as well. The Audio Modal was able to launch on top of the Victory Modal where the Tutorial Modal would launch underneath the Victory Modal. **This issue was prior to the fix documented above**
+
+    I considered disabling the Audio and Tutorial Modal buttons whilst the Victory Modal is active however; I did not want to limit the users actions.
+    I discovered that I could launch multiple modals at the same time. For example, when the Audio Modal was open, I could also open the Tutorial Modal and this would open up behind the Audio Modal. This was not an intended function.
+
+- Fix Applied:
+
+    In order to fix this unintended bug, I edited the CSS style rule for the Victory Modal to lessen its `z-index` value so that the Audio Modal and Tutorial Modal will launch above it.
+
+#### Individual Modal Testing
+
+1. Audio Modal
+        - What did I do to test?
+        - I tested 
+        - What bugs were discovered?
+        - How did I remedy them?
+
+    2. Level Selection
+        - What did I do to test?
+        - What bugs were discovered?
+        - How did I remedy them?
+
+    3. Tutorial Modal
+        - What did I do to test?
+        - What bugs were discovered?
+        - How did I remedy them?
+
+    4. Victory Modal
+        - What did I do to test?
+        - What bugs were discovered?
+        - How did I remedy them?
+
+2. Audio & Music
+
+    1. Clicking Sound Effect
+        - What did I do to test?
+        - What bugs were discovered?
+        - How did I remedy them?
+
+    2. Card Match Sound Effect
+        - What did I do to test?
+        - What bugs were discovered?
+        - How did I remedy them?
+
+    3. Card Flip Sound Effect
+        - What did I do to test?
+        - What bugs were discovered?
+        - How did I remedy them?
+
+    4. Victory Sound
+        - What did I do to test?
+        - What bugs were discovered?
+        - How did I remedy them?
+
+    5. Game Music
+        - What did I do to test?
+        - What bugs were discovered?
+        - How did I remedy them?
+
+3. Game Functionality
+
+    1. Card Flipping
+        - What did I do to test?
+        - What bugs were discovered?
+        - How did I remedy them?
+
+    2. Card Matching
+        - What did I do to test?
+        - What bugs were discovered?
+        - How did I remedy them?
+
+    3. Flip Counter
+        - What did I do to test?
+        - What bugs were discovered?
+        - How did I remedy them?
+
+    4. Time Count
+        - What did I do to test?
+        - What bugs were discovered?
+        - How did I remedy them?
+
+    5. Game Restart
+        - What did I do to test?
+        - What bugs were discovered?
+        - How did I remedy them?
+
+### Additional Testing
+
+I asked my friends and family to try the game out on their various devices and they could not find any errors within the game or the responsiveness of the site.
