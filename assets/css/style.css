@@ -200,8 +200,6 @@ hr {
     padding: 10px;
 }
 
-/* The Close Button */
-
 .modal-close img {
     width: 50px;
 }
@@ -268,6 +266,10 @@ hr {
     padding: 5px;
     color: #ffff;
     margin: 10px;
+}
+
+#victory {
+    z-index: 1;
 }
 
 /* Level Background */
