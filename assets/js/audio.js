@@ -2,7 +2,7 @@
 
 //Global variables are stored in the below object to reduce the amount in the global space.
 
-const audio = {
+let audio = {
     gameActive: false,
     cardFlipAudio: new Audio("assets/audio/cardflip.mp3"),
     victoryAudio: new Audio("assets/audio/VictorySound.mp3"),
@@ -121,36 +121,32 @@ function soundEffectController() {
 // Function plays a click sound when buttons are pressed.
 
 function clickSound() {
-    if (audio.isSoundMuted !== true) {
+    if (audio.isSoundMuted === false) {
         audio.clickAudio.play();
     }
-    return;
 }
 
-// Function plays a victory sound on game completition.
+// Function plays a victory sound on game completion.
 
 function victorySound() {
     stopMusic();
-    if (audio.isSoundMuted !== true) {
+    if (audio.isSoundMuted === false) {
         audio.victoryAudio.play();
     }
-    return;
 }
 
 // Function plays a sound when a card match is found.
 
 function cardMatchEffect() {
-    if (audio.isSoundMuted !== true) {
+    if (audio.isSoundMuted === false) {
         audio.cardMatchAudio.play();
     }
-    return;
 }
 
 // Function plays a sound when a card is being flipped.
 
 function cardFlipSound() {
-    if (audio.isSoundMuted !== true) {
+    if (audio.isSoundMuted === false) {
         audio.cardFlipAudio.play();
     }
-    return;
 }
