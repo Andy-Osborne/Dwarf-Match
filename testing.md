@@ -237,30 +237,101 @@ During the development and testing phase of the site, I used Google Chrome and G
 
 1. Audio & Music
 
-    1. Clicking Sound Effect
-        - What did I do to test?
-        - What bugs were discovered?
-        - How did I remedy them?
+    1. **Clicking Sound Effect Function**
 
-    2. Card Match Sound Effect
-        - What did I do to test?
-        - What bugs were discovered?
-        - How did I remedy them?
+        - I tested that the function gets called whenever a button is clicked however; I decided not to include the function when the "Close" modal button is clicked.
 
-    3. Card Flip Sound Effect
-        - What did I do to test?
-        - What bugs were discovered?
-        - How did I remedy them?
+        - I tested that the function does not play when the volume has been muted and that it plays at corresponding level that the Sound Effect slider is set at.
 
-    4. Victory Sound
-        - What did I do to test?
-        - What bugs were discovered?
-        - How did I remedy them?
+        - The original audio clip was a bit too long so I edited it and reduced the length of the clip and compressed it to reduce the size of the file.
 
-    5. Game Music
-        - What did I do to test?
-        - What bugs were discovered?
-        - How did I remedy them?
+        - No bugs were discovered with this function.
+
+    2. **Card Match Sound Effect Function**
+
+        - I tested that the function  gets called whenever a matching pair is found. This function worked as intended however; there I did come across a bug.
+
+        - Bug Discovered:
+
+            - When the user finds a second pair within quick succession of finding the first one, the Card Match function does not play on the second match as it hasn't finished executing on the first match.
+
+        - Fix Applied:
+
+            - To fix this, I edited the length of the audio to around 0.50 seconds and resolved the issue. **Note: I did consider including an additional line of code within the ``cardMatchEffect()`` function to reset the currentTime of the audio to 0 so it could be played immediately but discounted it as the audio file length was suitable to reduce in length.**
+
+        - I tested that the function does not play when the volume has been muted and that the sound effect plays at corresponding level that the Sound Effect slider is set at.
+
+        - No bugs were discovered with this function.
+
+    3. **Card Flip Sound Effect Function**
+
+        - I tested that the function gets called whenever a card is clicked on in the game board and it works as intended.
+
+        - I tested that the function does not play when the volume has been muted and that it plays at corresponding level that the Sound Effect slider is set at.
+
+        - No bugs were discovered with this function. I had initially reduced the length of the audio prior to using within the game.
+
+    4. **Victory Sound Function**
+
+        - I tested that the function gets called once the level has been completed and the Victory Modal has been launched.
+
+        - No bugs were discovered with this function. I had initially reduced the length of the audio prior to using within the game.
+
+        - The sound of the victory audio was very loud which led me to introduce a default volume level function that gets called on page load, and sets the volume of this to a max of 20%:
+
+        ```Javascript
+        function defaultVolume() {
+            audio.gameMusic.volume = audio.musicVolumeSlider.defaultValue / 100;
+            audio.clickAudio.volume = audio.soundVolumeSlider.defaultValue / 100;
+            audio.cardMatchAudio.volume = audio.soundVolumeSlider.defaultValue / 100;
+            audio.cardFlipAudio.volume = audio.soundVolumeSlider.defaultValue / 100;
+            audio.victoryAudio.volume = 0.20;
+        }
+        ```
+
+        - In addition to this, I introduced the following if statement within the event listener to ensure that the victory audio remains between 0% and 20%:
+
+        ```Javascript
+        audio.soundVolumeSlider.addEventListener("change", event => {
+            audio.clickAudio.volume = audio.soundVolumeSlider.value / 100;
+            audio.cardMatchAudio.volume = audio.soundVolumeSlider.value / 100;
+            audio.cardFlipAudio.volume = audio.soundVolumeSlider.value / 100;
+
+            if (audio.soundVolumeSlider.value == 0) {
+                audio.victoryAudio.volume = 0;
+            } else if (audio.soundVolumeSlider.value > 0 && audio.soundVolumeSlider.value <= 20) {
+                audio.victoryAudio.volume = audio.soundVolumeSlider.value / 100;
+            } else {
+                audio.victoryAudio.volume = 0.2;
+            }
+        });
+        ```
+
+    5. **Game Music**
+
+        - I tested that the function gets called at the start of a game and stops playing the moment the player exits the game.
+
+        - No bugs were discovered with the above functionality.
+
+        - I tested that the volume of the game music adjusts accordingly to the Music Slider within audio settings and that it pauses should the user turn it off and that it starts again once the turn it back.
+
+        - Bug Discovered:
+
+            - When the user was not in a game and they went to the audio settings and turned the music off, then on, the game music would start playing which was unintended.
+
+        - Fix Applied:
+
+            - To fix this, I created the below function to check whether a game was currently active or not and saves a boolean value to a variable. When the ``playMusic()`` function gets called, it calls the ``isGameActive()`` function and then uses an if statement to determine whether the conditions to play music are met.
+
+        ```javascript
+        function isGameActive() {
+            if (app.difficultyLevel !== "") {
+                audio.gameActive = true;
+            } else {
+                audio.gameActive = false;
+            }
+        }
+        ```
 
 #### Game Functionality Testing
 
