@@ -3,6 +3,7 @@
 document.querySelectorAll(".tutorial-btn").forEach(item => {
     item.addEventListener("click", event => {
         clickSound();
+        closeActiveModal();
         document.getElementById("tutorial").classList.add("d-block");
         document.getElementById("tutorial").classList.remove("d-none");
     });
@@ -34,6 +35,7 @@ document.querySelector(".play-btn").addEventListener("click", event => {
 document.querySelectorAll(".audio-btn").forEach(item => {
     item.addEventListener("click", event => {
         clickSound();
+        closeActiveModal();
         document.getElementById("soundModal").classList.remove("d-none");
         document.getElementById("soundModal").classList.add("d-block");
     
@@ -81,6 +83,7 @@ document.querySelectorAll(".level-btn").forEach(item => {
 
 document.querySelector("#exit-btn").addEventListener("click", event => {
     clickSound();
+    closeActiveModal();
     clearGameArea();
     document.getElementById("victory").classList.add("d-none");
     document.getElementById("victory").classList.remove("d-block");
@@ -96,6 +99,7 @@ document.querySelector("#exit-btn").addEventListener("click", event => {
 
 document.getElementById("restart-btn").addEventListener("click", event => {
     clickSound();
+    closeActiveModal();
     restartLevel();
 });
 
@@ -120,3 +124,17 @@ document.getElementById("restart-level").addEventListener("click", event => {
     document.getElementById("victory").classList.remove("d-block");
     restartLevel();
 });
+
+function closeActiveModal() {
+    document.getElementById("tutorial").classList.remove("d-block");
+    document.getElementById("tutorial").classList.add("d-none");
+    document.getElementById("soundModal").classList.remove("d-block");
+    document.getElementById("soundModal").classList.add("d-none");
+}
+
+function disableButtons() {
+    document.getElementById("exit-btn").disabled = true;
+    document.getElementsByName("tutorial-btn").forEach(item => {
+        item.disabled  = true;
+    })
+}
