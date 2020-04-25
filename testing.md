@@ -91,14 +91,14 @@ During the development and testing phase of the site, I used Google Chrome and G
 
     In order to fix this unintended bug, I created the below function which is executed when either the Tutorial or Audio Modal is opened and it closes the other one:
 
-```Javascript
-function closeActiveModal() {
-    document.getElementById("tutorial").classList.remove("d-block");
-    document.getElementById("tutorial").classList.add("d-none");
-    document.getElementById("soundModal").classList.remove("d-block");
-    document.getElementById("soundModal").classList.add("d-none");
-}
-```
+    ```Javascript
+    function closeActiveModal() {
+        document.getElementById("tutorial").classList.remove("d-block");
+        document.getElementById("tutorial").classList.add("d-none");
+        document.getElementById("soundModal").classList.remove("d-block");
+        document.getElementById("soundModal").classList.add("d-none");
+    }
+    ```
 
 - Bug Discovered - **Tutorial & Sound Modal During Victory Modal**:
 
@@ -113,28 +113,129 @@ function closeActiveModal() {
 
 #### Individual Modal Testing
 
-1. Audio Modal
-        - What did I do to test?
-        - I tested 
-        - What bugs were discovered?
-        - How did I remedy them?
+1. **Audio Modal**
 
-    2. Level Selection
-        - What did I do to test?
-        - What bugs were discovered?
-        - How did I remedy them?
+    1. Sound Effect and Music Level Slider
 
-    3. Tutorial Modal
-        - What did I do to test?
-        - What bugs were discovered?
-        - How did I remedy them?
+        - I tested the slider to ensure that it updated the volume level correctly. I initially included the console.log to report to the console the volume level after any change in the audio level was made.
 
-    4. Victory Modal
-        - What did I do to test?
-        - What bugs were discovered?
-        - How did I remedy them?
+        - I tested that once the volume had been adjusted, the audio levels would remain at that level throughout the users journey in the game and until they adjusted it again.
 
-2. Audio & Music
+        - I tested that the text within the ON/OFF button correctly updated to reflect the current status of whether the audio was ON/OFF.
+
+        - No bugs were discovered with the slider functionality and it correctly adjusted the volume levels.
+
+    2. Sound Effect and Music ON/OFF Button
+
+        - I tested the functionality of the buttons one by one to ensure that they muted the right aspect they were assigned and once they were turned on again, Sound Effects and Music would play.
+
+        - In addition to toggling the buttons ON/OFF in the same session, I commenced a game, played a few cards, toggled the both audio's OFF, played a few more cards, then exited to the landing page and then re-entered a game to ensure that sounds/music would commence until the Sound Effects/Music were turned back on.
+
+        - No bugs were discovered with the mute button functionality and all sound effects and music remained muted until they were turned on again.
+
+2. **Level Selection Modal**
+
+    1. I tested each button individually to ensure that the ``levelChoice`` function was correctly grabbing the ID of the button pressed by logging it to the console as well as logging the current value of the variable ``app.difficultyLevel``.
+
+        - After ascertaining that the correct value was saved to the variable and I had linked it to the relevant functions of creating the game area, I tested it further to ensure the right amount of cards were generated according to that level.
+
+        - No bugs were discovered with the level button functionality and the correct values were passed through to the variable.
+
+3. **Tutorial Modal**
+
+    1. The Tutorial Modal primarily holds text to explain to the user how to play the game, the only functionality to test was that it launches and closes as expected.
+
+        - No bugs were discovered with the functionality of the Tutorial Modal.
+
+4. **Victory Modal**
+
+    1. **Victory Modal and Sound Effect**
+
+        - I tested that the Victory Modal would launch at the end of each game once the user completed their current level and play the victory sound (as long as the user had not muted the audio).
+
+        - No bugs were discovered with the functionality of the Victory Modal pop-up appearing.
+
+        - I tested whether the buttons within the play area would impact the Victory Modal. Aside from the issues mentioned previously about the Sound and Tutorial Modal there was one further element that impacted it.
+
+        - Bug Discovered:
+
+            - If the user presses the "Restart Button" associated with the game area, the game would restart however; the Victory Modal would remain open.
+
+        - Fix Applied:
+
+            - To fix this bug, I created a function that would close the Victory Modal and associated it with the in-game "Restart Button" so that it would be executed upon that button being pressed.
+
+            ```Javascript
+            function closeVictoryModal() {
+                document.getElementById("victory").classList.add("d-none");
+                document.getElementById("victory").classList.remove("d-block");
+            }
+            ```
+
+    2. **InnerText: Displaying Time Taken and Flip Count**
+
+        - I tested that the Victory Modal correctly displayed the amount of flips and time it took the user to complete the level. It correctly displayed the amount of flips taken.
+
+        - Bug Discovered:
+
+            - When it came to displaying the time taken for the user to complete the level, it initially updated the HTML text to say that it took the user ``0 minutes and XX seconds`` to complete the level however; if the game took less than a minute to complete then it should only show the amount of seconds to complete.
+
+            - In addition, if it only took the user 1 minute to complete the level, then the HTML text should state ``1 minute and XX seconds``.
+
+        - Fix Applied:
+
+            - To fix this, I added in an if statement as follows:
+
+                ```Javascript
+                if (app.timer.minutesTimer === 0) {  
+                    app.victory.timeModal.innerText = `${app.timer.secondsTimer} seconds to do it!`;
+                    } else if (app.timer.minutesTimer === 1) {
+                    app.victory.timeModal.innerText = `${app.timer.minutesTimer} minute and ${app.timer.secondsTimer} seconds to do it!`;
+                    } else {
+                    app.victory.timeModal.innerText = `${app.timer.minutesTimer} minutes and ${app.timer.secondsTimer} seconds to do it!`;
+                }
+                ```
+
+    3. **Restart Level**
+
+        - I tested the functionality of the "Restart" level button during each level to ensure it worked as intended.
+
+        - No bugs were discovered with the functionality of the "Restart" level button and it correctly restarted the level at the same difficulty the user was playing at and reset the counter and time to 0.
+
+    4. **Next Level**
+
+        - I tested that the "Next Level" button works correctly and generates a new game on the next highest difficulty. The functionality worked as intended if the user was on either Easy or Normal.
+
+        - Bug Discovered:
+
+            - When the user was playing at the Hard difficulty, the button would show however; it caused an error as the user was already on the highest difficulty.
+
+        - Fix Applied:
+
+            - To fix this, I added in an if statement as follows that displays the "Next Level" button if the user is not already on the hard level:
+
+            ```Javascript
+                if (app.difficultyLevel !== "hard") {
+                    app.victory.nextLevel.classList.remove("d-none");
+                    app.victory.nextLevel.addEventListener("click", event => {
+                    clickSound();
+                    difficultyIncrease();
+                    app.victory.victoryModal.classList.add("d-none");
+                    app.victory.victoryModal.classList.remove("d-block");
+                    app.victory.nextLevel.classList.add("d-none");
+                });
+            }
+            ```
+
+    5. **Exit Function**
+
+        - I tested that the "Take me home" button works correctly and completes the functionality of clearing the game board and taking the user to the landing page.
+
+        - No bugs were discovered with this functionality and it works as intended.
+
+#### Individual Audio and Music Testing
+
+1. Audio & Music
 
     1. Clicking Sound Effect
         - What did I do to test?
@@ -160,6 +261,8 @@ function closeActiveModal() {
         - What did I do to test?
         - What bugs were discovered?
         - How did I remedy them?
+
+#### Game Functionality Testing
 
 3. Game Functionality
 
