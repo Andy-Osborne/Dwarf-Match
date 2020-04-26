@@ -1,6 +1,6 @@
 # Dwarf Match Testing
 
-The code used for Dwarf Match was extensively tested through manual process during each stage of development. I have tested certain functions through the use of Jasmine to automate the testing however; due to time constraints and my lack of knowledge of using it, I have not written a complete set of automated testing.
+The code used for Dwarf Match was extensively tested through manual process during each stage of development and on various browsers & devices.
 
 ## Table of Contents
 
@@ -11,7 +11,13 @@ The code used for Dwarf Match was extensively tested through manual process duri
 3. [**Manual Testing**](#manual-testing)
     - [**Responsive Design Testing**](#responsive-design-testing)
         - [**Overview**](#overview)
-        - [**Responsive Bugs Identified**](#responsive-bugs-identified)
+            - [**Landing Page**](#landing-page)
+            - [**Modals**](#modals)
+            - [**Game Area**](#game-area)
+                - [**Google Dev tools - Lighthouse Audit**](#google-dev-tools---lighthouse-audit)
+                    - [**Desktop Audit Result**](#desktop-audit-result)
+                    - [**Mobile Audit Result**](#mobile-audit-result)
+
     - [**Functionality Testing**](#functionality-testing)
         - [**Modal Testing Overview**](#overview)
         - [**Individual Modal Testing**](#individual-modal-testing)
@@ -77,26 +83,102 @@ I have detailed the manual testing undertaken during the development stage to en
 
 During the development and testing phase of the site, I used Google Chrome and Google Canary Dev Tools to test the layout as I built my code and used the various screen sizes to ensure that it displayed correctly and that elements of the size displayed correctly and easily viewable by the user.
 
+All testing was performed using:
+
+- Google Chrome
+- Google Canary
+- Microsoft Edge
+- Mozilla Firefox
+- Desktop - I tested the display on three different screen sizes.
+- Mobile Phones - All emulated devices offered in Google & Firefox Dev Tools as well as physical devices such as Samsung S9 and iPhone X.
+- Tablets - All emulated devices offered in Google & Firefox Dev Tools as well as physical devices such as the iPad Air and iPad Pro.
+
 #### Overview
 
 This game was intended to be responsive to all user media devices such as mobile phones, tablets, desktops.
 
-To ensure the site remains responsive, I tested the layout at every stage of development on the various screen sizes within the Chrome Dev tools and corrected the styling of the elements and added Media Queries so that the design will adjust to device being viewed. As this is a game, users may decide play it with a landscape orientation rather than portrait so I tailored additional Media Queries with this in mind.
+To ensure the site and game board remains responsive, I tested the layout at every stage of development on the various screen sizes within the Chrome Dev tools and corrected the styling of the elements and added Media Queries so that the design will adjust to device being viewed. As this is a game, users may decide play it with a landscape orientation rather than portrait so I tailored additional Media Queries with this in mind.
 
 The overall site was designed using the Bootstrap Framework to make use of their flex layout. In addition to this I used relative measurements in my styling where possible, rather than absolute measurements to allow the elements to adapt to screen size changes before a new media query would need to be introduced.
 
-#### Responsive Bugs Identified
+##### Landing Page
 
-- Where were the bugs?
-    1. Google Canary acted differently to Google Chrome - max-width: fit-content
-    2. Edge - When modals are launched a white space appears between background image and footer at bot of page
-    3. Image sizing - images were different sizes which caused issues on displaying
+I continuously tested the layout of the landing page throughout the development phase of the project and after each edit, I ensured that the layout and responsiveness of the website remained consistent.
+
+- I tested that all writing, buttons and images on the landing page remained readable by the user and it adapted accordingly to the device it was being viewed on.
+
+- Where the responsiveness of the website began to degrade, I created a media query to deal with any issues.
+
+- In order to ensure that the site retained cross-browser responsiveness, I used the online CSS [Autoprefixer](https://autoprefixer.github.io/).
+
+  - Bug Identified - **Background Animation Glitch**
+
+    - The animation used for the background had an unintended glitch where it would would complete the cycle and then jump back to 0% and momentarily show a white background.
+
+  - Fix Applied:
+
+    - In order to correct this issue I added and additional rule to the CSS style sheet ``animation-direction: alternate`` which allowed the animation to smoothly slide from one side of the screen and back again.
+
+##### Modals
+
+I tested each modal multiple times on the various devices/browsers mentioned previously to ensure that they retained a consistent flow that was suitable to the site.
+
+- Bug Identified - **Conflict with hover effect & ``max-width: fit-content``**
+
+  - When I applied the ``transform: scale(1.05)`` CSS style rule, it ended up conflicting with the ``max-width: fit-content`` and caused the modal to continuously shrink and expand when hovering over a button. This bug primarily impacted Google Chrome and Mozilla Firefox, and was not present in Google Canary.
+
+- Fix Applied:
+
+  - In order to correct this issue, I amended the ``max-width`` style rule to have a relative value and style it accordingly.
+
+- Bug Identified - **Excess white space between background image and footer**
+
+  - This bug only impacted the Microsoft Edge browser when a modal is launched. The white space is not immediately apparent to the user as the footer sticks to the bottom of the viewport at all times and there is no gap on their current viewport. They need to scroll down to see it.
+
+- Fix Applied:
+
+  - A fix for this is still outstanding however; it does not impact the game play for the user.
+
+- Bug Discovered - **Tutorial & Sound Modal During Victory Modal**:
+
+  - When completing a level within the game, the Victory Modal launched as expected however; I was also able to launch the Tutorial and Audio Modals as well. The Audio Modal was able to launch on top of the Victory Modal where the Tutorial Modal would launch underneath the Victory Modal. **This issue was prior to the fix documented above**
+
+    I considered disabling the Audio and Tutorial Modal buttons whilst the Victory Modal is active however; I did not want to limit the users actions.
+    I discovered that I could launch multiple modals at the same time. For example, when the Audio Modal was open, I could also open the Tutorial Modal and this would open up behind the Audio Modal. This was not an intended function.
+
+- Fix Applied:
+
+  - In order to fix this unintended bug, I edited the CSS style rule for the Victory Modal to lessen its `z-index` value so that the Audio Modal and Tutorial Modal will launch above it.
+
+#### Game Area
+
+The game area is main feature of the site and I thoroughly tested that each level displays correctly on the various devices as well as ensuring the game play is smooth and easily viewable by the user no matter the orientation of the device.
+
+- Bug Discovered - **Playing Card Front Face Sizing**
+
+  - When testing the play functionality on the various devices, the front faces of the cards would sometimes be too big for the ``tile`` which meant that the overflow of the character would be cropped. This would negatively impact the users experience whilst playing the game.
+
+- Fix Applied:
+
+  - In order to fix this issue, I used GIMP to create a blank canvas with the dimensions of 200 x 162 and resized each image individually to fit within this size and apply a uniform size. In addition to this, I edited the ``tile`` CSS rule for each media query to ensure that the ``tile`` retains a good dimension ration.  
+
+#### Google Dev tools - Lighthouse Audit
+
+The below screenshots have been taken use the Google Chrome Dev Tools Lighthouse Audit functionality that shows I have almost 100% for all their scoring criteria.
+
+##### Desktop Audit Result
+
+![Google Chrome Light House Audit - Desktop Result](https://res.cloudinary.com/andy-osborne/image/upload/v1587904628/Dwarf%20Match/Images/Lighthouse_Audit_-_Desktop_Stats_mtzeqo.png)
+
+##### Mobile Audit Result
+
+![Google Chrome Light House Audit - Mobile Result](https://res.cloudinary.com/andy-osborne/image/upload/v1587904628/Dwarf%20Match/Images/Lighthouse_Audit_-_Desktop_Stats_mtzeqo.png)
 
 ### Functionality Testing
 
 #### Modal Testing Overview
 
-    - I performed manual tests on all the modals to ensure they could open and close correctly. All modals opened and closed as expected, no bugs discovered with this functionality.
+I performed manual tests on all the modals to ensure they could open and close correctly. All modals opened and closed as expected, no bugs discovered with this functionality.
 
 - Bug Discovered - **Multiple Modals Open At Once**:
 
@@ -114,17 +196,6 @@ The overall site was designed using the Bootstrap Framework to make use of their
             document.getElementById("soundModal").classList.add("d-none");
         }
         ```
-
-- Bug Discovered - **Tutorial & Sound Modal During Victory Modal**:
-
-    When completing a level within the game, the Victory Modal launched as expected however; I was also able to launch the Tutorial and Audio Modals as well. The Audio Modal was able to launch on top of the Victory Modal where the Tutorial Modal would launch underneath the Victory Modal. **This issue was prior to the fix documented above**
-
-    I considered disabling the Audio and Tutorial Modal buttons whilst the Victory Modal is active however; I did not want to limit the users actions.
-    I discovered that I could launch multiple modals at the same time. For example, when the Audio Modal was open, I could also open the Tutorial Modal and this would open up behind the Audio Modal. This was not an intended function.
-
-- Fix Applied:
-
-    In order to fix this unintended bug, I edited the CSS style rule for the Victory Modal to lessen its `z-index` value so that the Audio Modal and Tutorial Modal will launch above it.
 
 #### Individual Modal Testing
 
