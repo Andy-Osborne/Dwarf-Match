@@ -167,7 +167,7 @@ hr {
 }
 
 .landing-spacing {
-  padding: 23% 10%;
+  padding-top: 23%;
 }
 
 .menu-item {
@@ -482,7 +482,7 @@ a:hover {
 
 @media only screen and (orientation: landscape) {
   .landing-spacing {
-    padding: 8% 4.5%;
+    padding-top: 6%;
   }
 
   .back-image {
@@ -567,7 +567,7 @@ a:hover {
 
 @media only screen and (min-width: 375px) and (orientation: portrait) {
   .landing-spacing {
-    padding: 30% 4.5%;
+    padding-top: 25%;
   }
 
   .modal {
@@ -684,7 +684,7 @@ a:hover {
 
 @media only screen and (min-width: 812px) and (orientation: landscape) {
   .landing-spacing {
-    padding: 6% 4.5%;
+    padding-top: 6%;
   }
 }
 
@@ -733,7 +733,7 @@ a:hover {
 
 @media only screen and (min-width: 1024px) and (orientation: landscape) {
   .landing-spacing {
-    padding: 14% 2.5%;
+    padding-top: 10%;
   }
 
   footer {
@@ -781,6 +781,18 @@ a:hover {
   }
 }
 
+@media only screen and (min-width: 1026px) and (orientation: landscape) {
+  .landing-spacing {
+      padding-top: 6%;
+  }
+}
+
+@media only screen and (min-width: 1260px) and (orientation: landscape) {
+  .landing-spacing {
+      padding-top: 3%;
+  }
+}
+
 @media only screen and (min-width: 1366px) and (orientation: landscape) {
   div.level-style.modal,
   div.sound-style.modal {
@@ -794,11 +806,15 @@ a:hover {
     max-height: 69%;
     max-width: 50%;
   }
+
+  .landing-spacing {
+    padding-top: 13%;
+  }
 }
 
 @media only screen and (min-width: 1367px) and (orientation: landscape) {
   .landing-spacing {
-    padding: 8% 2.5%;
+    padding-top: 8%;
   }
 
   .menu-item {
