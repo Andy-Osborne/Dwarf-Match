@@ -2,6 +2,23 @@
 
 The code used for Dwarf Match was extensively tested through manual process during each stage of development. I have tested certain functions through the use of Jasmine to automate the testing however; due to time constraints and my lack of knowledge of using it, I have not written a complete set of automated testing.
 
+## Table of Contents
+
+1. [**Code Validation**](#code-validation)
+
+2. [**Testing Against User Stories**](#testing-against-user-stories)
+
+3. [**Manual Testing**](#manual-testing)
+    - [**Responsive Design Testing**](#responsive-design-testing)
+        - [**Overview**](#overview)
+        - [**Responsive Bugs Identified**](#responsive-bugs-identified)
+    - [**Functionality Testing**](#functionality-testing)
+        - [**Modal Testing Overview**](#overview)
+        - [**Individual Modal Testing**](#individual-modal-testing)
+        - [**Audio and Music Testing**](#audio-and-music-testing)
+        - [**Game Functionality Testing**](#game-functionality-testing)
+    - [**Additional Testing**](#additional-testing)
+
 ## Code Validation
 
 All code written has been thoroughly validated and passed through the following online validators:
@@ -43,7 +60,7 @@ The below goes through of of the user stores listed in the UX section of the [RE
 
     - This has been achieved in two different ways. During the course of the game, I have used an image of a circular arrow which is conventionally used in games to indicate "Restart". In addition to this, when the user completes a level, the victory modal pop-up asks them if they would like to restart the level.
 
-6. I want to be able to keep track of the amount of flips it has taken me to complete the game & the time taken to do so as this can give me a personal challenge to beat it on further run throughs.
+6. I want to be able to keep track of the amount of flips it has taken me to complete the game & the time taken to do so as this can give me a personal challenge to beat it on further playthroughs.
 
     - During the course of the game the amount of flips the user has done and the time in game is recorded and displayed to the user above the game board so it is easily viewable.
     - Upon level completion, the victory modal displays the amount of flips done and time taken to the user.
@@ -60,17 +77,15 @@ I have detailed the manual testing undertaken during the development stage to en
 
 During the development and testing phase of the site, I used Google Chrome and Google Canary Dev Tools to test the layout as I built my code and used the various screen sizes to ensure that it displayed correctly and that elements of the size displayed correctly and easily viewable by the user.
 
-1. Overview:
+#### Overview
 
-    This game was intended to be responsive to all user media devices such as mobile phones, tablets, desktops.
+This game was intended to be responsive to all user media devices such as mobile phones, tablets, desktops.
 
-2. How was this implemented?
+To ensure the site remains responsive, I tested the layout at every stage of development on the various screen sizes within the Chrome Dev tools and corrected the styling of the elements and added Media Queries so that the design will adjust to device being viewed. As this is a game, users may decide play it with a landscape orientation rather than portrait so I tailored additional Media Queries with this in mind.
 
-    To ensure the site remains responsive, I tested the layout at every stage of development on the various screen sizes within the Chrome Dev tools and corrected the styling of the elements and added Media Queries so that the design will adjust to device being viewed. As this is a game, users may decide play it with a landscape orientation rather than portrait so I tailored additional Media Queries with this in mind.
+The overall site was designed using the Bootstrap Framework to make use of their flex layout. In addition to this I used relative measurements in my styling where possible, rather than absolute measurements to allow the elements to adapt to screen size changes before a new media query would need to be introduced.
 
-    The overall site was designed using the Bootstrap Framework to make use of their flex layout. In addition to this I used relative measurements in my styling where possible, rather than absolute measurements to allow the elements to adapt to screen size changes before a new media query would need to be introduced.
-
-### Responsive Bugs Identified
+#### Responsive Bugs Identified
 
 - Where were the bugs?
     1. Google Canary acted differently to Google Chrome - max-width: fit-content
@@ -79,7 +94,7 @@ During the development and testing phase of the site, I used Google Chrome and G
 
 ### Functionality Testing
 
-1. Modal Overview
+#### Modal Testing Overview
 
     - I performed manual tests on all the modals to ensure they could open and close correctly. All modals opened and closed as expected, no bugs discovered with this functionality.
 
@@ -91,14 +106,14 @@ During the development and testing phase of the site, I used Google Chrome and G
 
     In order to fix this unintended bug, I created the below function which is executed when either the Tutorial or Audio Modal is opened and it closes the other one:
 
-    ```Javascript
-    function closeActiveModal() {
-        document.getElementById("tutorial").classList.remove("d-block");
-        document.getElementById("tutorial").classList.add("d-none");
-        document.getElementById("soundModal").classList.remove("d-block");
-        document.getElementById("soundModal").classList.add("d-none");
-    }
-    ```
+        ```Javascript
+        function closeActiveModal() {
+            document.getElementById("tutorial").classList.remove("d-block");
+            document.getElementById("tutorial").classList.add("d-none");
+            document.getElementById("soundModal").classList.remove("d-block");
+            document.getElementById("soundModal").classList.add("d-none");
+        }
+        ```
 
 - Bug Discovered - **Tutorial & Sound Modal During Victory Modal**:
 
@@ -112,6 +127,10 @@ During the development and testing phase of the site, I used Google Chrome and G
     In order to fix this unintended bug, I edited the CSS style rule for the Victory Modal to lessen its `z-index` value so that the Audio Modal and Tutorial Modal will launch above it.
 
 #### Individual Modal Testing
+
+All tests were performed multiple times using a Desktop, Mobile phone, and tables. In addition, they were tested on Google Chrome, Google Canary, Mozilla Firefox and Microsoft Edge.
+
+The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an iPad Pro as well as using the emulated devices available in Google Chrome and Mozilla Firefox Dev tools.
 
 1. **Audio Modal**
 
@@ -165,12 +184,12 @@ During the development and testing phase of the site, I used Google Chrome and G
 
             - To fix this bug, I created a function that would close the Victory Modal and associated it with the in-game "Restart Button" so that it would be executed upon that button being pressed.
 
-            ```Javascript
-            function closeVictoryModal() {
-                document.getElementById("victory").classList.add("d-none");
-                document.getElementById("victory").classList.remove("d-block");
-            }
-            ```
+                    ```Javascript
+                    function closeVictoryModal() {
+                        document.getElementById("victory").classList.add("d-none");
+                        document.getElementById("victory").classList.remove("d-block");
+                    }
+                    ```
 
     2. **InnerText: Displaying Time Taken and Flip Count**
 
@@ -186,15 +205,15 @@ During the development and testing phase of the site, I used Google Chrome and G
 
             - To fix this, I added in an if statement as follows:
 
-                ```Javascript
-                if (app.timer.minutesTimer === 0) {  
-                    app.victory.timeModal.innerText = `${app.timer.secondsTimer} seconds to do it!`;
-                    } else if (app.timer.minutesTimer === 1) {
-                    app.victory.timeModal.innerText = `${app.timer.minutesTimer} minute and ${app.timer.secondsTimer} seconds to do it!`;
-                    } else {
-                    app.victory.timeModal.innerText = `${app.timer.minutesTimer} minutes and ${app.timer.secondsTimer} seconds to do it!`;
-                }
-                ```
+                    ```Javascript
+                    if (app.timer.minutesTimer === 0) {  
+                        app.victory.timeModal.innerText = `${app.timer.secondsTimer} seconds to do it!`;
+                        } else if (app.timer.minutesTimer === 1) {
+                        app.victory.timeModal.innerText = `${app.timer.minutesTimer} minute and ${app.timer.secondsTimer} seconds to do it!`;
+                        } else {
+                        app.victory.timeModal.innerText = `${app.timer.minutesTimer} minutes and ${app.timer.secondsTimer} seconds to do it!`;
+                    }
+                    ```
 
     3. **Restart Level**
 
@@ -214,18 +233,18 @@ During the development and testing phase of the site, I used Google Chrome and G
 
             - To fix this, I added in an if statement as follows that displays the "Next Level" button if the user is not already on the hard level:
 
-            ```Javascript
-                if (app.difficultyLevel !== "hard") {
-                    app.victory.nextLevel.classList.remove("d-none");
-                    app.victory.nextLevel.addEventListener("click", event => {
-                    clickSound();
-                    difficultyIncrease();
-                    app.victory.victoryModal.classList.add("d-none");
-                    app.victory.victoryModal.classList.remove("d-block");
-                    app.victory.nextLevel.classList.add("d-none");
-                });
-            }
-            ```
+                    ```Javascript
+                        if (app.difficultyLevel !== "hard") {
+                            app.victory.nextLevel.classList.remove("d-none");
+                            app.victory.nextLevel.addEventListener("click", event => {
+                            clickSound();
+                            difficultyIncrease();
+                            app.victory.victoryModal.classList.add("d-none");
+                            app.victory.victoryModal.classList.remove("d-block");
+                            app.victory.nextLevel.classList.add("d-none");
+                        });
+                    }
+                    ```
 
     5. **Exit Function**
 
@@ -233,7 +252,11 @@ During the development and testing phase of the site, I used Google Chrome and G
 
         - No bugs were discovered with this functionality and it works as intended.
 
-#### Individual Audio and Music Testing
+#### Audio and Music Testing
+
+All tests were performed multiple times using a Desktop, Mobile phone, and tables. In addition, they were tested on Google Chrome, Google Canary, Mozilla Firefox and Microsoft Edge.
+
+The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an iPad Pro as well as using the emulated devices available in Google Chrome and Mozilla Firefox Dev tools.
 
 1. Audio & Music
 
@@ -279,37 +302,37 @@ During the development and testing phase of the site, I used Google Chrome and G
 
         - The sound of the victory audio was very loud which led me to introduce a default volume level function that gets called on page load, and sets the volume of this to a max of 20%:
 
-        ```Javascript
-        function defaultVolume() {
-            audio.gameMusic.volume = audio.musicVolumeSlider.defaultValue / 100;
-            audio.clickAudio.volume = audio.soundVolumeSlider.defaultValue / 100;
-            audio.cardMatchAudio.volume = audio.soundVolumeSlider.defaultValue / 100;
-            audio.cardFlipAudio.volume = audio.soundVolumeSlider.defaultValue / 100;
-            audio.victoryAudio.volume = 0.20;
-        }
-        ```
+                ```Javascript
+                function defaultVolume() {
+                    audio.gameMusic.volume = audio.musicVolumeSlider.defaultValue / 100;
+                    audio.clickAudio.volume = audio.soundVolumeSlider.defaultValue / 100;
+                    audio.cardMatchAudio.volume = audio.soundVolumeSlider.defaultValue / 100;
+                    audio.cardFlipAudio.volume = audio.soundVolumeSlider.defaultValue / 100;
+                    audio.victoryAudio.volume = 0.20;
+                }
+                ```
 
         - In addition to this, I introduced the following if statement within the event listener to ensure that the victory audio remains between 0% and 20%:
 
-        ```Javascript
-        audio.soundVolumeSlider.addEventListener("change", event => {
-            audio.clickAudio.volume = audio.soundVolumeSlider.value / 100;
-            audio.cardMatchAudio.volume = audio.soundVolumeSlider.value / 100;
-            audio.cardFlipAudio.volume = audio.soundVolumeSlider.value / 100;
+                ```Javascript
+                audio.soundVolumeSlider.addEventListener("change", event => {
+                    audio.clickAudio.volume = audio.soundVolumeSlider.value / 100;
+                    audio.cardMatchAudio.volume = audio.soundVolumeSlider.value / 100;
+                    audio.cardFlipAudio.volume = audio.soundVolumeSlider.value / 100;
 
-            if (audio.soundVolumeSlider.value == 0) {
-                audio.victoryAudio.volume = 0;
-            } else if (audio.soundVolumeSlider.value > 0 && audio.soundVolumeSlider.value <= 20) {
-                audio.victoryAudio.volume = audio.soundVolumeSlider.value / 100;
-            } else {
-                audio.victoryAudio.volume = 0.2;
-            }
-        });
-        ```
+                    if (audio.soundVolumeSlider.value == 0) {
+                        audio.victoryAudio.volume = 0;
+                    } else if (audio.soundVolumeSlider.value > 0 && audio.soundVolumeSlider.value <= 20) {
+                        audio.victoryAudio.volume = audio.soundVolumeSlider.value / 100;
+                    } else {
+                        audio.victoryAudio.volume = 0.2;
+                    }
+                });
+                ```
 
     5. **Game Music**
 
-        - I tested that the function gets called at the start of a game and stops playing the moment the player exits the game.
+        - I tested that the function gets called at the start of a game and stops playing the moment the user exits the game.
 
         - No bugs were discovered with the above functionality.
 
@@ -323,44 +346,165 @@ During the development and testing phase of the site, I used Google Chrome and G
 
             - To fix this, I created the below function to check whether a game was currently active or not and saves a boolean value to a variable. When the ``playMusic()`` function gets called, it calls the ``isGameActive()`` function and then uses an if statement to determine whether the conditions to play music are met.
 
-        ```javascript
-        function isGameActive() {
-            if (app.difficultyLevel !== "") {
-                audio.gameActive = true;
-            } else {
-                audio.gameActive = false;
-            }
-        }
-        ```
+                    ```Javascript
+                    function isGameActive() {
+                        if (app.difficultyLevel !== "") {
+                            audio.gameActive = true;
+                        } else {
+                            audio.gameActive = false;
+                        }
+                    }
+                    ```
 
 #### Game Functionality Testing
 
-3. Game Functionality
+All tests were performed multiple times using a Desktop, Mobile phone, and tables. In addition, they were tested on Google Chrome, Google Canary, Mozilla Firefox and Microsoft Edge.
 
-    1. Card Flipping
-        - What did I do to test?
-        - What bugs were discovered?
-        - How did I remedy them?
+The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an iPad Pro as well as using the emulated devices available in Google Chrome and Mozilla Firefox Dev tools.
 
-    2. Card Matching
-        - What did I do to test?
-        - What bugs were discovered?
-        - How did I remedy them?
+1. Game Functionality
 
-    3. Flip Counter
-        - What did I do to test?
-        - What bugs were discovered?
-        - How did I remedy them?
+    1. **Card Flipping Function**
 
-    4. Time Count
-        - What did I do to test?
-        - What bugs were discovered?
-        - How did I remedy them?
+        - I tested that the ``cardFlip()`` function is called when the a card is flipped on the game board assuming that the conditions for the function call have been met and this it removes the class ``faceDown`` from the target card.
 
-    5. Game Restart
-        - What did I do to test?
-        - What bugs were discovered?
-        - How did I remedy them?
+        - No bugs were discovered with the above functionality.
+
+        - I tested that the user was not able to flip more than two cards over at the same time and that the if statement used within the event listener was working correctly and that the ``app.flip.timesFlipped`` correctly recorded the amount of flips by logging the result to the console.
+
+        - No bugs were discovered with the above functionality.
+
+        - I tested that a flip attempt would not be recorded in ``app.flip.timesFlipped`` if the user clicked on an element that was not a card with the ``faceDown`` class.
+
+        - No bugs were discovered with the above functionality.
+
+    2. **Card Matching Function**
+
+        - I tested that the function gets called correctly when the user has clicked on two cards within the game board and that if they match, then they are correctly pushed into the ``app.gameComplete`` array and if they did not match, they were re-assigned the ``faceDown`` CSS class.
+
+        - Bug Discovered:
+
+            - During the testing phase, I discovered that the ``faceDown`` class got added back onto the card too quickly if they were not a matching pair and the user needed time to absorb what the card face was.
+
+        - Fix Applied:
+
+            - To fix this, I added a ``setTimeout()`` function that delays the ``faceDown`` class being added back on by 800 milliseconds.
+
+                    ```Javascript
+                    setTimeout(() => {
+                        app.firstGuess.classList.add("faceDown");
+                        app.secondGuess.classList.add("faceDown");
+                        matchCheckerReset();
+                        }, 800);
+                    }
+                    ```
+
+        - I tested that the ``matchCheckerReset()`` correctly clears the corresponding variables at the end of the ``matchCheck()`` function so there is no conflicting information stored to skew further match checks.
+
+        - No bugs were discovered with the above functionality.
+
+    3. **Flip Counter**
+
+        - I tested that the amount of flips that user has done in the game is correctly recorded and that the innerHTML of the flip counter is updated to display this information to the user.
+
+        - I tested that if the user clicked on the same card in quick succession, the flip counter would not record the second click and increment its count.
+
+        - I tested that if the user clicked on a matched pair and any other element within the game screen, the flip counter would not be incremented.
+
+        - No bugs were discovered with the above functionality.
+
+    4. **Time Counter**
+
+        - I tested that the function starts correctly when the game starts and correctly displays the users current time in game and updates the innerText of the HTML element it is linked with.
+
+        - I tested that the timer value and innerHTML reset to 0 on game exit or game restart.
+
+        - The timer functionality worked as intended however; I did discover a couple bugs as listed below:
+
+        - Bug Discovered:
+
+            - When the user completed the game and the Victory Modal launched, the game timer didn't stop incrementing in value.
+
+        - Fix Applied:
+
+            - To fix this, I added the ``clearInterval()`` call to the ``gameComplete()`` function so that the timer stops when the game has been completed.
+
+                    ```Javascript
+                    clearInterval(app.timer.gameTimer);
+                    ```
+
+        - Bug Discovered:
+
+            - I discovered that whilst the timer was working as anticipated, it did not display correctly to the user if the seconds counter was below 10 seconds. For example, I expected the innerText from the timer when representing 9 seconds to display as 00:09 however; it displayed it as 00:9.
+
+        - Fix Applied:
+
+            - To fix this, I added an if statement and used a template literal in the ``gameTimerStart()`` so that if the timer was below 10 seconds, it would add a 0 before the ``app.timer.secondsTimer`` thus allowing it to correctly display the seconds to the user in an easy to read format.
+
+                    ```Javascript
+                    if (app.timer.secondsTimer < 9) {
+                        ++app.timer.secondsTimer;
+                        app.timer.seconds.innerText = `0${app.timer.secondsTimer}`;
+                    ```
+
+    5. **Game Restart Function**
+
+        - I tested that the function gets called correctly when the user clicks on the restart button within the game and it restarts the level at the same difficulty setting that the user was on.
+
+        - I further tested this functionality by playing a few rounds from start to finish on each difficulty and used the restart functionality to ensure that all cards were reset and that the shuffle was applied each time to randomise the card layout.
+
+        - No bugs were discovered with the above functionality.
+
+        - I tested that the restart function resets both the flip counter and game timer to 0.
+
+        - No bugs were discovered with the above functionality.
+
+    6. **Game Complete Function**
+
+       - I tested the ``gameComplete()`` function for each level of the game to ensure that the function works as intended.
+
+       - No bugs were discovered with the function however; please refer to the bugs listed for the individual components:
+            - Individual Modal Testing -> 4. Victory Modal - Next Level button - Button being shown when player is already at final difficulty.
+            - Game Functionality Testing -> 4. Time Counter - Time not stopping on game complete.
+
+    7. **Level Choice Function**
+
+        - I tested that the correct level is recorded when the user interacts with the Level Choice button and the correct value is assigned to the ``app.difficultyLevel`` variable.
+
+        - No bugs were discovered with the above functionality.
+
+    8. **Game Play / Card Creation Function**
+
+        - I tested that the ``determineGameCards()`` function correctly assigns the right value to ``app.gameCards`` based on the level difficulty chosen by the user.
+
+        - No bugs were discovered with the above functionality.
+
+        - I tested that the ``createCardLayout()`` function correctly assigned the right amount of div's to the ``app.cardHolder`` variable based on the value of ``app.gameCards`` and the correct classes were applied.
+
+        - No bugs were discovered with the above functionality.
+
+        - I tested that the ``shuffleArray()`` function shuffled the contents of ``app.cardHolder`` in a randomised order and then assigned this to a new variable ``cardShuffle``. After this, contents of the ``cardShuffle`` array was appended correctly onto the game board.
+
+        - No bugs were discovered with the above functionality.
+
+    9. **Game Background Function**
+
+        - I tested that the ``gameBackground()`` function correctly assigns the right class to the game board background based on the user difficulty and before assigning the new background class it removes any previous background classes.
+
+        - No bugs were discovered with the above functionality.
+
+    10. **Clear Game Area/Exit Function**
+
+        - I tested that when the user exits the game area, either by the button in the Navbar or within the Victory Modal that the ``clearGameArea()`` function correctly clears:
+            - Game board of all cards by removing the children div's of the game board.
+
+            - Clears all variables used for the game components.
+
+            - Resets/ Stops all counters to 0.
+
+            - Stops game music
+
+        - No bugs were discovered with the above functionality.
 
 ### Additional Testing
 
