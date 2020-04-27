@@ -614,8 +614,6 @@ a:hover {
     margin-top: auto;
   }
 
-  /* The below important rule is override the bootstrap mt-0 */
-
   #social {
     margin-top: 2%;
   }
