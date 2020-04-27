@@ -172,7 +172,7 @@ The below screenshots have been taken use the Google Chrome Dev Tools Lighthouse
 
 ##### Mobile Audit Result
 
-![Google Chrome Light House Audit - Mobile Result](https://res.cloudinary.com/andy-osborne/image/upload/v1587904628/Dwarf%20Match/Images/Lighthouse_Audit_-_Desktop_Stats_mtzeqo.png)
+![Google Chrome Light House Audit - Mobile Result](https://res.cloudinary.com/andy-osborne/image/upload/v1587904628/Dwarf%20Match/Images/Lighthouse_Audit_-_Mobile_Stats_dnkxgu.png)
 
 ### Functionality Testing
 
