@@ -167,7 +167,11 @@ hr {
 }
 
 .landing-spacing {
-  padding-top: 23%;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .menu-item {
@@ -481,10 +485,6 @@ a:hover {
 }
 
 @media only screen and (orientation: landscape) {
-  .landing-spacing {
-    padding-top: 6%;
-  }
-
   .back-image {
     height: 78vh;
   }
@@ -566,10 +566,6 @@ a:hover {
 }
 
 @media only screen and (min-width: 375px) and (orientation: portrait) {
-  .landing-spacing {
-    padding-top: 25%;
-  }
-
   .modal {
     margin-top: 3%;
   }
@@ -682,12 +678,6 @@ a:hover {
   }
 }
 
-@media only screen and (min-width: 812px) and (orientation: landscape) {
-  .landing-spacing {
-    padding-top: 6%;
-  }
-}
-
 @media only screen and (min-width: 1023px) and (orientation: portrait) {
   .navbar {
     height: 11vh;
@@ -732,10 +722,6 @@ a:hover {
 }
 
 @media only screen and (min-width: 1024px) and (orientation: landscape) {
-  .landing-spacing {
-    padding-top: 10%;
-  }
-
   footer {
     padding-top: 15px;
   }
@@ -781,18 +767,6 @@ a:hover {
   }
 }
 
-@media only screen and (min-width: 1026px) and (orientation: landscape) {
-  .landing-spacing {
-      padding-top: 6%;
-  }
-}
-
-@media only screen and (min-width: 1260px) and (orientation: landscape) {
-  .landing-spacing {
-      padding-top: 3%;
-  }
-}
-
 @media only screen and (min-width: 1366px) and (orientation: landscape) {
   div.level-style.modal,
   div.sound-style.modal {
@@ -806,17 +780,9 @@ a:hover {
     max-height: 69%;
     max-width: 50%;
   }
-
-  .landing-spacing {
-    padding-top: 13%;
-  }
 }
 
 @media only screen and (min-width: 1367px) and (orientation: landscape) {
-  .landing-spacing {
-    padding-top: 8%;
-  }
-
   .menu-item {
     width: 20%;
     margin: 0.5%;
