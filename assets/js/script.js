@@ -176,13 +176,6 @@ function gameComplete() {
 
         if (app.difficultyLevel !== "hard") {
             app.victory.nextLevel.classList.remove("d-none");
-            app.victory.nextLevel.addEventListener("click", event => {
-                clickSound();
-                difficultyIncrease();
-                app.victory.victoryModal.classList.add("d-none");
-                app.victory.victoryModal.classList.remove("d-block");
-                app.victory.nextLevel.classList.add("d-none");
-            });
         }
     } else {
         return;
@@ -218,6 +211,7 @@ function restartLevel() {
     app.flip.flipCount = 0;
     matchCheckerReset();
     app.gameComplete = [];
+    app.difficultyIncreaseHolder = "";
     app.flip.flipCounter.innerText = app.flip.flipCount;
     clearInterval(app.timer.gameTimer);
     gameTimerStop();
@@ -229,11 +223,22 @@ function restartLevel() {
 function difficultyIncrease() {
     if (app.difficultyLevel === "easy") {
         app.difficultyLevel = "normal";
-    } else {
+    } else if (app.difficultyLevel === "normal") {
         app.difficultyLevel = "hard";
     }
-    restartLevel();
 }
+
+// Function executes the next level within the victory modal once the button is clicked.
+
+app.victory.nextLevel.addEventListener("click", event => {
+    clickSound();
+    console.log(app.difficultyLevel);
+    difficultyIncrease();
+    console.log(app.difficultyLevel);
+    restartLevel();
+    console.log(app.difficultyLevel);
+    closeVictoryModal()    
+});
 
 // This function creates the game board area.
 
@@ -285,6 +290,8 @@ function gameTimerStop() {
 
 function clearGameArea() {
     app.game.querySelectorAll("*").forEach(child => child.remove());
+    app.difficultyLevel = "";
+    app.difficultyIncreaseHolder = "";
     app.gameCards = 0;
     app.cardHolder = [];
     app.flip.flipCount = 0;
@@ -292,7 +299,6 @@ function clearGameArea() {
     app.gameComplete = [];
     app.flip.flipCounter.innerText = app.flip.flipCount;
     clearInterval(app.timer.gameTimer);
-    app.difficultyLevel = "";
     gameTimerStop();
     stopMusic();
 }
