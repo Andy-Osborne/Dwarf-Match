@@ -232,11 +232,8 @@ function difficultyIncrease() {
 
 app.victory.nextLevel.addEventListener("click", event => {
     clickSound();
-    console.log(app.difficultyLevel);
     difficultyIncrease();
-    console.log(app.difficultyLevel);
     restartLevel();
-    console.log(app.difficultyLevel);
     closeVictoryModal()    
 });
 

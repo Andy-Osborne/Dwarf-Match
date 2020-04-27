@@ -316,7 +316,7 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
                         });
                     }
                     ```
-
+  
     5. **Exit Function**
 
         - I tested that the "Take me home" button works correctly and completes the functionality of clearing the game board and taking the user to the landing page.
@@ -576,6 +576,18 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
             - Stops game music
 
         - No bugs were discovered with the above functionality.
+
+    11. **Next Difficulty Function**
+
+        - I thoroughly tested that the button worked as intended and increased the difficulty of the previous level the user was on, as long as it was not the hard level.
+
+        - Bug Discovered:
+
+            - When the user completed the easy difficulty and then clicked to the ``Next difficulty`` button, the normal level will be generated as anticipated. The issue appeared where the user then exited the level, then restarted easy difficulty and completed it then pressed the ``Next difficulty`` button again. The function would execute twice and generate the hard level.
+
+        - Fix Applied:
+
+            - To fix this, I moved the listener event outside of the ``gameComplete()`` function and repeated the initial bug process multiple times to ensure that the bug was resolved.
 
 ### Additional Testing
 
