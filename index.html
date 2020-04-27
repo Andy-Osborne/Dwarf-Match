@@ -52,21 +52,21 @@
 
             <div id="landing-page" class="background-image back-image">
                 <div class="flex-column d-flex align-items-center landing-spacing">
-                    <button class="menu-item p-1 m-2 play-btn">
+                    <button class="menu-item p-1 m-2 play-btn main-color">
                         <img class="menu-icon"
                             src="https://res.cloudinary.com/andy-osborne/image/upload/v1587812494/Dwarf%20Match/Buttons/btn-start.png"
                             alt="Play Button">
                         <span>Play</span>
                     </button>
 
-                    <button class="menu-item p-1 m-2 tutorial-btn">
+                    <button class="menu-item p-1 m-2 tutorial-btn main-color">
                         <img class="menu-icon"
                             src="https://res.cloudinary.com/andy-osborne/image/upload/v1587812494/Dwarf%20Match/Buttons/btn-tutorial.png"
                             alt="Tutorial Button">
                         <span>How to Play</span>
                     </button>
 
-                    <button class="menu-item p-1 m-2 audio-btn">
+                    <button class="menu-item p-1 m-2 audio-btn main-color">
                         <img class="menu-icon"
                             src="https://res.cloudinary.com/andy-osborne/image/upload/v1587812494/Dwarf%20Match/Buttons/btn-sound.png"
                             alt="Sound Settings">
@@ -81,11 +81,11 @@
         <div id="game-page" class="d-none back-image">
             <div class="game-control">
                 <div class="count-container align-items-center d-flex justify-content-center">
-                    <div class="d-inline-block game-info timer mt-2 mr-2 p-1">
+                    <div class="d-inline-block game-info timer mt-2 mr-2 p-1 main-color">
                         <h5>Time: <span id="minutes">0</span> : <span id="seconds">00</span></h5>
                     </div>
 
-                    <div class="d-inline-block game-info flip mt-2 ml-2 p-1">
+                    <div class="d-inline-block game-info flip mt-2 ml-2 p-1 main-color">
                         <h5>Flips: <span id="flips">0</span></h5>
                     </div>
                 </div>
@@ -208,13 +208,13 @@
                         took you <span id="time-taken">X</span></p>
                     <p>How about you...</p>
                     <p>Restart the same level?</p>
-                    <button class="victory-btn restart-btn">Restart</button>
+                    <button class="general-btn main-color restart-btn">Restart</button>
                     <div id="next-level" class="d-none">
                         <p>Perhaps try the next difficulty level?</p>
-                        <button id="difficult-start" class="victory-btn">Next Level</button>
+                        <button id="difficult-start" class="general-btn main-color">Next Level</button>
                     </div>
                     <p>Or shall you retire for the moment?</p>
-                    <button class="victory-btn exit-btn">Take me home</button>
+                    <button class="general-btn main-color exit-btn">Take me home</button>
                 </div>
             </div>
         </div>
@@ -231,7 +231,7 @@
                     <input type="range" value=40 min=0 max=100 step=10 id="sVolume-slider" name="sound-volume">
                     <br>
                     <p>Click to toggle the sound ON or OFF:</p>
-                    <button id="sound-btn" class="victory-btn">On</button>
+                    <button id="sound-btn" class="general-btn main-color">On</button>
                     <hr>
                     <h3>Music Control</h3>
                     <p>Adjust the volume level or turn the music on/off.</p>
@@ -239,7 +239,7 @@
                     <input type="range" value=40 min=0 max=100 step=10 id="mVolume-slider" name="music-volume">
                     <br>
                     <p>Toggle the music ON or OFF:</p>
-                    <button id="music-btn" class="victory-btn">
+                    <button id="music-btn" class="general-btn main-color">
                         <span>ON</span>
                     </button>
 
