@@ -212,10 +212,6 @@ hr {
 
 /* Play Menu */
 
-.level-btn {
-  padding-top: 10px;
-}
-
 .level-btn img {
   max-width: 150px;
 }
@@ -655,8 +651,8 @@ a:hover {
 
   .modal {
     margin-top: 0;
-    max-width: 80%;
-    max-height: 55%;
+    max-width: 74%;
+    max-height: 63%;
   }
 
   div.sound-style.modal {
@@ -694,7 +690,7 @@ a:hover {
   }
 
   div.level-style.modal {
-    max-height: 52%;
+    max-height: 49%;
     max-width: 60%;
     padding: 10px;
     margin-top: -2%;
