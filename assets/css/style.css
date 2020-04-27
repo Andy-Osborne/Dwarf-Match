@@ -105,8 +105,8 @@ footer a {
 /* Image Sizing & positioning */
 
 .nav-logo {
-  width: auto;
   height: 60px;
+  width: auto;
 }
 
 .menu-icon {
@@ -178,8 +178,6 @@ hr {
   border-radius: 5px;
   background-color: #422020;
   width: 250px;
-  padding: 5px;
-  margin: 10px;
 }
 
 .menu-item img {
@@ -484,12 +482,6 @@ a:hover {
 
   .menu-item {
     width: 40%;
-    margin: 1%;
-    padding: 0;
-  }
-
-  .menu-item p {
-    margin-bottom: 0;
   }
 
   div.sound-style.modal {
@@ -522,7 +514,6 @@ a:hover {
 
   footer {
     padding-top: 0;
-    height: 7vh;
   }
 
   .nav-logo {
@@ -716,8 +707,6 @@ a:hover {
 
   .menu-item {
     width: 25%;
-    padding: 1%;
-    margin: 1.5%;
   }
 
   .back-image {
@@ -773,7 +762,6 @@ a:hover {
 @media only screen and (min-width: 1367px) and (orientation: landscape) {
   .menu-item {
     width: 20%;
-    margin: 0.5%;
   }
 
   .menu-icon {
