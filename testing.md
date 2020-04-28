@@ -188,14 +188,14 @@ I performed manual tests on all the modals to ensure they could open and close c
 
     In order to fix this unintended bug, I created the below function which is executed when either the Tutorial or Audio Modal is opened and it closes the other one:
 
-        ```Javascript
+    ```Javascript
         function closeActiveModal() {
             document.getElementById("tutorial").classList.remove("d-block");
             document.getElementById("tutorial").classList.add("d-none");
             document.getElementById("soundModal").classList.remove("d-block");
             document.getElementById("soundModal").classList.add("d-none");
         }
-        ```
+    ```
 
 #### Individual Modal Testing
 
@@ -255,12 +255,12 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
 
             - To fix this bug, I created a function that would close the Victory Modal and associated it with the in-game "Restart Button" so that it would be executed upon that button being pressed.
 
-                    ```Javascript
+                ```Javascript
                     function closeVictoryModal() {
                         document.getElementById("victory").classList.add("d-none");
                         document.getElementById("victory").classList.remove("d-block");
                     }
-                    ```
+                ```
 
     2. **InnerText: Displaying Time Taken and Flip Count**
 
@@ -276,7 +276,7 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
 
             - To fix this, I added in an if statement as follows:
 
-                    ```Javascript
+                ```Javascript
                     if (app.timer.minutesTimer === 0) {  
                         app.victory.timeModal.innerText = `${app.timer.secondsTimer} seconds to do it!`;
                         } else if (app.timer.minutesTimer === 1) {
@@ -284,7 +284,7 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
                         } else {
                         app.victory.timeModal.innerText = `${app.timer.minutesTimer} minutes and ${app.timer.secondsTimer} seconds to do it!`;
                     }
-                    ```
+                ```
 
     3. **Restart Level**
 
@@ -304,18 +304,11 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
 
             - To fix this, I added in an if statement as follows that displays the "Next Level" button if the user is not already on the hard level:
 
-                    ```Javascript
-                        if (app.difficultyLevel !== "hard") {
-                            app.victory.nextLevel.classList.remove("d-none");
-                            app.victory.nextLevel.addEventListener("click", event => {
-                            clickSound();
-                            difficultyIncrease();
-                            app.victory.victoryModal.classList.add("d-none");
-                            app.victory.victoryModal.classList.remove("d-block");
-                            app.victory.nextLevel.classList.add("d-none");
-                        });
+                ```Javascript
+                    if (app.difficultyLevel !== "hard") {
+                        app.victory.nextLevel.classList.remove("d-none");
                     }
-                    ```
+                ```
   
     5. **Exit Function**
 
@@ -373,7 +366,7 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
 
         - The sound of the victory audio was very loud which led me to introduce a default volume level function that gets called on page load, and sets the volume of this to a max of 20%:
 
-                ```Javascript
+            ```Javascript
                 function defaultVolume() {
                     audio.gameMusic.volume = audio.musicVolumeSlider.defaultValue / 100;
                     audio.clickAudio.volume = audio.soundVolumeSlider.defaultValue / 100;
@@ -381,11 +374,11 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
                     audio.cardFlipAudio.volume = audio.soundVolumeSlider.defaultValue / 100;
                     audio.victoryAudio.volume = 0.20;
                 }
-                ```
+            ```
 
         - In addition to this, I introduced the following if statement within the event listener to ensure that the victory audio remains between 0% and 20%:
 
-                ```Javascript
+            ```Javascript
                 audio.soundVolumeSlider.addEventListener("change", event => {
                     audio.clickAudio.volume = audio.soundVolumeSlider.value / 100;
                     audio.cardMatchAudio.volume = audio.soundVolumeSlider.value / 100;
@@ -399,7 +392,7 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
                         audio.victoryAudio.volume = 0.2;
                     }
                 });
-                ```
+            ```
 
     5. **Game Music**
 
@@ -417,7 +410,7 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
 
             - To fix this, I created the below function to check whether a game was currently active or not and saves a boolean value to a variable. When the ``playMusic()`` function gets called, it calls the ``isGameActive()`` function and then uses an if statement to determine whether the conditions to play music are met.
 
-                    ```Javascript
+                ```Javascript
                     function isGameActive() {
                         if (app.difficultyLevel !== "") {
                             audio.gameActive = true;
@@ -425,7 +418,7 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
                             audio.gameActive = false;
                         }
                     }
-                    ```
+                ```
 
 #### Game Functionality Testing
 
@@ -461,14 +454,14 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
 
             - To fix this, I added a ``setTimeout()`` function that delays the ``faceDown`` class being added back on by 800 milliseconds.
 
-                    ```Javascript
+                ```Javascript
                     setTimeout(() => {
                         app.firstGuess.classList.add("faceDown");
                         app.secondGuess.classList.add("faceDown");
                         matchCheckerReset();
                         }, 800);
                     }
-                    ```
+                ```
 
         - I tested that the ``matchCheckerReset()`` correctly clears the corresponding variables at the end of the ``matchCheck()`` function so there is no conflicting information stored to skew further match checks.
 
@@ -500,9 +493,9 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
 
             - To fix this, I added the ``clearInterval()`` call to the ``gameComplete()`` function so that the timer stops when the game has been completed.
 
-                    ```Javascript
+                ```Javascript
                     clearInterval(app.timer.gameTimer);
-                    ```
+                ```
 
         - Bug Discovered:
 
@@ -512,11 +505,11 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
 
             - To fix this, I added an if statement and used a template literal in the ``gameTimerStart()`` so that if the timer was below 10 seconds, it would add a 0 before the ``app.timer.secondsTimer`` thus allowing it to correctly display the seconds to the user in an easy to read format.
 
-                    ```Javascript
+                ```Javascript
                     if (app.timer.secondsTimer < 9) {
                         ++app.timer.secondsTimer;
                         app.timer.seconds.innerText = `0${app.timer.secondsTimer}`;
-                    ```
+                ```
 
     5. **Game Restart Function**
 
@@ -587,7 +580,7 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
 
         - Fix Applied:
 
-            - To fix this, I moved the listener event outside of the ``gameComplete()`` function and repeated the initial bug process multiple times to ensure that the bug was resolved.
+            - To fix this, I moved the ``EventListener`` outside of the ``gameComplete()`` function and repeated the initial bug process multiple times to ensure that the bug was resolved.
 
 ### Additional Testing
 
