@@ -1,4 +1,4 @@
-// Tutorial Modal
+// Tutorial Modal.
 
 document.querySelectorAll(".tutorial-btn").forEach(item => {
     item.addEventListener("click", event => {
@@ -15,7 +15,7 @@ document.querySelectorAll(".tutorial-btn").forEach(item => {
     });
 });
 
-// Play Menu Modal
+// Play Menu Modal.
 
 document.querySelector(".play-btn").addEventListener("click", event => {
     clickSound();
@@ -29,7 +29,7 @@ document.querySelector(".play-btn").addEventListener("click", event => {
     });
 });
 
-// Audio Modal
+// Audio Modal.
 
 document.querySelectorAll(".audio-btn").forEach(item => {
     item.addEventListener("click", event => {
@@ -46,7 +46,7 @@ document.querySelectorAll(".audio-btn").forEach(item => {
     });
 });
 
-// Audio Options Listener
+// Audio Options Listener.
 
 document.getElementById("sound-btn").addEventListener("click", event => {
     soundEffectController();
@@ -56,8 +56,8 @@ document.getElementById("music-btn").addEventListener("click", event => {
     musicController();
 });
 
-/** The below is an event listener for when the user clicks on a level button within the
- * Play Menu Modal
+/** The below listens for when the user clicks on a level button within the
+ * Play Menu Modal.
  **/
 
 document.querySelectorAll(".level-btn").forEach(item => {
@@ -75,7 +75,7 @@ document.querySelectorAll(".level-btn").forEach(item => {
     });
 });
 
-// The below is an event listener for when the user clicks on the exit/home button.
+// The below listens for when the user clicks on the exit/home button.
 
 document.querySelectorAll(".exit-btn").forEach(item => {
     item.addEventListener("click", event => {
@@ -93,7 +93,10 @@ document.querySelectorAll(".exit-btn").forEach(item => {
     });
 });
 
-// The below runs the restart game function
+/**
+ * The below listens for user interaction on a Restart button, then
+ * closes active modals and calls the restart function.
+ */
 
 document.querySelectorAll(".restart-btn").forEach(item => {
     item.addEventListener("click", event => {
@@ -102,6 +105,15 @@ document.querySelectorAll(".restart-btn").forEach(item => {
         closeVictoryModal();
         restartLevel();
     });
+});
+
+// The below listens for user interaction with the Next Level button in the Victory Modal.
+
+document.getElementById("difficult-start").addEventListener("click", event => {
+    clickSound();
+    difficultyIncrease();
+    restartLevel();
+    closeVictoryModal()
 });
 
 function closeActiveModal() {
