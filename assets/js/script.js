@@ -29,7 +29,6 @@ let app = {
         flipModal: document.getElementById("flips-taken"),
         timeModal: document.getElementById("time-taken"),
         nextLevel: document.getElementById("next-level"),
-        nextDifficulty: document.getElementById("difficult-start"),
     }
 };
 
@@ -88,7 +87,7 @@ function shuffleArray(array) {
  * secondGuess. Once the array contains 2 cards, it runs the matchCheck function.
  */
 
-app.game.addEventListener("click", function (event) {
+app.game.addEventListener("click", function(event) {
     if (!event.target.classList.contains("faceDown") || app.flip.timesFlipped >= 2) {
         return;
     } else if (event.target.classList.contains("faceDown") && app.flip.timesFlipped <= 2) {
@@ -211,7 +210,6 @@ function restartLevel() {
     app.flip.flipCount = 0;
     matchCheckerReset();
     app.gameComplete = [];
-    app.difficultyIncreaseHolder = "";
     app.flip.flipCounter.innerText = app.flip.flipCount;
     clearInterval(app.timer.gameTimer);
     gameTimerStop();
@@ -227,15 +225,6 @@ function difficultyIncrease() {
         app.difficultyLevel = "hard";
     }
 }
-
-// Function executes the next level within the victory modal once the button is clicked.
-
-app.victory.nextLevel.addEventListener("click", event => {
-    clickSound();
-    difficultyIncrease();
-    restartLevel();
-    closeVictoryModal()    
-});
 
 // This function creates the game board area.
 
@@ -288,7 +277,6 @@ function gameTimerStop() {
 function clearGameArea() {
     app.game.querySelectorAll("*").forEach(child => child.remove());
     app.difficultyLevel = "";
-    app.difficultyIncreaseHolder = "";
     app.gameCards = 0;
     app.cardHolder = [];
     app.flip.flipCount = 0;
