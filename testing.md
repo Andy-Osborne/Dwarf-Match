@@ -87,8 +87,10 @@ All testing was performed using:
 
 - Google Chrome
 - Google Canary
+- Opera
 - Microsoft Edge
 - Mozilla Firefox
+- Safari (on iPhone & iPad)
 - Desktop - I tested the display on three different screen sizes.
 - Mobile Phones - All emulated devices offered in Google & Firefox Dev Tools as well as physical devices such as Samsung S9 and iPhone X.
 - Tablets - All emulated devices offered in Google & Firefox Dev Tools as well as physical devices such as the iPad Air and iPad Pro.
@@ -100,6 +102,8 @@ This game was intended to be responsive to all user media devices such as mobile
 To ensure the site and game board remains responsive, I tested the layout at every stage of development on the various screen sizes within the Chrome Dev tools and corrected the styling of the elements and added Media Queries so that the design will adjust to device being viewed. As this is a game, users may decide play it with a landscape orientation rather than portrait so I tailored additional Media Queries with this in mind.
 
 The overall site was designed using the Bootstrap Framework to make use of their flex layout. In addition to this I used relative measurements in my styling where possible, rather than absolute measurements to allow the elements to adapt to screen size changes before a new media query would need to be introduced.
+
+![Responsive Testing Summary Table](https://res.cloudinary.com/andy-osborne/image/upload/v1588085418/Dwarf%20Match/Images/Responsive_Design_Overview_nyczgi.png)
 
 ##### Landing Page
 
@@ -133,11 +137,11 @@ I tested each modal multiple times on the various devices/browsers mentioned pre
 
 - Bug Identified - **Excess white space between background image and footer**
 
-  - This bug only impacted the Microsoft Edge browser when a modal is launched. The white space is not immediately apparent to the user as the footer sticks to the bottom of the viewport at all times and there is no gap on their current viewport. They need to scroll down to see it.
+  - This bug only impacted the older version of the Microsoft Edge browser when a modal is launched. The white space is not immediately apparent to the user as the footer sticks to the bottom of the viewport at all times and there is no gap on their current viewport. They need to scroll down to see it.
 
 - Fix Applied:
 
-  - A fix for this is still outstanding however; it does not impact the game play for the user.
+  - This issue was resolved by updating to the latest version of the Edge Browser however; remains unfixed for users on older versions.
 
 - Bug Discovered - **Tutorial & Sound Modal During Victory Modal**:
 
@@ -168,11 +172,11 @@ The below screenshots have been taken use the Google Chrome Dev Tools Lighthouse
 
 ##### Desktop Audit Result
 
-![Google Chrome Light House Audit - Desktop Result](https://res.cloudinary.com/andy-osborne/image/upload/v1587904628/Dwarf%20Match/Images/Lighthouse_Audit_-_Desktop_Stats_mtzeqo.png)
+![Google Chrome Light House Audit - Desktop Result](https://res.cloudinary.com/andy-osborne/image/upload/v1588085418/Dwarf%20Match/Images/Lighthouse_Audit_-_Desktop_Stats_oug10k.png)
 
 ##### Mobile Audit Result
 
-![Google Chrome Light House Audit - Mobile Result](https://res.cloudinary.com/andy-osborne/image/upload/v1587904628/Dwarf%20Match/Images/Lighthouse_Audit_-_Mobile_Stats_dnkxgu.png)
+![Google Chrome Light House Audit - Mobile Result](https://res.cloudinary.com/andy-osborne/image/upload/v1588085418/Dwarf%20Match/Images/Lighthouse_Audit_-_Mobile_Stats_r8zdcx.png)
 
 ### Functionality Testing
 
@@ -298,15 +302,19 @@ The physical mobile/tablet devices tested on were a Samsung S9, iPhone X, and an
 
         - Bug Discovered:
 
-            - When the user was playing at the Hard difficulty, the button would show however; it caused an error as the user was already on the highest difficulty.
+            - When the user was playing at the Hard difficulty, the Next Level button would show however; it caused an error as the user was already on the highest difficulty.
 
         - Fix Applied:
 
-            - To fix this, I added in an if statement as follows that displays the "Next Level" button if the user is not already on the hard level:
+            - To fix this, I created the below function that runs an if statement as follows and displays the "Next Level" button if the user is not already on the hard level:
 
                 ```Javascript
-                    if (app.difficultyLevel !== "hard") {
-                        app.victory.nextLevel.classList.remove("d-none");
+                    function showNextDifficulty() {
+                        if (app.difficultyLevel !== "hard") {
+                            app.victory.nextLevel.classList.remove("d-none");
+                        } else {
+                            app.victory.nextLevel.classList.add("d-none");
+                       }
                     }
                 ```
   
