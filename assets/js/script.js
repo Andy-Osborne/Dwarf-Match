@@ -161,8 +161,8 @@ function gameComplete() {
     if (app.gameComplete.length === app.gameCards) {
         victorySound();
         clearInterval(app.timer.gameTimer);
-        app.victory.victoryModal.classList.remove("d-none");
-        app.victory.victoryModal.classList.add("d-block");
+        victoryModalLaunch();
+        showNextDifficulty();
         app.victory.flipModal.innerText = app.flip.flipCount;
 
         if (app.timer.minutesTimer === 0) {
@@ -172,12 +172,35 @@ function gameComplete() {
         } else {
             app.victory.timeModal.innerText = `${app.timer.minutesTimer} minutes and ${app.timer.secondsTimer} seconds to do it!`;
         }
-
-        if (app.difficultyLevel !== "hard") {
-            app.victory.nextLevel.classList.remove("d-none");
-        }
     } else {
         return;
+    }
+}
+
+// Function launches the victory modal when the user completes the game
+
+function victoryModalLaunch() {
+    app.victory.victoryModal.classList.remove("d-none");
+    app.victory.victoryModal.classList.add("d-block");
+}
+
+// Function shows the next difficulty button if the user is not currently on hard.
+
+function showNextDifficulty() {
+    if (app.difficultyLevel !== "hard") {
+        app.victory.nextLevel.classList.remove("d-none");
+    } else {
+        app.victory.nextLevel.classList.add("d-none");
+    }
+}
+
+// Function increases difficulty level of game if user has not selected hard previously.
+
+function difficultyIncrease() {
+    if (app.difficultyLevel === "easy") {
+        app.difficultyLevel = "normal";
+    } else if (app.difficultyLevel === "normal") {
+        app.difficultyLevel = "hard";
     }
 }
 
@@ -214,16 +237,6 @@ function restartLevel() {
     clearInterval(app.timer.gameTimer);
     gameTimerStop();
     gamePlay();
-}
-
-// Function increases difficulty level of game if user has not selected hard previously.
-
-function difficultyIncrease() {
-    if (app.difficultyLevel === "easy") {
-        app.difficultyLevel = "normal";
-    } else if (app.difficultyLevel === "normal") {
-        app.difficultyLevel = "hard";
-    }
 }
 
 // This function creates the game board area.
