@@ -113,7 +113,7 @@ document.getElementById("difficult-start").addEventListener("click", event => {
     clickSound();
     difficultyIncrease();
     restartLevel();
-    closeVictoryModal()
+    closeVictoryModal();
 });
 
 function closeActiveModal() {
